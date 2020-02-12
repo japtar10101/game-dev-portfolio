@@ -14,15 +14,17 @@
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<head>
-	<?php get_header(); ?>
-</head>
+<?php get_header(); ?>
 <body <?php body_class(); ?>>
-	<section id="page" class="site section">
+	<section class="site section">
 		<div id="content" class="site-content container">
-			<div class="columns">
-				<?php get_sidebar(); ?>
-				<div id="primary" class="content-area column">
+				<!-- Start columns here -->
+				<div class="columns">
+
+					<!-- Left column (sidebar) here -->
+					<?php get_sidebar(); ?>
+
+					<!-- Right column (content) here -->
 					<main id="main" class="site-main content-area column">
 						<?php
 						if ( have_posts() ) :
@@ -57,7 +59,5 @@
 		</div>
 	</section><!-- #primary -->
 	<?php get_footer(); ?>
-	<footer class="footer">
-	</footer>
-	</body>
+</body>
 </html>
