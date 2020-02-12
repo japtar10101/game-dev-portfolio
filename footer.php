@@ -21,6 +21,7 @@
 					echo( esc_html__( 'Theme by Taro Omiya', 'game-dev-portfolio' ) );
 					?>
 				</p>
+				<span class="sep"> | </span>
 				<p>
 					<a href="<?php echo esc_url( __( 'https://bulma.io/', 'game-dev-portfolio' ) ); ?>">
 						<?php
@@ -29,6 +30,7 @@
 						?>
 					</a>
 				</p>
+				<span class="sep"> | </span>
 				<p>
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'game-dev-portfolio' ) ); ?>">
 						<?php
