@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 	<?php game_dev_portfolio_post_thumbnail(); ?>
 	<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
 
