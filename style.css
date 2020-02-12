@@ -20,3 +20,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.com)
 */
+
+@media screen and (min-width: 769px) {
+	.menu {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 30px;
+	}
+}
