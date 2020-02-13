@@ -35,14 +35,21 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 	}
 }
 
+.comment-list li {
+	border-top: 1px solid rgba(219,219,219,.5);
+	padding-top: .75rem;
+}
+
+.comment-list li#li-comment-1 {
+	border-top: none;
+	padding-top: 0px;
+}
+
 .comment-list li figure {
-	border: 1px solid rgba(219,219,219,.5);
 	margin: 0px 20px 20px 0px;
 }
 
 .comment-list .children {
-	border-top: 1px solid rgba(219,219,219,.5);
-	padding-top: .75rem;
 	margin-top: 0px;
 	margin-left: 84px;
 }
