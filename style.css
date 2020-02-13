@@ -35,21 +35,28 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 	}
 }
 
+/*
+Setup post thumbnail to resize and retain the same
+aspect ratio based on the width of the browser.
+ */
 .post-thumbnail {
 	padding-top: 31.75%;
 }
 
 .post-thumbnail img {
-	bottom: 0;
-	left: 0;
 	position: absolute;
-	right: 0;
-	top: 0;
 	height: 100%;
 	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
 }
 
-.comment-list li {
+/*
+Format how the list of comments are portrayed.
+ */
+ .comment-list li {
 	border-top: 1px solid rgba(219,219,219,.5);
 	padding-top: .75rem;
 }
