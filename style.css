@@ -35,6 +35,20 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 	}
 }
 
+.post-thumbnail {
+	padding-top: 31.75%;
+}
+
+.post-thumbnail img {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
 .comment-list li {
 	border-top: 1px solid rgba(219,219,219,.5);
 	padding-top: .75rem;

@@ -41,7 +41,7 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 858, 270, true ); // default Post Thumbnail dimensions (cropped)
+		set_post_thumbnail_size( 1024, 325, true ); // default Post Thumbnail dimensions (cropped)
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -75,8 +75,8 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 512,
+			'width'       => 512,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
