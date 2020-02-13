@@ -52,16 +52,16 @@ if ( post_password_required() ) {
 			wp_list_comments( array(
 				'style'      => 'ol',
 				'short_ping' => true,
-				'max_depth'  => 3,
+				'max_depth'  => 4,
 				'type'       => 'comment',
 				'callback'   => 'format_comment',
 			) );
 			?>
 		</div><!-- .comment-list -->
 
+		<?php the_comments_navigation(); ?>
+		<hr />
 		<?php
-		the_comments_navigation();
-
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>

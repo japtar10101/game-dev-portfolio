@@ -190,8 +190,8 @@ function format_comment($comment, $args, $depth) {
 			</p>
 		</figure>
 
-		<div id="comment-<?php comment_ID(); ?>" class="media-content">
-			<div class="content">
+		<div class="media-content">
+			<div id="comment-<?php comment_ID(); ?>" class="content">
 				<p>
 					<strong>
 						<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
