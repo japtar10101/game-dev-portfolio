@@ -80,6 +80,11 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+		/*
+		 * Adding editor styling support.
+		 */
+		add_editor_style();
 	}
 endif;
 add_action( 'after_setup_theme', 'game_dev_portfolio_setup' );
