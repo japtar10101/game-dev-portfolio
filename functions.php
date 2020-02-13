@@ -177,3 +177,53 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Function to format the comment section
+ */
+function format_comment($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment; ?>
+	<article id="li-comment-<?php comment_ID() ?>" <?php comment_class('media'); ?>>
+
+		<figure class="media-left comment-author vcard">
+			<p class="image is-64x64">
+				<?php echo get_avatar($comment, $size='48', $default='https://bulma.io/images/placeholders/128x128.png' ); ?>
+			</p>
+		</figure>
+
+		<div id="comment-<?php comment_ID(); ?>" class="media-content">
+			<div class="content">
+				<p>
+					<strong>
+						<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
+					</strong>
+					<br />
+
+					<?php if ($comment->comment_approved == '0') : ?>
+						<small>
+							<?php _e('Your comment is awaiting moderation.') ?>
+						</small>
+					<br />
+					<?php endif; ?>
+
+					<small class="comment-author vcard">
+						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
+							<?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?>
+						</a>
+						<?php edit_comment_link(__('(Edit)'),'  ','') ?>
+					</small>
+					<br />
+
+					<?php comment_text() ?>
+				</p>
+			</div>
+		</div>
+
+		<div class="media-right reply">
+			<?php
+			$reply_string = '<span class="icon is-small"><i class="fas fa-reply"></i></span> ' . esc_html__( 'Reply', 'game-dev-portfolio' );
+			comment_reply_link(array_merge( $args, array('reply_text' => $reply_string, 'depth' => $depth, 'max_depth' => $args['max_depth'])))
+			?>
+		</div>
+	</article>
+<?php
+}

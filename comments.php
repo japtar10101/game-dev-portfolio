@@ -19,9 +19,8 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
-
-<div id="comments" class="comments-area">
-
+<hr />
+<div id="comments" class="comments-area content">
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
@@ -32,13 +31,13 @@ if ( post_password_required() ) {
 			if ( '1' === $game_dev_portfolio_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'game-dev-portfolio' ),
+					esc_html__( 'A reply on &ldquo;%1$s&rdquo;', 'game-dev-portfolio' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $game_dev_portfolio_comment_count, 'comments title', 'game-dev-portfolio' ) ),
+					esc_html( _nx( '%1$s replies on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $game_dev_portfolio_comment_count, 'comments title', 'game-dev-portfolio' ) ),
 					number_format_i18n( $game_dev_portfolio_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -48,14 +47,17 @@ if ( post_password_required() ) {
 
 		<?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
+		<div class="content comment-list">
 			<?php
 			wp_list_comments( array(
-				'style'      => 'ol',
+				'style'      => 'article',
 				'short_ping' => true,
+				'max_depth'  => 3,
+				'type'       => 'comment',
+				'callback'   => 'format_comment',
 			) );
 			?>
-		</ol><!-- .comment-list -->
+		</div><!-- .comment-list -->
 
 		<?php
 		the_comments_navigation();
