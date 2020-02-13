@@ -29,16 +29,29 @@
 								<p>
 									<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'game-dev-portfolio' ); ?>
 								</p>
-								<?php get_search_form(); ?>
-								<br />
-								<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-								<br />
-								<?php the_widget( 'WP_Widget_Archives', 'dropdown=1' ); ?>
-								<br />
-								<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
 							</div><!-- .page-content -->
+							<div class="tile is-ancestor">
+								<div class="tile is-parent is-vertical">
+									<div class="tile is-child">
+										<?php get_search_form(); ?>
+									</div>
+									<div class="tile is-parent">
+										<div class="tile is-child box">
+											<?php the_widget( 'WP_Widget_Pages' ); ?>
+										</div>
+										<div class="tile is-child box">
+											<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+										</div>
+										<div class="tile is-child box">
+											<?php the_widget( 'WP_Widget_Archives', 'dropdown=1' ); ?>
+										</div>
+										<div class="tile is-child box">
+											<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+										</div>
+									</div>
+								</div>
+							</div><!-- .tile -->
 						</article><!-- .error-404 -->
-
 					</main><!-- #main -->
 				</div>
 			</div>
