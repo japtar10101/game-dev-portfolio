@@ -50,7 +50,7 @@ if ( post_password_required() ) {
 		<div class="content comment-list">
 			<?php
 			wp_list_comments( array(
-				'style'      => 'article',
+				'style'      => 'ol',
 				'short_ping' => true,
 				'max_depth'  => 3,
 				'type'       => 'comment',

@@ -182,11 +182,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 function format_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment; ?>
-	<article id="li-comment-<?php comment_ID() ?>" <?php comment_class('media'); ?>>
+	<li id="li-comment-<?php comment_ID() ?>" <?php comment_class('media'); ?>>
 
 		<figure class="media-left comment-author vcard">
 			<p class="image is-64x64">
-				<?php echo get_avatar($comment, $size='48', $default='https://bulma.io/images/placeholders/128x128.png' ); ?>
+				<?php echo get_avatar($comment, $size='48' ); ?>
 			</p>
 		</figure>
 
@@ -224,6 +224,6 @@ function format_comment($comment, $args, $depth) {
 			comment_reply_link(array_merge( $args, array('reply_text' => $reply_string, 'depth' => $depth, 'max_depth' => $args['max_depth'])))
 			?>
 		</div>
-	</article>
+	</li>
 <?php
 }
