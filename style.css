@@ -31,7 +31,7 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 	.menu {
 		position: -webkit-sticky;
 		position: sticky;
-		top: 30px;
+		top: -270px;
 	}
 }
 
