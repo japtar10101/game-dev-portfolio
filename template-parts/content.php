@@ -28,8 +28,6 @@
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 
-	<?php game_dev_portfolio_post_thumbnail(); ?>
-
 	<div class="entry-content">
 		<?php
 		the_content( sprintf(
