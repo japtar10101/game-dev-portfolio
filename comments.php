@@ -71,7 +71,15 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	// FIXME: Run some serious customization here!
+	comment_form( array(
+		'comment_field' => sprintf('<p class="control"><textarea class="textarea" placeholder="%s"></textarea></p>', __( 'Add a comment...', 'game-dev-portfolio' ) ),
+		'class_form' => 'comment-form field',
+		'class_submit' => 'control button'
+		// 'fields' => array(
+		// 	'url' => ''
+		// )
+	) );
 	?>
 
 </div><!-- #comments -->

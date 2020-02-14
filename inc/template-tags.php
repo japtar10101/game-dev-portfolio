@@ -103,7 +103,7 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 			}
 		}
 
-		if ( $add_separator ) {
+		if ( $add_separator && get_edit_post_link() ) {
 			echo ' | ';
 		}
 		edit_post_link(

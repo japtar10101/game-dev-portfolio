@@ -36,12 +36,15 @@ function game_dev_portfolio_pingback_header() {
 }
 add_action( 'wp_head', 'game_dev_portfolio_pingback_header' );
 
+// FIXME: look into deleting these functions
 function game_dev_portfolio_form_remove_url($arg) {
 	$arg['url'] = '';
+	//'<i class="fas fa-user-circle"></i>'
 	return $arg;
 }
 add_filter('comment_form_default_fields', 'game_dev_portfolio_form_remove_url');
 
+// FIXME: look into deleting these functions
 function game_dev_portfolio_comment_field_at_bottom( $fields ) {
 	$comment_field = $fields['comment'];
 	unset( $fields['comment'] );
