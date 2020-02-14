@@ -54,6 +54,36 @@ aspect ratio based on the width of the browser.
 }
 
 /*
+Embedding text into thumnail
+ */
+article.entry-summary .entry-content {
+	position: relative;
+	margin-bottom: 1.5rem;
+}
+
+article.entry-summary .entry-content .embed-container .embed-content {
+	position: absolute;
+	top: 1.5rem;
+	left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+/*
+Styling on list of posts
+ */
+article.entry-summary {
+	border-top: 1px solid #f0f0f0;
+}
+
+article.entry-summary .no-container {
+	padding-top: 1.5rem;
+}
+
+article.entry-summary .post-thumbnail img {
+	opacity: 0.2;
+}
+
+/*
 Format how the list of comments are portrayed.
  */
  .comment-list li {

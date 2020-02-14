@@ -191,7 +191,7 @@ function format_comment($comment, $args, $depth) {
 
 		<figure class="media-left comment-author vcard">
 			<p class="image is-64x64">
-				<?php echo get_avatar($comment, $size='48' ); ?>
+				<?php echo get_avatar($comment, $size='64' ); ?>
 			</p>
 		</figure>
 

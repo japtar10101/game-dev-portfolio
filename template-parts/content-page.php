@@ -10,8 +10,10 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
-	<?php game_dev_portfolio_post_thumbnail(); ?>
-	<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+	<header class="entry-header">
+		<?php game_dev_portfolio_post_thumbnail(); ?>
+		<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+	</header><!-- .entry-header -->
 
 	<?php
 	if ( get_edit_post_link() ) :
