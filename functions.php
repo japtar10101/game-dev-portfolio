@@ -638,5 +638,5 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 		do_action( 'comment_form_after' );
 	}
 endif;
-add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_comment_form' );
+add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form' );
 ?>
