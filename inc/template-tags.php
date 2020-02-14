@@ -57,23 +57,7 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function game_dev_portfolio_entry_footer() {
-		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'game-dev-portfolio' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'game-dev-portfolio' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-			}
-		}
-
+		$add_separator = false;
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
 			comments_popup_link(
@@ -91,8 +75,37 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 				)
 			);
 			echo '</span>';
+			$add_separator = true;
 		}
 
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( esc_html__( ', ', 'game-dev-portfolio' ) );
+			if ( $categories_list ) {
+				if ( $add_separator ) {
+					echo ' | ';
+				}
+				/* translators: 1: list of categories. */
+				printf( '<span class="cat-links">' . esc_html__( 'Categories: %1$s', 'game-dev-portfolio' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				$add_separator = true;
+			}
+
+			/* translators: used between list items, there is a space after the comma */
+			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
+			if ( $tags_list ) {
+				if ( $add_separator ) {
+					echo ' | ';
+				}
+				/* translators: 1: list of tags. */
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged: %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				$add_separator = true;
+			}
+		}
+
+		if ( $add_separator ) {
+			echo ' | ';
+		}
 		edit_post_link(
 			sprintf(
 				wp_kses(

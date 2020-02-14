@@ -13,26 +13,7 @@
 	<header class="entry-header">
 		<?php
 		game_dev_portfolio_post_thumbnail();
-		$end_header = get_edit_post_link();
-		if ( $end_header ) :
-			$end_header = ' <small><em><a href="' . $end_header . '">';
-			$end_header .= sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'game-dev-portfolio' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			);
-			$end_header .= '</a></em></small>';
-		else :
-			$end_header = '</h1>';
-		endif;
-		the_title( '<h1 class="title entry-title">', $end_header );
+		the_title( '<h1 class="title entry-title">', '</h1>' );
 	?>
 	</header><!-- .entry-header -->
 
@@ -44,6 +25,26 @@
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'game-dev-portfolio' ),
 			'after'  => '</div>',
 		) );
+		?>
+		<?php
+		if ( get_edit_post_link() ) :
+			edit_post_link(
+				sprintf(
+					wp_kses(
+						/* translators: %s: Name of current post. Only visible to screen readers */
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'game-dev-portfolio' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					get_the_title()
+				),
+				'<p class="entry-footer edit-link"><small>',
+				'</small></p>'
+			);
+		endif;
 		?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -22,7 +22,7 @@ endif;
 		endif;
 
 		if ( 'post' === get_post_type() ) : ?>
-			<div class="subtitle">
+			<div class="entry-meta subtitle">
 				<?php
 				game_dev_portfolio_posted_on();
 				game_dev_portfolio_posted_by();
@@ -54,5 +54,9 @@ endif;
 			) );
 		endif;
 		?>
+		<small>
+			<?php game_dev_portfolio_entry_footer(); ?>
+		</small>
 	</div><!-- .entry-content -->
+
 </article><!-- #post-<?php the_ID(); ?> -->
