@@ -72,13 +72,23 @@ if ( post_password_required() ) {
 	endif; // Check for have_comments().
 
 	// FIXME: Run some serious customization here!
-	comment_form( array(
-		'comment_field' => sprintf('<p class="control"><textarea class="textarea" placeholder="%s"></textarea></p>', __( 'Add a comment...', 'game-dev-portfolio' ) ),
+	game_dev_portfolio_comment_form( array(
+		'logged_in_as' => sprintf(
+			'<p class="logged-in-as notification">%s</p>',
+			sprintf(
+					/* translators: 1: Edit user link, 2: Accessibility text, 3: User name, 4: Logout URL. */
+					//<button class="button is-small">Small</button>
+					__( 'Logged in as <strong>%2$s</strong> - <small class="small"><a href="%1$s">Edit Profile</a> | <a href="%3$s">Log Out</a></small>' ),
+					get_edit_user_link(),
+					$user_identity,
+					/** This filter is documented in wp-includes/link-template.php */
+					wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ), $post_id ) )
+			)
+		),
 		'class_form' => 'comment-form field',
-		'class_submit' => 'control button'
-		// 'fields' => array(
-		// 	'url' => ''
-		// )
+		'label_submit' => 'Submit',
+		'class_submit' => 'control button is-primary',
+		'cancel_reply_link' => 'Cancel',
 	) );
 	?>
 
