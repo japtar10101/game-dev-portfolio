@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 
-<header class="entry-header">
+	<header class="entry-header">
 		<?php
 		if ( has_post_thumbnail() ) :
 			game_dev_portfolio_post_thumbnail();

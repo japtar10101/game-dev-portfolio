@@ -23,7 +23,9 @@
 					<main id="main" class="site-main content-area column">
 
 						<article class="error-404 not-found content">
-							<h1 class="title page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'game-dev-portfolio' ); ?></h1>
+							<header class="entry-header">
+								<h1 class="title page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'game-dev-portfolio' ); ?></h1>
+							</header>
 
 							<div class="page-content">
 								<p>
@@ -41,7 +43,7 @@
 										<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 									</div>
 									<div class="tile is-child">
-										<?php the_widget( 'WP_Widget_Archives', 'dropdown=1' ); ?>
+										<?php the_widget( 'WP_Widget_Categories' ); ?>
 									</div>
 									<div class="tile is-child">
 										<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
