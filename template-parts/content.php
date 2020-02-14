@@ -24,7 +24,7 @@ if ( is_singular() ) : ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 		</header><!-- .entry-header -->
-		<hr />
+		<br />
 		<div class="entry-content">
 			<?php
 			the_content( sprintf(

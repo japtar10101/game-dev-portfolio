@@ -53,6 +53,10 @@ aspect ratio based on the width of the browser.
 	top: 0;
 }
 
+.content header h1.title {
+	margin-top: 1.5rem;
+}
+
 /*
 Embedding text into thumnail
  */

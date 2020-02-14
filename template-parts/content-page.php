@@ -11,14 +11,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 	<header class="entry-header">
-		<?php game_dev_portfolio_post_thumbnail(); ?>
-		<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<?php
-	if ( get_edit_post_link() ) :
-		edit_post_link(
-			sprintf(
+		<?php
+		game_dev_portfolio_post_thumbnail();
+		$end_header = get_edit_post_link();
+		if ( $end_header ) :
+			$end_header = ' <small><em><a href="' . $end_header . '">';
+			$end_header .= sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
 					__( 'Edit <span class="screen-reader-text">%s</span>', 'game-dev-portfolio' ),
@@ -29,12 +27,14 @@
 					)
 				),
 				get_the_title()
-			),
-			'<p class="entry-footer edit-link">',
-			'</p>'
-		);
-	endif;
+			);
+			$end_header .= '</a></em></small>';
+		else :
+			$end_header = '</h1>';
+		endif;
+		the_title( '<h1 class="title entry-title">', $end_header );
 	?>
+	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
