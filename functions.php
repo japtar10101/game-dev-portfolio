@@ -82,9 +82,14 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		) );
 
 		/*
+		 * Add support for editor styles.
+		 */
+		add_theme_support( 'editor-styles' );
+
+		/*
 		 * Adding editor styling support.
 		 */
-		add_editor_style();
+		add_editor_style( 'style-editor.css' );
 	}
 endif;
 add_action( 'after_setup_theme', 'game_dev_portfolio_setup' );

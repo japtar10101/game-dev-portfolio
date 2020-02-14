@@ -27,7 +27,7 @@ Example file from https://wpsmackdown.com/custom-wordpress-editor-style/
 
 /* All MCE content editing areas */
 body.mce-content-body {
-	font-family: 'Roboto', sans-serif;
+	font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-size: 1.125rem;
 	color: rgba(0,0,0,0.87);
 	margin: 0 auto;
@@ -202,7 +202,7 @@ blockquote p:last-child {
 kbd, /* deprecated in HTML5 */
 tt, /* deprecated in HTML5 */
 .code-link {
-	font-family: 'Roboto Mono', monospace;
+	font-family: monospace;
 	font-size: 90%;
 	letter-spacing: -0.02rem;
 	direction: ltr;
@@ -215,7 +215,7 @@ tt, /* deprecated in HTML5 */
 }
 
 pre {
-	font-family: 'Roboto Mono', monospace;
+	font-family: monospace;
 	background: #333;
 	box-shadow: 0 0.5rem 1rem rgba( 0,0,0,0.15 );
 	padding: 1rem;
@@ -452,7 +452,7 @@ button {
 	border: 0;
 	border-radius: 3px;
 	box-shadow: none;
-	font-family: 'Roboto', sans-serif;
+	font-family: font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-weight: 700;
 	font-size: 1rem;
 	line-height: 1;
@@ -677,7 +677,7 @@ button {
 }
 
 .text-mono {
-	font-family: 'Roboto Mono', monospace;
+	font-family: monospace;
 }
 
 .bold,
@@ -715,7 +715,7 @@ button {
 
 .heading-prefix {
 	margin-right: 0.5rem;
-	font-family: 'Roboto Mono', monospace;
+	font-family: monospace;
 	color: rgba( 0,0,0,0.4 );
 	padding: 0 8px 0 0;
 	box-shadow: inset -3px 0 0 rgba( 0,0,0,0.1 );
