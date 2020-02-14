@@ -390,9 +390,9 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			'class_form'           => 'comment-form',
 			'class_submit'         => 'submit',
 			'name_submit'          => 'submit',
-			'title_reply'          => __( 'Leave a Reply' ),
+			'title_reply'          => __( 'Add Comment' ),
 			/* translators: %s: Author of the comment being replied to. */
-			'title_reply_to'       => __( 'Leave a Reply to %s' ),
+			'title_reply_to'       => __( 'Reply to %s' ),
 			'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'    => '</h3>',
 			'cancel_reply_before'  => ' <small>',
