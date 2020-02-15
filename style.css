@@ -194,7 +194,7 @@ a img.aligncenter {
 .image .caption {
 	text-align: center;
 	width: 100%;
-	height: 1.25em;
+	padding: 0.25rem 0;
 	color: hsl(0, 0%, 86%);
 	background-color: hsla(0, 0%, 14%, 70%);
 	position: absolute;
