@@ -38,8 +38,8 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 /*
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
- */
- .content header .post-thumbnail {
+*/
+.content header .post-thumbnail {
 	padding-top: 31.75%;
 }
 
@@ -59,7 +59,7 @@ aspect ratio based on the width of the browser.
 
 /*
 Styling on list of posts
- */
+*/
 article.listed-post {
 	border-top: 1px solid #f0f0f0;
 	padding-top: 1.5rem;
@@ -67,8 +67,8 @@ article.listed-post {
 
 /*
 Format how the list of comments are portrayed.
- */
- .comment-list li {
+*/
+.comment-list li {
 	border-top: 1px solid rgba(219,219,219,.5);
 	padding-top: .75rem;
 }
@@ -92,11 +92,7 @@ Format how the list of comments are portrayed.
 	margin-top: 0px;
 	margin-left: 84px;
 }
-/*
-.comment-list .children li figure {
-	margin: 0px 20px 20px 0px;
-}
-*/
+
 /* Dunno what to do with this */
 .gallery-caption {
 	background: #fff;
@@ -192,6 +188,35 @@ a img.aligncenter {
 	width: auto;
 	z-index: 100000;
 	/* Above WP toolbar. */
+}
+
+/* Styling captions */
+.image .caption {
+	text-align: center;
+	width: 100%;
+	height: 1.25em;
+	color: hsl(0, 0%, 86%);
+	background-color: hsla(0, 0%, 14%, 70%);
+	position: absolute;
+	left: auto;
+	bottom: 0px;
+}
+
+.mosaic .image .caption {
+	-moz-border-radius: 0 0 1rem 1rem;
+	border-radius: 0 0 1rem 1rem;
+}
+
+.image:hover .caption {
+	color: hsl(0, 0%, 98%);
+	background-color: hsla(0, 0%, 7%, 90%);
+}
+
+@media (max-width: 1024px) {
+	.image .caption {
+		color: hsl(0, 0%, 98%);
+		background-color: hsla(0, 0%, 7%, 90%);
+	}
 }
 
 /* Styling a tile for mosaic composition */

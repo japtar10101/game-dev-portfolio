@@ -24,13 +24,13 @@
 						<div class="content">
 							<header class="page-header">
 								<h1 class="title page-title">
-									<?php echo __('Creative Portfolio', 'game-dev-portfolio'); ?>
+									<?php echo __('Portfolio', 'game-dev-portfolio'); ?>
 								</h1>
 								<div class="subtitle archive-description">
 									<?php
 									/* Translators: %s is the name of the blog */
 									echo sprintf(
-										__('A list of projects by %s are listed below:', 'game-dev-portfolio'),
+										__('Click on an image to see more details about the product.', 'game-dev-portfolio'),
 										get_bloginfo( 'name' )
 									);
 									?>

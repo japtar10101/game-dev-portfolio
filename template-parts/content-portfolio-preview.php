@@ -6,5 +6,10 @@
  *
  * @package Game_Dev_Portfolio
  */
-game_dev_portfolio_post_thumbnail('medium', 'post-thumbnail image box');
+game_dev_portfolio_post_thumbnail( array (
+	'size' => 'medium',
+	'class_link' => 'post-thumbnail image box',
+	'class_caption' => 'caption title',
+	'caption_text' => get_the_title()
+) );
 ?>
