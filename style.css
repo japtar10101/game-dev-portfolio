@@ -39,11 +39,11 @@ This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.co
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
  */
-.post-thumbnail {
+ .content header .post-thumbnail {
 	padding-top: 31.75%;
 }
 
-.post-thumbnail img {
+.content header .post-thumbnail img {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -192,4 +192,128 @@ a img.aligncenter {
 	width: auto;
 	z-index: 100000;
 	/* Above WP toolbar. */
+}
+
+/* Styling a tile for mosaic composition */
+.mosaic {
+	column-count: 1;
+	column-gap: 1.5rem;
+	padding-top: 1.5rem;
+}
+
+.mosaic .image {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 1.25rem;
+	padding: 0px;
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+}
+
+.mosaic .image img {
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+}
+
+.columns-6 {
+	column-count: 6;
+}
+.columns-5 {
+	column-count: 5;
+}
+.columns-4 {
+	column-count: 4;
+}
+.columns-3 {
+	column-count: 3;
+}
+.columns-2 {
+	column-count: 2;
+}
+.columns-1 {
+	column-count: 1;
+}
+
+@media (min-width: 768px) {
+	.columns-6-mobile {
+		column-count: 6;
+	}
+	.columns-5-mobile {
+		column-count: 5;
+	}
+	.columns-4-mobile {
+		column-count: 4;
+	}
+	.columns-3-mobile {
+		column-count: 3;
+	}
+	.columns-2-mobile {
+		column-count: 2;
+	}
+	.columns-1-mobile {
+		column-count: 1;
+	}
+}
+
+@media (min-width: 1024px) {
+	.columns-6-tablet {
+		column-count: 6;
+	}
+	.columns-5-tablet {
+		column-count: 5;
+	}
+	.columns-4-tablet {
+		column-count: 4;
+	}
+	.columns-3-tablet {
+		column-count: 3;
+	}
+	.columns-2-tablet {
+		column-count: 2;
+	}
+	.columns-1-tablet {
+		column-count: 1;
+	}
+}
+
+@media (min-width: 1216px) {
+	.columns-6-desktop {
+		column-count: 6;
+	}
+	.columns-5-desktop {
+		column-count: 5;
+	}
+	.columns-4-desktop {
+		column-count: 4;
+	}
+	.columns-3-desktop {
+		column-count: 3;
+	}
+	.columns-2-desktop {
+		column-count: 2;
+	}
+	.columns-1-desktop {
+		column-count: 1;
+	}
+}
+
+@media (min-width: 1408px) {
+	.columns-6-widescreen {
+		column-count: 6;
+	}
+	.columns-5-widescreen {
+		column-count: 5;
+	}
+	.columns-4-widescreen {
+		column-count: 4;
+	}
+	.columns-3-widescreen {
+		column-count: 3;
+	}
+	.columns-2-widescreen {
+		column-count: 2;
+	}
+	.columns-1-widescreen {
+		column-count: 1;
+	}
 }
