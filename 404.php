@@ -6,55 +6,56 @@
  *
  * @package Game_Dev_Portfolio
  */
-
-get_header();
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<?php get_header(); ?>
+<body <?php body_class(); ?>>
+	<section class="site section">
+		<div id="content" class="site-content container">
+				<!-- Start columns here -->
+				<div class="columns">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+					<!-- Left column (sidebar) here -->
+					<?php get_sidebar(); ?>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'game-dev-portfolio' ); ?></h1>
-				</header><!-- .page-header -->
+					<!-- Right column (content) here -->
+					<main id="main" class="site-main content-area column">
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'game-dev-portfolio' ); ?></p>
+						<article class="error-404 not-found content">
+							<header class="entry-header">
+								<h1 class="title page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'game-dev-portfolio' ); ?></h1>
+							</header>
 
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'game-dev-portfolio' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$game_dev_portfolio_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'game-dev-portfolio' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$game_dev_portfolio_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_footer();
+							<div class="page-content">
+								<p>
+									<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'game-dev-portfolio' ); ?>
+								</p>
+								<?php get_search_form(); ?>
+							</div><!-- .page-content -->
+							<hr />
+							<div class="tile is-ancestor">
+								<div class="tile is-parent">
+									<div class="tile is-child">
+										<?php the_widget( 'WP_Widget_Pages' ); ?>
+									</div>
+									<div class="tile is-child">
+										<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+									</div>
+									<div class="tile is-child">
+										<?php the_widget( 'WP_Widget_Categories' ); ?>
+									</div>
+									<div class="tile is-child">
+										<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+									</div>
+								</div>
+							</div><!-- .tile -->
+						</article><!-- .error-404 -->
+					</main><!-- #main -->
+				</div>
+			</div>
+		</div>
+	</section><!-- #primary -->
+	<?php get_footer(); ?>
+</body>
+</html>

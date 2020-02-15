@@ -11,30 +11,39 @@
  *
  * @package Game_Dev_Portfolio
  */
-
-get_header();
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<?php get_header(); ?>
+<body <?php body_class(); ?>>
+	<section class="site section">
+		<div id="content" class="site-content container">
+				<!-- Start columns here -->
+				<div class="columns">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+					<!-- Left column (sidebar) here -->
+					<?php get_sidebar(); ?>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+					<!-- Right column (content) here -->
+					<main id="main" class="site-main content-area column">
+						<?php
+						while ( have_posts() ) :
+							the_post();
 
-			get_template_part( 'template-parts/content', 'page' );
+							get_template_part( 'template-parts/content', 'page' );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+							// If comments are open or we have at least one comment, load up the comment template.
+							if ( comments_open() || get_comments_number() ) :
+								comments_template();
+							endif;
 
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+						endwhile; // End of the loop.
+						?>
+					</main><!-- #main -->
+				</div>
+			</div>
+		</div>
+	</section><!-- #primary -->
+	<?php get_footer(); ?>
+</body>
+</html>

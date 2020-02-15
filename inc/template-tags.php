@@ -13,15 +13,16 @@ if ( ! function_exists( 'game_dev_portfolio_posted_on' ) ) :
 	 */
 	function game_dev_portfolio_posted_on() {
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
+		// if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		// 	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		// }
 
 		$time_string = sprintf( $time_string,
 			esc_attr( get_the_date( DATE_W3C ) ),
-			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( DATE_W3C ) ),
-			esc_html( get_the_modified_date() )
+			// esc_html( get_the_date() ),
+			// esc_attr( get_the_modified_date( DATE_W3C ) ),
+			// esc_html( get_the_modified_date() )
+			esc_html( get_the_date() )
 		);
 
 		$posted_on = sprintf(
@@ -56,23 +57,7 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function game_dev_portfolio_entry_footer() {
-		// Hide category and tag text for pages.
-		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'game-dev-portfolio' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'game-dev-portfolio' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-			}
-		}
-
+		$add_separator = false;
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
 			comments_popup_link(
@@ -90,8 +75,37 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 				)
 			);
 			echo '</span>';
+			$add_separator = true;
 		}
 
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( esc_html__( ', ', 'game-dev-portfolio' ) );
+			if ( $categories_list ) {
+				if ( $add_separator ) {
+					echo ' | ';
+				}
+				/* translators: 1: list of categories. */
+				printf( '<span class="cat-links">' . esc_html__( 'Categories: %1$s', 'game-dev-portfolio' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				$add_separator = true;
+			}
+
+			/* translators: used between list items, there is a space after the comma */
+			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
+			if ( $tags_list ) {
+				if ( $add_separator ) {
+					echo ' | ';
+				}
+				/* translators: 1: list of tags. */
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged: %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				$add_separator = true;
+			}
+		}
+
+		if ( $add_separator && get_edit_post_link() ) {
+			echo ' | ';
+		}
 		edit_post_link(
 			sprintf(
 				wp_kses(
@@ -126,21 +140,21 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<div class="post-thumbnail image">
 				<?php the_post_thumbnail(); ?>
-			</div><!-- .post-thumbnail -->
+			</div>
 
 		<?php else : ?>
 
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php
-			the_post_thumbnail( 'post-thumbnail', array(
-				'alt' => the_title_attribute( array(
-					'echo' => false,
-				) ),
-			) );
-			?>
-		</a>
+			<a class="post-thumbnail image" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<?php
+				the_post_thumbnail( 'post-thumbnail', array(
+					'alt' => the_title_attribute( array(
+						'echo' => false,
+					) ),
+				) );
+				?>
+			</a>
 
 		<?php
 		endif; // End is_singular().

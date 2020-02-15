@@ -9,12 +9,13 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php
+		game_dev_portfolio_post_thumbnail();
+		the_title( '<h1 class="title entry-title">', '</h1>' );
+	?>
 	</header><!-- .entry-header -->
-
-	<?php game_dev_portfolio_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -25,11 +26,8 @@
 			'after'  => '</div>',
 		) );
 		?>
-	</div><!-- .entry-content -->
-
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
+		<?php
+		if ( get_edit_post_link() ) :
 			edit_post_link(
 				sprintf(
 					wp_kses(
@@ -43,10 +41,10 @@
 					),
 					get_the_title()
 				),
-				'<span class="edit-link">',
-				'</span>'
+				'<p class="entry-footer edit-link"><small>',
+				'</small></p>'
 			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+		endif;
+		?>
+	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -9,19 +9,36 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
+	<header class="entry-header">
+		<?php
+		if ( has_post_thumbnail() ) :
+			game_dev_portfolio_post_thumbnail();
+		?>
+			<div class="embed-container">
+				<div class="embed-content">
+					<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+				</div>
+			</div>
+		<?php
+		else :
+			the_title( '<h1 class="title entry-title">', '</h1>' );
+		endif;
+		?>
+	</header><!-- .entry-header -->
+
+
+	<?php the_title( sprintf( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+
+	<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="subtitle entry-meta">
 			<?php
 			game_dev_portfolio_posted_on();
 			game_dev_portfolio_posted_by();
 			?>
 		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+	<?php endif; ?>
 
 	<?php game_dev_portfolio_post_thumbnail(); ?>
 
