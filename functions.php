@@ -430,7 +430,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
 			'class_form'           => 'comment-form field',
-			'class_submit'         => 'submit control button',
+			'class_submit'         => 'submit control button is-link is-outlined',
 			'class_cancel'         => 'cancel control button',
 			'name_submit'          => 'submit',
 			'title_reply'          => __( 'Add a Comment' ),
