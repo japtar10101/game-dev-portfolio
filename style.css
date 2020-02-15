@@ -10,7 +10,7 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: game-dev-portfolio
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -20,3 +20,176 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.com)
 */
+
+@media screen and (min-width: 769px) {
+	.sticky {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0px;
+	}
+
+	.menu {
+		position: -webkit-sticky;
+		position: sticky;
+		top: -270px;
+	}
+}
+
+/*
+Setup post thumbnail to resize and retain the same
+aspect ratio based on the width of the browser.
+ */
+.post-thumbnail {
+	padding-top: 31.75%;
+}
+
+.post-thumbnail img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.content header h1.title {
+	margin-top: 1.5rem;
+}
+
+/*
+Styling on list of posts
+ */
+article.listed-post {
+	border-top: 1px solid #f0f0f0;
+	padding-top: 1.5rem;
+}
+
+/*
+Format how the list of comments are portrayed.
+ */
+ .comment-list li {
+	border-top: 1px solid rgba(219,219,219,.5);
+	padding-top: .75rem;
+}
+
+.comment-list .comment-respond {
+	border-top: 1px solid rgba(219,219,219,.5);
+	padding-top: .75rem;
+	margin-bottom: .75rem;
+}
+
+.comment-list li#li-comment-1 {
+	border-top: none;
+	padding-top: 0px;
+}
+
+.comment-list li figure {
+	margin: 0px 20px 20px 0px;
+}
+
+.comment-list .children {
+	margin-top: 0px;
+	margin-left: 84px;
+}
+/*
+.comment-list .children li figure {
+	margin: 0px 20px 20px 0px;
+}
+*/
+/* Dunno what to do with this */
+.gallery-caption {
+	background: #fff;
+}
+
+/* Dunno what to do with this */
+.bypostauthor {
+	background: #fff;
+}
+
+.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin: 5px auto 5px auto;
+}
+
+.alignright {
+	float:right;
+	margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+	margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption {
+	background: #fff;
+	border: 1px solid #f0f0f0;
+	max-width: 96%; /* Image does not overflow the content area */
+	padding: 5px 3px 10px;
+	text-align: center;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	margin: 0;
+	padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}

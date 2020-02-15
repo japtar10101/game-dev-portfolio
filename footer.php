@@ -10,27 +10,36 @@
  */
 
 ?>
-
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'game-dev-portfolio' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'game-dev-portfolio' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'game-dev-portfolio' ), 'game-dev-portfolio', '<a href="https://taroomiya.com">Taro Omiya</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
-</body>
-</html>
+<footer class="footer">
+	<div class="container site-info content">
+		<div class="tile is-ancestor">
+			<?php dynamic_sidebar( 'footer-1' ); ?>
+			<div class="tile">
+				<div class="content">
+					<h2>
+						<?php
+						/* translators: %s: CMS name, i.e. WordPress. */
+						echo( esc_html__( 'Portfolio Theme by Taro Omiya', 'game-dev-portfolio' ) );
+						?>
+					</h2>
+					<p>
+						<a href="<?php echo esc_url( __( 'https://bulma.io/', 'game-dev-portfolio' ) ); ?>">
+							<?php
+							/* translators: %s: CMS name, i.e. WordPress. */
+							printf( esc_html__( 'Styled by %s', 'game-dev-portfolio' ), 'Bulma' );
+							?>
+						</a>
+						<br />
+						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'game-dev-portfolio' ) ); ?>">
+							<?php
+							/* translators: %s: CMS name, i.e. WordPress. */
+							printf( esc_html__( 'Powered by %s', 'game-dev-portfolio' ), 'WordPress' );
+							?>
+						</a>
+					</p>
+					<?php wp_footer(); ?>
+				</div>
+			</div>
+		</div>
+	</div><!-- .site-info -->
+</footer>

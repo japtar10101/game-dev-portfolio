@@ -9,10 +9,8 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'game-dev-portfolio' ); ?></h1>
-	</header><!-- .page-header -->
+<article class="no-results not-found content">
+	<h1 class="title page-title"><?php esc_html_e( 'Nothing Found', 'game-dev-portfolio' ); ?></h1>
 
 	<div class="page-content">
 		<?php
@@ -48,4 +46,4 @@
 		endif;
 		?>
 	</div><!-- .page-content -->
-</section><!-- .no-results -->
+</article><!-- .no-results -->

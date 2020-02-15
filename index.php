@@ -11,49 +11,53 @@
  *
  * @package Game_Dev_Portfolio
  */
-
-get_header();
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<?php get_header(); ?>
+<body <?php body_class(); ?>>
+	<section class="site section">
+		<div id="content" class="site-content container">
+				<!-- Start columns here -->
+				<div class="columns">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+					<!-- Left column (sidebar) here -->
+					<?php get_sidebar(); ?>
 
-		<?php
-		if ( have_posts() ) :
+					<!-- Right column (content) here -->
+					<main id="main" class="site-main content-area column">
+						<?php
+						if ( have_posts() ) :
+							if ( is_home() && ! is_front_page() ) :
+								?>
+								<header>
+									<h1 class="title page-title screen-reader-text"><?php single_post_title(); ?></h1>
+								</header>
+								<?php
+							endif;
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+							/* Start the Loop */
+							while ( have_posts() ) :
+								the_post();
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+								/*
+								* Include the Post-Type-specific template for the content.
+								* If you want to override this in a child theme, then include a file
+								* called content-___.php (where ___ is the Post Type name) and that will be used instead.
+								*/
+								get_template_part( 'template-parts/content', get_post_type() );
+							endwhile;
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+							the_posts_navigation();
+						else :
+							get_template_part( 'template-parts/content', 'none' );
+						endif;
+						?>
+					</main><!-- #main -->
+				</div>
+			</div>
+		</div>
+	</section><!-- #primary -->
+	<?php get_footer(); ?>
+</body>
+</html>
