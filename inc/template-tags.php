@@ -132,28 +132,59 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function game_dev_portfolio_post_thumbnail() {
+	function game_dev_portfolio_post_thumbnail( $args = array() ) {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
 
+		$args = wp_parse_args( $args );
+	
+		// Filters the comment form default arguments.
+		$defaults = array(
+			'size'               => 'post-thumbnail',
+			'class_caption'      => 'caption',
+			'class_link'         => 'post-thumbnail image',
+			'caption_text'       => ''
+		);
+		$args = wp_parse_args( $args, apply_filters( 'game_dev_portfolio_post_thumbnail_defaults', $defaults ) );
+	
+		// Ensure that the filtered args contain all required default values.
+		$args = array_merge( $defaults, $args );
+
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail image">
-				<?php the_post_thumbnail(); ?>
+			<div class="<?php echo esc_attr( $args['class_link'] ); ?>">
+				<?php
+				the_post_thumbnail( $args['size'] );
+
+				// Check if there's any caption
+				if ( $args['caption_text'] ) :
+				?>
+					<div class="<?php echo esc_attr( $args['class_caption'] ); ?>">
+						<?php echo esc_attr( $args['caption_text'] ) ?>
+					</div>
+				<?php endif; ?>
 			</div>
 
 		<?php else : ?>
 
-			<a class="post-thumbnail image" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="<?php echo esc_attr( $args['class_link'] ); ?>" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
-				the_post_thumbnail( 'post-thumbnail', array(
+				// Print the thumbnail
+				the_post_thumbnail( $args['size'], array(
 					'alt' => the_title_attribute( array(
 						'echo' => false,
 					) ),
 				) );
+
+				// Check if there's any caption
+				if ( $args['caption_text'] ) :
 				?>
+					<div class="<?php echo esc_attr( $args['class_caption'] ); ?>">
+						<?php echo esc_attr( $args['caption_text'] ) ?>
+					</div>
+				<?php endif; ?>
 			</a>
 
 		<?php
