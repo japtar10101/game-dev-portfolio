@@ -76,6 +76,7 @@ Format how the list of comments are portrayed.
 .comment-list .comment-respond {
 	border-top: 1px solid rgba(219,219,219,.5);
 	padding-top: .75rem;
+	margin-bottom: .75rem;
 }
 
 .comment-list li#li-comment-1 {

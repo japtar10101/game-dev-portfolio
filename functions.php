@@ -234,6 +234,44 @@ function format_comment($comment, $args, $depth) {
 }
 
 /**
+ * Function to retrieve HTML content for cancel comment reply link.
+ * This is largely a copy-pasta from Wordpress itself
+ */
+if ( ! function_exists( 'game_dev_portfolio_get_cancel_comment_reply_link' ) ) :
+	/**
+	 * Retrieve HTML content for cancel comment reply link.
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param string $text Optional. Text to display for cancel reply link. Default empty.
+	 * @param string $class Optional. Apply classes to the link. Default empty.
+	 * @return string
+	 */
+	function game_dev_portfolio_get_cancel_comment_reply_link( $text = '', $class = '' ) {
+		if ( empty( $text ) ) {
+			$text = __( 'Click here to cancel reply.' );
+		}
+
+		$style = isset( $_GET['replytocom'] ) ? '' : ' style="display:none;"';
+		$link  = esc_html( remove_query_arg( array( 'replytocom', 'unapproved', 'moderation-hash' ) ) ) . '#respond';
+
+		$formatted_link = '<a rel="nofollow" id="cancel-comment-reply-link" href="' . $link . '" class="' . $class . '"' . $style . '>' . $text . '</a>';
+
+		/**
+		 * Filters the cancel comment reply link HTML.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param string $formatted_link The HTML-formatted cancel comment reply link.
+		 * @param string $link           Cancel comment reply link URL.
+		 * @param string $text           Cancel comment reply link text.
+		 */
+		return apply_filters( 'cancel_comment_reply_link', $formatted_link, $link, $text );
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link' );
+
+/**
  * Function to format the comment form
  * This is largely a copy-pasta from Wordpress itself
  */
@@ -268,46 +306,51 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 		$req      = get_option( 'require_name_email' );
 		$html_req = ( $req ? " required='required'" : '' );
 		$html5    = 'html5' === $args['format'];
+		$optional = __( ' (Optional)', 'game-dev-portfolio' );
 	
 		$fields = array(
 			'author' => sprintf(
-				'<p class="comment-form-author">%s %s</p>',
-				sprintf(
-					'<label for="author">%s%s</label>',
-					__( 'Name' ),
-					( $req ? ' <span class="required">*</span>' : '' )
-				),
-				sprintf(
-					'<input id="author" name="author" type="text" value="%s" size="30" maxlength="245"%s />',
-					esc_attr( $commenter['comment_author'] ),
-					$html_req
-				)
+				/* Translators: 1. Label, "Name," 2. Cached author's name, 3. Required */
+				'<div class="field is-horizontal"><div class="field-body">
+					<div class="field">
+						<p class="comment-form-author control has-icons-left">
+							<input id="author" name="author" type="text" class="input control has-icons-left" placeholder="%1$s" value="%2$s" size="30" maxlength="245"%3$s />
+							<span class="icon is-left">
+								<i class="fas fa-user-circle"></i>
+							</span>
+						</p>
+					</div>',
+				__( 'Name', 'game-dev-portfolio' ) . ( $req ? '' : $optional ),
+				esc_attr( $commenter['comment_author'] ),
+				$html_req
 			),
 			'email'  => sprintf(
-				'<p class="comment-form-email">%s %s</p>',
-				sprintf(
-					'<label for="email">%s%s</label>',
-					__( 'Email' ),
-					( $req ? ' <span class="required">*</span>' : '' )
-				),
-				sprintf(
-					'<input id="email" name="email" %s value="%s" size="30" maxlength="100" aria-describedby="email-notes"%s />',
-					( $html5 ? 'type="email"' : 'type="text"' ),
-					esc_attr( $commenter['comment_author_email'] ),
-					$html_req
-				)
+				/* Translators: 1. Label, "Email," 2. Cached author's email, 3. Required, 4. Field type */
+					'<div class="field">
+						<p class="comment-form-email field control has-icons-left">
+							<input id="email" name="email" %4$s class="input control has-icons-left" placeholder="%1$s" value="%2$s" size="30" maxlength="100" aria-describedby="email-notes"%3$s />
+							<span class="icon is-left">
+								<i class="fas fa-envelope"></i>
+							</span>
+						</p>
+					</div>
+				</div></div>',
+				__( 'Email', 'game-dev-portfolio' ) . ( $req ? '' : $optional ),
+				esc_attr( $commenter['comment_author_email'] ),
+				$html_req,
+				( $html5 ? 'type="email"' : 'type="text"' )
 			),
 			'url'    => sprintf(
-				'<p class="comment-form-url">%s %s</p>',
-				sprintf(
-					'<label for="url">%s</label>',
-					__( 'Website' )
-				),
-				sprintf(
-					'<input id="url" name="url" %s value="%s" size="30" maxlength="200" />',
-					( $html5 ? 'type="url"' : 'type="text"' ),
-					esc_attr( $commenter['comment_author_url'] )
-				)
+				/* Translators: 1. Label, "Email," 2. Cached author's email, 3. Field type */
+				'<p class="comment-form-url field control has-icons-left">
+					<input id="url" name="url" %3$s class="input control has-icons-left" placeholder="%1$s" value="%2$s" size="30" size="30" maxlength="200" />
+					<span class="icon is-left">
+						<i class="fas fa-globe"></i>
+					</span>
+				</p>',
+				__( 'Website', 'game-dev-portfolio' ) . $optional,
+				esc_attr( $commenter['comment_author_url'] ),
+				( $html5 ? 'type="url"' : 'type="text"' )
 			),
 		);
 	
@@ -315,7 +358,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			$consent = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
 	
 			$fields['cookies'] = sprintf(
-				'<p class="comment-form-cookies-consent">%s %s</p>',
+				'<p class="comment-form-cookies-consent control">%s %s</p>',
 				sprintf(
 					'<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"%s />',
 					$consent
@@ -332,12 +375,6 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			}
 		}
 	
-		$required_text = sprintf(
-			/* translators: %s: Asterisk symbol (*). */
-			' ' . __( 'Required fields are marked %s' ),
-			'<span class="required">*</span>'
-		);
-	
 		/**
 		 * Filters the default comment form fields.
 		 *
@@ -351,10 +388,10 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			'fields'               => $fields,
 			'comment_field'        => sprintf(
 				'<p class="comment-form-comment control"><textarea id="comment" name="comment" rows="2" maxlength="65525" required="required" class="textarea" placeholder="%s"></textarea></p>',
-				__( 'Add a comment...', 'game-dev-portfolio' )
+				__( 'Leave a message...', 'game-dev-portfolio' )
 			),
 			'must_log_in'          => sprintf(
-				'<p class="must-log-in">%s</p>',
+				'<p class="must-log-in notification">%s</p>',
 				sprintf(
 					/* translators: %s: Login URL. */
 					__( 'You must be <a href="%s">logged in</a> to post a comment.' ),
@@ -363,44 +400,50 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				)
 			),
 			'logged_in_as'         => sprintf(
-				'<p class="logged-in-as">%s</p>',
+				'<p class="logged-in-as notification">%s <small>- %s | %s</small></p>',
 				sprintf(
-					/* translators: 1: Edit user link, 2: Accessibility text, 3: User name, 4: Logout URL. */
-					__( '<a href="%1$s" aria-label="%2$s">Logged in as %3$s</a>. <a href="%4$s">Log out?</a>' ),
-					get_edit_user_link(),
 					/* translators: %s: User name. */
-					esc_attr( sprintf( __( 'Logged in as %s. Edit your profile.' ), $user_identity ) ),
-					$user_identity,
+					__( 'Logged in as <strong>%s</strong>', 'game_dev_portfolio' ),
+					$user_identity
+				),
+				/* translators: %s: Edit user link. */
+				sprintf(
+					__( '<a href="%s">Edit Profile</a>', 'game_dev_portfolio' ),
+					get_edit_user_link()
+				),
+				/* translators: %s: Logout URL. */
+				sprintf(
+					__( '<a href="%s">Log Out</a>', 'game_dev_portfolio' ),
 					/** This filter is documented in wp-includes/link-template.php */
 					wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ), $post_id ) )
 				)
 			),
 			'comment_notes_before' => sprintf(
-				'<p class="comment-notes">%s%s</p>',
+				'<p class="comment-notes notification">%s</p>',
 				sprintf(
 					'<span id="email-notes">%s</span>',
 					__( 'Your email address will not be published.' )
-				),
-				( $req ? $required_text : '' )
+				)
 			),
 			'comment_notes_after'  => '',
 			'action'               => site_url( '/wp-comments-post.php' ),
 			'id_form'              => 'commentform',
 			'id_submit'            => 'submit',
-			'class_form'           => 'comment-form',
-			'class_submit'         => 'submit',
+			'class_form'           => 'comment-form field',
+			'class_submit'         => 'submit control button',
+			'class_cancel'         => 'cancel control button',
 			'name_submit'          => 'submit',
-			'title_reply'          => __( 'Add Comment' ),
+			'title_reply'          => __( 'Add a Comment' ),
 			/* translators: %s: Author of the comment being replied to. */
 			'title_reply_to'       => __( 'Reply to %s' ),
 			'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'    => '</h3>',
-			'cancel_reply_before'  => ' <small>',
-			'cancel_reply_after'   => '</small>',
-			'cancel_reply_link'    => __( 'Cancel reply' ),
+			'cancel_reply_before'  => '',
+			'cancel_reply_after'   => '',
+			'cancel_reply_link'    => __( 'Cancel' ),
 			'label_submit'         => __( 'Post Comment' ),
 			'submit_button'        => '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />',
-			'submit_field'         => '<p class="form-submit">%1$s %2$s</p>',
+			'submit_field'         => '<p class="form-submit field is-grouped">%1$s %2$s</p>',
 			'format'               => 'xhtml',
 		);
 	
@@ -434,10 +477,9 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 		 */
 		do_action( 'comment_form_before' );
 		?>
-		<div id="respond" class="comment-respond">
+		<div id="respond" class="comment-respond content">
 			<?php
 			echo $args['title_reply_before'];
-			#echo 'FIXME: Test';
 	
 			comment_form_title( $args['title_reply'], $args['title_reply_to'] );
 	
@@ -504,7 +546,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				endif;
 	
 				// Prepare an array of all fields, including the textarea.
-				$comment_fields = array( 'comment' => $args['comment_field'] ) + (array) $args['fields'];
+				$comment_fields = $args['fields'] + array( 'comment' => $args['comment_field'] );
 	
 				/**
 				 * Filters the comment form fields, including the textarea.
@@ -578,6 +620,13 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 					esc_attr( $args['class_submit'] ),
 					esc_attr( $args['label_submit'] )
 				);
+
+				$cancel_button = sprintf(
+					'%s %s %s',
+					$args['cancel_reply_before'],
+					game_dev_portfolio_get_cancel_comment_reply_link( $args['cancel_reply_link'], $args['class_cancel'] ),
+					$args['cancel_reply_after']
+				);
 	
 				/**
 				 * Filters the submit button for the comment form to display.
@@ -588,10 +637,10 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				 * @param array  $args          Arguments passed to comment_form().
 				 */
 				$submit_button = apply_filters( 'comment_form_submit_button', $submit_button, $args );
-	
+
 				$submit_field = sprintf(
 					$args['submit_field'],
-					$submit_button,
+					$submit_button . $cancel_button,
 					get_comment_id_fields( $post_id )
 				);
 	
@@ -607,12 +656,6 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				 * @param array  $args         Arguments passed to comment_form().
 				 */
 				echo apply_filters( 'comment_form_submit_field', $submit_field, $args );
-
-				echo $args['cancel_reply_before'];
-	
-				cancel_comment_reply_link( $args['cancel_reply_link'] );
-		
-				echo $args['cancel_reply_after'];	
 	
 				/**
 				 * Fires at the bottom of the comment form, inside the closing </form> tag.
