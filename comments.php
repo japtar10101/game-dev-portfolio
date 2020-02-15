@@ -71,7 +71,6 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	// FIXME: Run some serious customization here!
 	// FIXME: switch to normal comment_form() function when it's overridden
 	game_dev_portfolio_comment_form();
 	?>
