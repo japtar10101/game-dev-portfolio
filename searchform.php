@@ -6,7 +6,7 @@
  */
 ?>
 <form role="search" method="get" id="searchform" class="field has-addons" action="<?php echo home_url( '/' ); ?>">
-	<div class="control">
+	<div class="control is-expanded">
 		<label class="screen-reader-text" for="s">Find a Page</label>
 		<input type="text" value="" name="s" id="s" class="input" placeholder="Find a Page"/>
 	</div>
