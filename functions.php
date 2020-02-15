@@ -199,22 +199,22 @@ function format_comment($comment, $args, $depth) {
 			<div id="comment-<?php comment_ID(); ?>" class="content">
 				<p>
 					<strong>
-						<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
+						<?php printf('<cite class="fn">%s</cite>', get_comment_author_link()) ?>
 					</strong>
 					<br />
 
 					<?php if ($comment->comment_approved == '0') : ?>
 						<small>
-							<?php _e('Your comment is awaiting moderation.') ?>
+							<?php _e('Your comment is awaiting moderation.', 'game-dev-portfolio') ?>
 						</small>
 					<br />
 					<?php endif; ?>
 
 					<small class="comment-author vcard">
 						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-							<?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?>
+							<?php printf(__('%1$s at %2$s', 'game-dev-portfolio'), get_comment_date(),  get_comment_time()) ?>
 						</a>
-						<?php edit_comment_link(__('(Edit)'),'  ','') ?>
+						<?php edit_comment_link(__('(Edit)', 'game-dev-portfolio'),'  ','') ?>
 					</small>
 					<br />
 
@@ -249,7 +249,7 @@ if ( ! function_exists( 'game_dev_portfolio_get_cancel_comment_reply_link' ) ) :
 	 */
 	function game_dev_portfolio_get_cancel_comment_reply_link( $text = '', $class = '' ) {
 		if ( empty( $text ) ) {
-			$text = __( 'Click here to cancel reply.' );
+			$text = __( 'Click here to cancel reply.', 'game-dev-portfolio');
 		}
 
 		$style = isset( $_GET['replytocom'] ) ? '' : ' style="display:none;"';
@@ -365,7 +365,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				),
 				sprintf(
 					'<label for="wp-comment-cookies-consent">%s</label>',
-					__( 'Save my name, email, and website in this browser for the next time I comment.' )
+					__( 'Save my name, email, and website in this browser for the next time I comment.', 'game-dev-portfolio' )
 				)
 			);
 	
@@ -394,7 +394,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				'<p class="must-log-in notification">%s</p>',
 				sprintf(
 					/* translators: %s: Login URL. */
-					__( 'You must be <a href="%s">logged in</a> to post a comment.' ),
+					__( 'You must be <a href="%s">logged in</a> to post a comment.', 'game-dev-portfolio' ),
 					/** This filter is documented in wp-includes/link-template.php */
 					wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ), $post_id ) )
 				)
@@ -403,17 +403,17 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				'<p class="logged-in-as notification">%s <small>- %s | %s</small></p>',
 				sprintf(
 					/* translators: %s: User name. */
-					__( 'Logged in as <strong>%s</strong>', 'game_dev_portfolio' ),
+					__( 'Logged in as <strong>%s</strong>', 'game-dev-portfolio' ),
 					$user_identity
 				),
 				/* translators: %s: Edit user link. */
 				sprintf(
-					__( '<a href="%s">Edit Profile</a>', 'game_dev_portfolio' ),
+					__( '<a href="%s">Edit Profile</a>', 'game-dev-portfolio' ),
 					get_edit_user_link()
 				),
 				/* translators: %s: Logout URL. */
 				sprintf(
-					__( '<a href="%s">Log Out</a>', 'game_dev_portfolio' ),
+					__( '<a href="%s">Log Out</a>', 'game-dev-portfolio' ),
 					/** This filter is documented in wp-includes/link-template.php */
 					wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ), $post_id ) )
 				)
@@ -422,7 +422,7 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 				'<p class="comment-notes notification">%s</p>',
 				sprintf(
 					'<span id="email-notes">%s</span>',
-					__( 'Your email address will not be published.' )
+					__( 'Your email address will not be published.', 'game-dev-portfolio' )
 				)
 			),
 			'comment_notes_after'  => '',
@@ -433,15 +433,15 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 			'class_submit'         => 'submit control button is-link is-outlined',
 			'class_cancel'         => 'cancel control button',
 			'name_submit'          => 'submit',
-			'title_reply'          => __( 'Add a Comment' ),
+			'title_reply'          => __( 'Add a Comment', 'game-dev-portfolio' ),
 			/* translators: %s: Author of the comment being replied to. */
-			'title_reply_to'       => __( 'Reply to %s' ),
+			'title_reply_to'       => __( 'Reply to %s', 'game-dev-portfolio' ),
 			'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'    => '</h3>',
 			'cancel_reply_before'  => '',
 			'cancel_reply_after'   => '',
-			'cancel_reply_link'    => __( 'Cancel' ),
-			'label_submit'         => __( 'Post Comment' ),
+			'cancel_reply_link'    => __( 'Cancel', 'game-dev-portfolio' ),
+			'label_submit'         => __( 'Post Comment', 'game-dev-portfolio' ),
 			'submit_button'        => '<input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />',
 			'submit_field'         => '<p class="form-submit field is-grouped">%1$s %2$s</p>',
 			'format'               => 'xhtml',
