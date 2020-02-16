@@ -2,6 +2,9 @@ Game Dev Portfolio
 ===
 
 - Contributors: Taro Omiya
+- Stable tag: 2020.1.1
+- Tested up to: 5.3.2
+- Requires at least: 5.0.0
 - Tags:
 	- custom-background,
 	- custom-logo,
@@ -9,9 +12,6 @@ Game Dev Portfolio
 	- featured-images,
 	- threaded-comments,
 	- translation-ready
-- Requires at least: 4.5
-- Tested up to: 4.8
-- Stable tag: 1.0.0
 - License: GNU General Public License v2 or later
 
 A minimalist wordpress theme aimed at creating a visually-pleasing portfolio for Game Devs like me.  Based off of starter theme, [underscores](https://underscores.me/), and css theme, [Bulma](https://bulma.io/).  Also utilizes icons from [Font Awesome](https://fontawesome.com/).

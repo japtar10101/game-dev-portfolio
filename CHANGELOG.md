@@ -1,3 +1,7 @@
+# 2020.1.1
+## 2/16/2020
+- Fixed issue #2 - Jetpack Tiled Gallery no longer causes images in the main content area to expand indefinitely.
+
 # 2020.1.0
 ## 2/14/2020
 - First release.
