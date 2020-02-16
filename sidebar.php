@@ -12,7 +12,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 <nav class="column">
-	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'game-dev-portfolio' ); ?></a> -->
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'game-dev-portfolio' ); ?></a>
 	<div id="secondary" class="widget-area card menu">
 		<div class="card-image">
 			<figure class="site-branding image is-square">

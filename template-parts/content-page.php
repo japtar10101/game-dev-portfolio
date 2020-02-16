@@ -14,7 +14,7 @@
 		<?php
 		game_dev_portfolio_post_thumbnail();
 		the_title( '<h1 class="title entry-title">', '</h1>' );
-	?>
+		?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
