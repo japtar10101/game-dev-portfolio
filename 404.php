@@ -13,14 +13,15 @@
 <body <?php body_class(); ?>>
 	<section class="site section">
 		<div id="content" class="site-content container">
-				<!-- Start columns here -->
-				<div class="columns">
+			<!-- Start columns here -->
+			<div class="columns">
 
-					<!-- Left column (sidebar) here -->
-					<?php get_sidebar(); ?>
+				<!-- Left column (sidebar) here -->
+				<?php get_sidebar(); ?>
 
-					<!-- Right column (content) here -->
-					<main id="main" class="site-main content-area column">
+				<!-- Right column (content) here -->
+				<div id="primary" class="content-area column">
+					<main id="main" class="site-main" role="main">
 
 						<article class="error-404 not-found content">
 							<header class="entry-header">
@@ -34,28 +35,26 @@
 								<?php get_search_form(); ?>
 							</div><!-- .page-content -->
 							<hr />
-							<div class="tile is-ancestor">
-								<div class="tile is-parent">
-									<div class="tile is-child">
-										<?php the_widget( 'WP_Widget_Pages' ); ?>
-									</div>
-									<div class="tile is-child">
-										<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-									</div>
-									<div class="tile is-child">
-										<?php the_widget( 'WP_Widget_Categories' ); ?>
-									</div>
-									<div class="tile is-child">
-										<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
-									</div>
+							<div class="columns">
+								<div class="column">
+									<?php the_widget( 'WP_Widget_Pages' ); ?>
 								</div>
-							</div><!-- .tile -->
+								<div class="column">
+									<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+								</div>
+								<div class="column">
+									<?php the_widget( 'WP_Widget_Categories' ); ?>
+								</div>
+								<div class="column">
+									<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+								</div>
+							</div><!-- .columns -->
 						</article><!-- .error-404 -->
 					</main><!-- #main -->
-				</div>
+				</div><!-- #primary -->
 			</div>
-		</div>
-	</section><!-- #primary -->
+		</div><!-- #content -->
+	</section>
 	<?php get_footer(); ?>
 </body>
 </html>
