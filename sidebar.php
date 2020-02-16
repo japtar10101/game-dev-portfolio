@@ -11,7 +11,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
 ?>
-<nav class="column is-3">
+<nav class="column">
 	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'game-dev-portfolio' ); ?></a> -->
 	<div id="secondary" class="widget-area card menu">
 		<div class="card-image">
@@ -19,7 +19,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 				<?php the_custom_logo(); ?>
 			</figure>
 		</div>
-		<div class="card-content">
+		<div class="card-content sticky">
 			<p class="title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 					<?php bloginfo( 'name' ); ?>
