@@ -13,14 +13,15 @@
 <body <?php body_class(); ?>>
 	<section class="site section">
 		<div id="content" class="site-content container">
-				<!-- Start columns here -->
-				<div class="columns">
+			<!-- Start columns here -->
+			<div class="columns">
 
-					<!-- Left column (sidebar) here -->
-					<?php get_sidebar(); ?>
+				<!-- Left column (sidebar) here -->
+				<?php get_sidebar(); ?>
 
-					<!-- Right column (content) here -->
-					<main id="main" class="site-main content-area column">
+				<!-- Right column (content) here -->
+				<div id="primary" class="content-area column is-three-quarters">
+					<main id="main" class="site-main" role="main">
 						<?php
 						while ( have_posts() ) :
 							the_post();
@@ -35,10 +36,10 @@
 						endwhile; // End of the loop.
 						?>
 					</main><!-- #main -->
-				</div>
+				</div><!-- #primary -->
 			</div>
-		</div>
-	</section><!-- #primary -->
+		</div><!-- #content -->
+	</section>
 	<?php get_footer(); ?>
 </body>
 </html>

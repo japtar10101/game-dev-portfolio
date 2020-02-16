@@ -25,8 +25,7 @@
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'game-dev-portfolio' ),
 			'after'  => '</div>',
 		) );
-		?>
-		<?php
+
 		if ( get_edit_post_link() ) :
 			edit_post_link(
 				sprintf(
