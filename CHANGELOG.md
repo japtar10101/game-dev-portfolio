@@ -1,3 +1,7 @@
+# 2020.2.0
+## 2/16/2020
+- New Feature - Turning Jetpack Portfolio listing page (Archive: Portfolio) into a grid of thumbnails of featured images from each portfolio entry.
+
 # 2020.1.1
 ## 2/16/2020
 - Fixed issue #2 - Jetpack Tiled Gallery no longer causes images in the main content area to expand indefinitely.
