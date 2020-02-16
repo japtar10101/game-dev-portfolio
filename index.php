@@ -25,7 +25,7 @@
 				<?php get_sidebar(); ?>
 
 				<!-- Right column (content) here -->
-				<div id="primary" class="content-area column">
+				<div id="primary" class="content-area column is-three-quarters">
 					<main id="main" class="site-main" role="main">
 						<?php
 						if ( have_posts() ) :
