@@ -26,7 +26,7 @@ function game_dev_portfolio_customize_register( $wp_customize ) {
 	//////////////////////////////////////////////
 	// Add a copyright text-field.
 	$wp_customize->add_setting('game-dev-portfolio-footer-copyright', array(
-		'default'           => '© %s [Name]',
+		'default'           => '&copy; 2020 - [Year]',
 		'capability'        => 'edit_theme_options',
 		'type'              => 'theme_mod',
 		'sanitize_callback' => 'sanitize_text_field', // FIXME: add sanitization!
@@ -35,7 +35,7 @@ function game_dev_portfolio_customize_register( $wp_customize ) {
 	$wp_customize->add_control('game-dev-portfolio-footer-copyright', array(
 		'type'              => 'text',
 		'label'             => __('Copyright', 'game-dev-portfolio'),
-		'description'       => __( 'Copyright text displayed in the footer. Add "%s" to the text to display the current year; only one is supported.', 'game-dev-portfolio' ),
+		'description'       => __( 'Copyright text displayed in the footer. Add "[year]" to the text to display the current year.', 'game-dev-portfolio' ),
 		'section'           => 'game-dev-portfolio-footer',
 		'settings'          => 'game-dev-portfolio-footer-copyright',
 	));
