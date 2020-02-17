@@ -44,8 +44,25 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		set_post_thumbnail_size( 1024, 325, true ); // default Post Thumbnail dimensions (cropped)
 
 		// This theme uses wp_nav_menu() in one location.
+		// FIXME: actually use it
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'game-dev-portfolio' ),
+		) );
+
+		/*
+		 * Enable support for Headers on the rest of the pages.
+		 *
+		 * @link https://codex.wordpress.org/Custom_Headers
+		 */
+		// FIXME: actually use it
+		add_theme_support( 'custom-header', array(
+			'width'                  => 1024,
+			'height'                 => 325,
+			'flex-height'            => true,
+			'flex-width'             => true,
+			'header-text'            => false,
+			'uploads'                => true,
+			'video'                  => true,
 		) );
 
 		/*
@@ -85,6 +102,11 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		 * Add support for editor styles.
 		 */
 		add_theme_support( 'editor-styles' );
+
+		/*
+		 * Add support for wide.
+		 */
+		add_theme_support( 'align-wide' );
 
 		/*
 		 * Adding editor styling support.
