@@ -10,36 +10,46 @@
  */
 
 ?>
-<footer class="footer">
-	<div class="container site-info content">
-		<div class="tile is-ancestor">
-			<?php dynamic_sidebar( 'footer-1' ); ?>
-			<div class="tile">
-				<div class="content">
-					<h2>
-						<?php
-						/* translators: %s: CMS name, i.e. WordPress. */
-						echo( esc_html__( 'Portfolio Theme by Taro Omiya', 'game-dev-portfolio' ) );
-						?>
-					</h2>
-					<p>
-						<a href="<?php echo esc_url( __( 'https://bulma.io/', 'game-dev-portfolio' ) ); ?>">
-							<?php
-							/* translators: %s: CMS name, i.e. WordPress. */
-							printf( esc_html__( 'Styled by %s', 'game-dev-portfolio' ), 'Bulma' );
-							?>
-						</a>
-						<br />
-						<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'game-dev-portfolio' ) ); ?>">
-							<?php
-							/* translators: %s: CMS name, i.e. WordPress. */
-							printf( esc_html__( 'Powered by %s', 'game-dev-portfolio' ), 'WordPress' );
-							?>
-						</a>
-					</p>
-					<?php wp_footer(); ?>
-				</div>
+<footer id="footer" class="footer has-text-centered">
+	<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
+		<div class="container site-info content">
+			<div class="tile is-ancestor">
+				<?php dynamic_sidebar( 'footer-1' ); ?>
 			</div>
-		</div>
-	</div><!-- .site-info -->
+		</div><!-- .site-info -->
+	<?php endif; ?>
+	<div class="content">
+		<p>
+			<?php
+			/* translators: %s: CMS name, i.e. WordPress. */
+			printf(
+				esc_html__( 'Proudly powered by %s', 'game-dev-portfolio' ),
+				get_game_dev_portfolio_link('Wordpress', 'https://wordpress.org/')
+			);
+			echo '<br />';
+
+			/* translators: %s: Theme name, i.e. Game Dev Portfolio. */
+			printf(
+				esc_html__( 'Theme: %s by %s', 'game-dev-portfolio' ),
+				get_game_dev_portfolio_link('Game Dev Portfolio', 'https://github.com/japtar10101/game-dev-portfolio'),
+				get_game_dev_portfolio_link('Taro Omiya', 'https://www.taroomiya.com/')
+			);
+			echo '<br />';
+
+			/* translators: %s: CSS library name, i.e. Bulma. */
+			printf(
+				esc_html__( 'Styled by %s', 'game-dev-portfolio' ),
+				get_game_dev_portfolio_link('Bulma', 'https://bulma.io/')
+			);
+			echo '<br />';
+
+			/* translators: %s: Icon library name, i.e. Bulma. */
+			printf(
+				esc_html__( 'Icons by %s', 'game-dev-portfolio' ),
+				get_game_dev_portfolio_link('FontAwesome', 'https://fontawesome.com/')
+			);
+			?>
+		</p>
+	</div>
+	<?php wp_footer(); ?>
 </footer>

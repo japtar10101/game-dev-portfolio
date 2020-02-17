@@ -682,4 +682,33 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form' );
+
+if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
+	/**
+	 * Prints a a-href tag link, translated
+	 */
+	function get_game_dev_portfolio_link( $text = 'Link', $url = '#', $args = array() ) {
+
+		// Filters the comment form default arguments.
+		$defaults = array(
+			'alt'         => '',
+			'class'       => '',
+			'target'      => '_blank'
+		);
+		$args = wp_parse_args( $args, apply_filters( 'game_dev_portfolio_link_defaults', $defaults ) );
+		if( ! $args[ 'alt' ] ) {
+			$args[ 'alt' ] = $text;
+		}
+
+		/* translators: 1: link, 2: alt, 3: target, 4: text */
+		return sprintf( '<a href="%s" alt="%s" target="%s" class="%s">%s</a>',
+			esc_url( __( $url, 'game-dev-portfolio' ) ),
+			esc_attr__( $args[ 'alt' ], 'game-dev-portfolio' ),
+			esc_attr( $args[ 'target' ] ),
+			esc_attr( $args[ 'class' ] ),
+			esc_html__( $text, 'game-dev-portfolio' )
+		);
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_link' );
 ?>
