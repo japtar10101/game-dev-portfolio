@@ -44,8 +44,25 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		set_post_thumbnail_size( 1024, 325, true ); // default Post Thumbnail dimensions (cropped)
 
 		// This theme uses wp_nav_menu() in one location.
+		// FIXME: actually use it
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'game-dev-portfolio' ),
+		) );
+
+		/*
+		 * Enable support for Headers on the rest of the pages.
+		 *
+		 * @link https://codex.wordpress.org/Custom_Headers
+		 */
+		// FIXME: actually use it
+		add_theme_support( 'custom-header', array(
+			'width'                  => 1024,
+			'height'                 => 325,
+			'flex-height'            => true,
+			'flex-width'             => true,
+			'header-text'            => false,
+			'uploads'                => true,
+			'video'                  => true,
 		) );
 
 		/*
@@ -87,6 +104,11 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		add_theme_support( 'editor-styles' );
 
 		/*
+		 * Add support for wide.
+		 */
+		add_theme_support( 'align-wide' );
+
+		/*
 		 * Adding editor styling support.
 		 */
 		add_editor_style( 'style-editor.css' );
@@ -125,10 +147,19 @@ function game_dev_portfolio_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer', 'game-dev-portfolio' ),
-		'id'            => 'footer-1',
-		'description'   => esc_html__( 'Add widgets to footer here.', 'game-dev-portfolio' ),
-		'before_widget' => '<div id="%1$s" class="widget content tile %2$s">',
+		'name'          => esc_html__( 'Footer, Top', 'game-dev-portfolio' ),
+		'id'            => 'footer-top',
+		'description'   => esc_html__( 'Add widgets to footer here, above copyrights.', 'game-dev-portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer, Bottom', 'game-dev-portfolio' ),
+		'id'            => 'footer-bottom',
+		'description'   => esc_html__( 'Add widgets to footer here, below copyrights.', 'game-dev-portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
