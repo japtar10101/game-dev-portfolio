@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <?php get_header(); ?>
-<body <?php body_class( 'has-navbar-fixed-top' ); ?>>
+<body <?php body_class(); ?>>
 	<?php get_template_part( 'navbar' ); ?>
 	<section class="site section">
 		<div id="content" class="site-content container">
@@ -30,11 +30,8 @@
 								</h1>
 								<div class="subtitle archive-description">
 									<?php
-									/* Translators: %s is the name of the blog */
-									echo sprintf(
-										__('Click on an image to see more details about the product.', 'game-dev-portfolio'),
-										get_bloginfo( 'name' )
-									);
+									echo esc_html__('Click on an image to see more details.', 'game-dev-portfolio');
+									//echo get_the_post_type_description( 'description' );
 									?>
 								</div>
 							</header>

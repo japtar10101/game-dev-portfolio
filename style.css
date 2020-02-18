@@ -259,7 +259,7 @@ a img.aligncenter {
 	column-count: 1;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
 	.columns-6-mobile {
 		column-count: 6;
 	}
@@ -280,7 +280,7 @@ a img.aligncenter {
 	}
 }
 
-@media (min-width: 770px) and (max-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
 	.columns-6-tablet {
 		column-count: 6;
 	}
@@ -301,7 +301,7 @@ a img.aligncenter {
 	}
 }
 
-@media (min-width: 1026px) and (max-width: 1217px) {
+@media (min-width: 1025px) and (max-width: 1216px) {
 	.columns-6-desktop {
 		column-count: 6;
 	}
@@ -322,7 +322,7 @@ a img.aligncenter {
 	}
 }
 
-@media (min-width: 1218px) and (max-width: 1409px) {
+@media (min-width: 1217px) and (max-width: 1408px) {
 	.columns-6-widescreen {
 		column-count: 6;
 	}
@@ -343,7 +343,20 @@ a img.aligncenter {
 	}
 }
 
-/* Attempting to make the mobile navbar work as intended */
-.toggled .navbar-menu {
-	display: block;
+nav.navbar {
+	background-color: rgba(255, 255, 255, 70%);
+}
+
+/* Hide the navbar on desktop screens */
+@media (min-width: 769px) {
+	nav.navbar {
+		display: none;
+	}
+}
+
+/* Only show the .navbar-menu if toggle is on */
+@media screen and (max-width: 768px) {
+	.toggled .navbar-menu {
+		display: block;
+	}
 }
