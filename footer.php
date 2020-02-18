@@ -11,17 +11,17 @@
 
 ?>
 <footer id="footer" class="footer has-text-centered">
-	<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-		<div class="container site-info content">
-			<div class="tile is-ancestor">
-				<?php
-				// Plop the footer widgets below
-				dynamic_sidebar( 'footer-1' );
-				?>
-			</div>
-		</div><!-- .site-info -->
+	<?php if ( is_active_sidebar( 'footer-top' ) ) : ?>
+		<!-- Footer Top row -->
+		<div class="container content">
+				<div id="footer-top-row" class="tile is-ancestor">
+					<?php dynamic_sidebar( 'footer-top' ); ?>
+				</div>
+		</div>
 	<?php endif; ?>
-	<div class="content">
+
+	<!-- Footer Info -->
+	<div class="site-info container content">
 		<p>
 			<?php
 			$copyright_text = get_theme_mod('game-dev-portfolio-footer-copyright');
@@ -72,6 +72,17 @@
 			}
 			?>
 		</p>
-	</div>
+	</div><!-- .site-info -->
+
+	<?php if ( is_active_sidebar( 'footer-bottom' ) ) : ?>
+		<!-- Footer Bottom row -->
+		<div class="container content">
+				<div id="footer-bottom-row" class="tile is-ancestor">
+					<?php dynamic_sidebar( 'footer-bottom' ); ?>
+				</div>
+		</div>
+	<?php endif; ?>
+
+	<!-- Wordpress Footer -->
 	<?php wp_footer(); ?>
 </footer>
