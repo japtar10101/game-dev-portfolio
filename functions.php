@@ -147,7 +147,7 @@ function game_dev_portfolio_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer, Top', 'game-dev-portfolio' ),
+		'name'          => esc_html__( 'Top Footer', 'game-dev-portfolio' ),
 		'id'            => 'footer-top',
 		'description'   => esc_html__( 'Add widgets to footer here, above copyrights.', 'game-dev-portfolio' ),
 		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
@@ -156,7 +156,7 @@ function game_dev_portfolio_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer, Bottom', 'game-dev-portfolio' ),
+		'name'          => esc_html__( 'Bottom Footer', 'game-dev-portfolio' ),
 		'id'            => 'footer-bottom',
 		'description'   => esc_html__( 'Add widgets to footer here, below copyrights.', 'game-dev-portfolio' ),
 		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
