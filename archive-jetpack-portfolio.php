@@ -11,6 +11,7 @@
 <html <?php language_attributes(); ?>>
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
+	<?php /* get_template_part( 'navbar' ); */ ?>
 	<section class="site section">
 		<div id="content" class="site-content container">
 			<!-- Start columns here -->
@@ -38,7 +39,7 @@
 								</div>
 							</header>
 							<?php if ( have_posts() ) : ?>
-								<article class="content mosaic columns-4 columns-3-widescreen columns-3-desktop columns-2-tablet columns-1-mobile">
+								<article class="content mosaic columns-3 columns-2-tablet columns-1-mobile">
 									<?php 
 									/* Start the Loop */
 									while ( have_posts() ) :
