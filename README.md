@@ -2,7 +2,7 @@ Game Dev Portfolio
 ===
 
 - Contributors: Taro Omiya
-- Stable tag: 2020.2.1
+- Stable tag: 2020.3.0
 - Tested up to: 5.3.2
 - Requires at least: 5.0.0
 - Tags:
