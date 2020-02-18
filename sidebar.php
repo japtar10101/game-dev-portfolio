@@ -32,12 +32,7 @@
 			endif;
 			?>
 			<?php dynamic_sidebar( 'sidebar-top' ); ?>
-			<nav id="site-navigation" class="main-navigation">
-				<!-- FIXME: move this logic to the navbar (and along with it, the site-navigation tag).
-				<button class="menu-toggle button" aria-controls="primary-menu" aria-expanded="false">
-					<?php esc_html_e( 'Primary Menu', 'game-dev-portfolio' ); ?>
-				</button>
-				-->
+			<nav class="main-navigation">
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'menu-1',
