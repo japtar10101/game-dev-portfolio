@@ -1,3 +1,7 @@
+# 2020.3.1
+## 2/17/2020
+- Fixed issue - Footer displays copyrights and extra info by default, rather than leaving the space empty.
+
 # 2020.3.0
 ## 2/17/2020
 - New feature #13 - Adding customization to footer, including editing copyright info, and adding widgets below the copyright info as well as above.
