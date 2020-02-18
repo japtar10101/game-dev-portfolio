@@ -138,9 +138,18 @@ add_action( 'after_setup_theme', 'game_dev_portfolio_content_width', 0 );
  */
 function game_dev_portfolio_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'game-dev-portfolio' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets to sidebar here.', 'game-dev-portfolio' ),
+		'name'          => esc_html__( 'Top Sidebar', 'game-dev-portfolio' ),
+		'id'            => 'sidebar-top',
+		'description'   => esc_html__( 'Add widgets to sidebar here, between the site description and primary menu', 'game-dev-portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget content %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Bottom Sidebar', 'game-dev-portfolio' ),
+		'id'            => 'sidebar-bottom',
+		'description'   => esc_html__( 'Add widgets to sidebar here, below the primary menu', 'game-dev-portfolio' ),
 		'before_widget' => '<div id="%1$s" class="widget content %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -152,8 +161,8 @@ function game_dev_portfolio_widgets_init() {
 		'description'   => esc_html__( 'Add widgets to footer here, above copyrights.', 'game-dev-portfolio' ),
 		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => esc_html__( 'Bottom Footer', 'game-dev-portfolio' ),
@@ -161,8 +170,8 @@ function game_dev_portfolio_widgets_init() {
 		'description'   => esc_html__( 'Add widgets to footer here, below copyrights.', 'game-dev-portfolio' ),
 		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 }
 add_action( 'widgets_init', 'game_dev_portfolio_widgets_init' );

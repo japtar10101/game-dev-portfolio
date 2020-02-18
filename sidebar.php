@@ -7,7 +7,7 @@
  * @package Game_Dev_Portfolio
  */
 ?>
-<nav class="column">
+<div id="sidebar" class="column">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'game-dev-portfolio' ); ?></a>
 	<div id="secondary" class="widget-area card menu">
 		<div class="card-image">
@@ -31,7 +31,21 @@
 			<?php
 			endif;
 			?>
-			<?php dynamic_sidebar( 'sidebar-1' ); ?>
+			<?php dynamic_sidebar( 'sidebar-top' ); ?>
+			<nav id="site-navigation" class="main-navigation">
+				<!-- FIXME: move this logic to the navbar (and along with it, the site-navigation tag).
+				<button class="menu-toggle button" aria-controls="primary-menu" aria-expanded="false">
+					<?php esc_html_e( 'Primary Menu', 'game-dev-portfolio' ); ?>
+				</button>
+				-->
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+				) );
+				?>
+			</nav><!-- #site-navigation -->
+			<?php dynamic_sidebar( 'sidebar-bottom' ); ?>
 		</div>
 	</div>
-</nav>
+</div> <!-- #sidebar -->
