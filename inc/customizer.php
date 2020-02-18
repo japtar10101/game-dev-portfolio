@@ -26,7 +26,7 @@ function game_dev_portfolio_customize_register( $wp_customize ) {
 	//////////////////////////////////////////////
 	// Add a copyright text-field.
 	$wp_customize->add_setting('game-dev-portfolio-footer-copyright', array(
-		'default'           => '&copy; 2020 - [Year]',
+		'default'           => '&copy; 2019 - [Year]',
 		'capability'        => 'edit_theme_options',
 		'type'              => 'theme_mod',
 		'sanitize_callback' => 'sanitize_text_field', // FIXME: add sanitization!
