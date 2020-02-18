@@ -24,7 +24,7 @@
 	<div class="site-info container content">
 		<p>
 			<?php
-			$copyright_text = get_theme_mod('game-dev-portfolio-footer-copyright');
+			$copyright_text = get_theme_mod( 'game-dev-portfolio-footer-copyright', '&copy; [Year]' );
 			if( $copyright_text ) {
 				// Print the copyright below
 				echo str_ireplace(
@@ -34,7 +34,7 @@
 				);
 				echo '<br />';
 			}
-			if( get_theme_mod('game-dev-portfolio-footer-display-wordpress') ) {
+			if( get_theme_mod( 'game-dev-portfolio-footer-display-wordpress', true ) ) {
 				// Print powered by wordpress below
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf(
@@ -43,7 +43,7 @@
 				);
 				echo '<br />';
 			}
-			if( get_theme_mod('game-dev-portfolio-footer-display-theme') ) {
+			if( get_theme_mod( 'game-dev-portfolio-footer-display-theme', true ) ) {
 				// Print theme by Taro below
 				/* translators: %s: Theme name, i.e. Game Dev Portfolio. */
 				printf(
@@ -53,7 +53,7 @@
 				);
 				echo '<br />';
 			}
-			if( get_theme_mod('game-dev-portfolio-footer-display-styling') ) {
+			if( get_theme_mod( 'game-dev-portfolio-footer-display-styling', true ) ) {
 				// Print stylings below
 				/* translators: %s: CSS library name, i.e. Bulma. */
 				printf(
@@ -62,7 +62,7 @@
 				);
 				echo '<br />';
 			}
-			if( get_theme_mod('game-dev-portfolio-footer-display-icons') ) {
+			if( get_theme_mod( 'game-dev-portfolio-footer-display-icons', true ) ) {
 				// Print icons below
 				/* translators: %s: Icon library name, i.e. Bulma. */
 				printf(
