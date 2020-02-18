@@ -40,8 +40,6 @@
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 
-	<?php game_dev_portfolio_post_thumbnail(); ?>
-
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->

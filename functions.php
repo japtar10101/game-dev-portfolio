@@ -44,8 +44,25 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		set_post_thumbnail_size( 1024, 325, true ); // default Post Thumbnail dimensions (cropped)
 
 		// This theme uses wp_nav_menu() in one location.
+		// FIXME: actually use it
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'game-dev-portfolio' ),
+		) );
+
+		/*
+		 * Enable support for Headers on the rest of the pages.
+		 *
+		 * @link https://codex.wordpress.org/Custom_Headers
+		 */
+		// FIXME: actually use it
+		add_theme_support( 'custom-header', array(
+			'width'                  => 1024,
+			'height'                 => 325,
+			'flex-height'            => true,
+			'flex-width'             => true,
+			'header-text'            => false,
+			'uploads'                => true,
+			'video'                  => true,
 		) );
 
 		/*
@@ -87,6 +104,11 @@ if ( ! function_exists( 'game_dev_portfolio_setup' ) ) :
 		add_theme_support( 'editor-styles' );
 
 		/*
+		 * Add support for wide.
+		 */
+		add_theme_support( 'align-wide' );
+
+		/*
 		 * Adding editor styling support.
 		 */
 		add_editor_style( 'style-editor.css' );
@@ -125,10 +147,19 @@ function game_dev_portfolio_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer', 'game-dev-portfolio' ),
-		'id'            => 'footer-1',
-		'description'   => esc_html__( 'Add widgets to footer here.', 'game-dev-portfolio' ),
-		'before_widget' => '<div id="%1$s" class="widget content tile %2$s">',
+		'name'          => esc_html__( 'Top Footer', 'game-dev-portfolio' ),
+		'id'            => 'footer-top',
+		'description'   => esc_html__( 'Add widgets to footer here, above copyrights.', 'game-dev-portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Bottom Footer', 'game-dev-portfolio' ),
+		'id'            => 'footer-bottom',
+		'description'   => esc_html__( 'Add widgets to footer here, below copyrights.', 'game-dev-portfolio' ),
+		'before_widget' => '<div id="%1$s" class="widget content tile is-child %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
@@ -682,4 +713,33 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form' );
+
+if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
+	/**
+	 * Prints a a-href tag link, translated
+	 */
+	function get_game_dev_portfolio_link( $text = 'Link', $url = '#', $args = array() ) {
+
+		// Filters the comment form default arguments.
+		$defaults = array(
+			'alt'         => '',
+			'class'       => '',
+			'target'      => '_blank'
+		);
+		$args = wp_parse_args( $args, apply_filters( 'game_dev_portfolio_link_defaults', $defaults ) );
+		if( ! $args[ 'alt' ] ) {
+			$args[ 'alt' ] = $text;
+		}
+
+		/* translators: 1: link, 2: alt, 3: target, 4: text */
+		return sprintf( '<a href="%s" alt="%s" target="%s" class="%s">%s</a>',
+			esc_url( __( $url, 'game-dev-portfolio' ) ),
+			esc_attr__( $args[ 'alt' ], 'game-dev-portfolio' ),
+			esc_attr( $args[ 'target' ] ),
+			esc_attr( $args[ 'class' ] ),
+			esc_html__( $text, 'game-dev-portfolio' )
+		);
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_link' );
 ?>

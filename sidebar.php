@@ -6,10 +6,6 @@
  *
  * @package Game_Dev_Portfolio
  */
-
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
 <nav class="column">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'game-dev-portfolio' ); ?></a>
