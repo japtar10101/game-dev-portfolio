@@ -27,6 +27,7 @@ aspect ratio based on the width of the browser.
 */
 .content header .post-thumbnail {
 	padding-top: 31.75%;
+	margin: -0.75rem -0.75rem auto -0.75rem;
 }
 
 .content header .post-thumbnail img {
@@ -40,14 +41,13 @@ aspect ratio based on the width of the browser.
 }
 
 .content header h1.title {
-	margin-top: 1.5rem;
+	margin-top: 1.25rem;
 }
 
 /*
 Styling on list of posts
 */
 article.listed-post {
-	border-top: 1px solid #f0f0f0;
 	padding-top: 1.5rem;
 }
 
@@ -368,12 +368,6 @@ nav.navbar .navbar-brand .navbar-item {
 		position: sticky;
 		top: 0px;
 	}
-
-	.menu {
-		position: -webkit-sticky;
-		position: sticky;
-		top: -270px;
-	}
 }
 
 .menu-item {
@@ -389,4 +383,16 @@ nav.navbar .navbar-brand .navbar-item {
 .menu-bottom-border {
 	border-bottom: 1px solid #f0f0f0;
 	margin-bottom: 1.25rem;
+}
+
+#primary {
+	/* background-color: #fff; */
+	margin-top: 0.75rem;
+}
+
+#secondary {
+	-moz-border-top-left-radius: 0;
+	-moz-border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
