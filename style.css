@@ -6,7 +6,7 @@ Author URI: https://taroomiya.com
 GitHub Theme URI:  japtar10101/game-dev-portfolio
 GitHub Theme URI: https://github.com/japtar10101/game-dev-portfolio
 Description: Portfolio for game devs.
-Version: 2020.3.a
+Version: 2020.4.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: game-dev-portfolio
@@ -21,26 +21,13 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.com)
 */
 
-@media screen and (min-width: 769px) {
-	.sticky {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 0px;
-	}
-
-	.menu {
-		position: -webkit-sticky;
-		position: sticky;
-		top: -270px;
-	}
-}
-
 /*
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
 */
 .content header .post-thumbnail {
 	padding-top: 31.75%;
+	margin: -0.75rem -0.75rem auto -0.75rem;
 }
 
 .content header .post-thumbnail img {
@@ -54,14 +41,13 @@ aspect ratio based on the width of the browser.
 }
 
 .content header h1.title {
-	margin-top: 1.5rem;
+	margin-top: 1.25rem;
 }
 
 /*
 Styling on list of posts
 */
 article.listed-post {
-	border-top: 1px solid #f0f0f0;
 	padding-top: 1.5rem;
 }
 
@@ -259,7 +245,7 @@ a img.aligncenter {
 	column-count: 1;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
 	.columns-6-mobile {
 		column-count: 6;
 	}
@@ -278,9 +264,14 @@ a img.aligncenter {
 	.columns-1-mobile {
 		column-count: 1;
 	}
+
+	/* Center align menu text on mobile */
+	.menu {
+		text-align: center;
+	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
 	.columns-6-tablet {
 		column-count: 6;
 	}
@@ -301,7 +292,7 @@ a img.aligncenter {
 	}
 }
 
-@media (min-width: 1216px) {
+@media (min-width: 1025px) and (max-width: 1216px) {
 	.columns-6-desktop {
 		column-count: 6;
 	}
@@ -322,7 +313,7 @@ a img.aligncenter {
 	}
 }
 
-@media (min-width: 1408px) {
+@media (min-width: 1217px) and (max-width: 1408px) {
 	.columns-6-widescreen {
 		column-count: 6;
 	}
@@ -341,4 +332,67 @@ a img.aligncenter {
 	.columns-1-widescreen {
 		column-count: 1;
 	}
+}
+
+nav.navbar {
+	background-color: rgba(100%, 100%, 100%, 80%);
+}
+
+nav.navbar .navbar-item {
+	text-align: center;
+	padding: 0;
+}
+
+nav.navbar .navbar-brand .navbar-item {
+	margin: 0 0 0 0.75rem;
+	color: #3273dc;
+}
+
+/* Hide the navbar on desktop screens */
+@media (min-width: 769px) {
+	nav.navbar {
+		display: none;
+	}
+}
+
+/* Only show the .navbar-menu if toggle is on */
+@media screen and (max-width: 768px) {
+	.toggled .navbar-menu {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 769px) {
+	.sticky {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0px;
+	}
+}
+
+.menu-item {
+	border-top: 1px solid 
+	#f0f0f0;
+}
+
+.menu-item a {
+	display: block;
+	padding: 0.75rem 0;
+}
+
+.menu-bottom-border {
+	border-bottom: 1px solid #f0f0f0;
+	margin-bottom: 1.25rem;
+}
+
+#primary {
+	/* background-color: #fff; */
+	margin-top: 0.75rem;
+}
+
+#secondary {
+	-moz-border-top-left-radius: 0;
+	-moz-border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }

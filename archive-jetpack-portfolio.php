@@ -11,6 +11,7 @@
 <html <?php language_attributes(); ?>>
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
+	<?php get_template_part( 'navbar' ); ?>
 	<section class="site section">
 		<div id="content" class="site-content container">
 			<!-- Start columns here -->
@@ -29,16 +30,13 @@
 								</h1>
 								<div class="subtitle archive-description">
 									<?php
-									/* Translators: %s is the name of the blog */
-									echo sprintf(
-										__('Click on an image to see more details about the product.', 'game-dev-portfolio'),
-										get_bloginfo( 'name' )
-									);
+									echo esc_html__('Click on an image to see more details.', 'game-dev-portfolio');
+									//echo get_the_post_type_description( 'description' );
 									?>
 								</div>
 							</header>
 							<?php if ( have_posts() ) : ?>
-								<article class="content mosaic columns-4 columns-3-widescreen columns-3-desktop columns-2-tablet columns-1-mobile">
+								<article class="content mosaic columns-3 columns-2-tablet columns-1-mobile">
 									<?php 
 									/* Start the Loop */
 									while ( have_posts() ) :
