@@ -18,18 +18,15 @@
 		?>
 			<div class="embed-container">
 				<div class="embed-content">
-					<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+					<?php the_title( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', '</a></h2>' ); ?>
 				</div>
 			</div>
 		<?php
 		else :
-			the_title( '<h1 class="title entry-title">', '</h1>' );
+			the_title( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', '</a></h2>' );
 		endif;
 		?>
 	</header><!-- .entry-header -->
-
-
-	<?php the_title( sprintf( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
 	<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="subtitle entry-meta">
@@ -45,6 +42,8 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php game_dev_portfolio_entry_footer(); ?>
+		<small>
+			<?php game_dev_portfolio_entry_footer(); ?>
+		</small>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
