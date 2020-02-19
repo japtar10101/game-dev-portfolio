@@ -335,11 +335,17 @@ a img.aligncenter {
 }
 
 nav.navbar {
-	background-color: rgba(255, 255, 255, 70%);
+	background-color: rgba(100%, 100%, 100%, 80%);
 }
+
 nav.navbar .navbar-item {
 	text-align: center;
 	padding: 0;
+}
+
+nav.navbar .navbar-brand .navbar-item {
+	margin: 0 0 0 0.75rem;
+	color: #3273dc;
 }
 
 /* Hide the navbar on desktop screens */

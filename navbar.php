@@ -11,7 +11,11 @@
 ?>
 <nav id="site-navigation" class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<!-- Add the title of the website here -->
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="navbar-item title is-link">
+			<?php bloginfo( 'name' ); ?>
+		</a>
+
+		<!-- Button only visible on mobile -->
 		<button role="button" class="menu-toggle navbar-burger burger button" aria-label="menu" aria-expanded="false" data-target="site-navigation">
 			<span aria-hidden="true"></span>
 			<span aria-hidden="true"></span>
