@@ -34,9 +34,14 @@
 			<?php dynamic_sidebar( 'sidebar-top' ); ?>
 			<nav class="main-navigation">
 				<?php
+				$menu_class = 'menu';
+				if( is_active_sidebar( 'sidebar-bottom' ) ) {
+					$menu_class .= ' menu-bottom-border';
+				}
 				wp_nav_menu( array(
 					'theme_location' => 'menu-1',
 					'menu_id'        => 'primary-menu',
+					'menu_class'     => $menu_class,
 				) );
 				?>
 			</nav><!-- #site-navigation -->
