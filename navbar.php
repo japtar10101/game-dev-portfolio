@@ -26,8 +26,8 @@
 			'menu_id'        => 'primary-menu',
 			'menu_class'     => 'navbar-end',
 			'container'      => '',
-			'link_before'    => '<div class="navbar-item">',
-			'link_after'     => '</div>',
+			'before'         => '<div class="navbar-item">',
+			'after'          => '</div>',
 		) );
 		?>
 	</div> <!-- #site-navigation -->

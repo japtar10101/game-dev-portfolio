@@ -21,20 +21,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 This theme uses Bulma (https://bulma.io) and FontAwesome (https://fontawesome.com)
 */
 
-@media screen and (min-width: 769px) {
-	.sticky {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 0px;
-	}
-
-	.menu {
-		position: -webkit-sticky;
-		position: sticky;
-		top: -270px;
-	}
-}
-
 /*
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
@@ -278,6 +264,11 @@ a img.aligncenter {
 	.columns-1-mobile {
 		column-count: 1;
 	}
+
+	/* Center align menu text on mobile */
+	.menu {
+		text-align: center;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -346,6 +337,10 @@ a img.aligncenter {
 nav.navbar {
 	background-color: rgba(255, 255, 255, 70%);
 }
+nav.navbar .navbar-item {
+	text-align: center;
+	padding: 0;
+}
 
 /* Hide the navbar on desktop screens */
 @media (min-width: 769px) {
@@ -359,4 +354,33 @@ nav.navbar {
 	.toggled .navbar-menu {
 		display: block;
 	}
+}
+
+@media screen and (min-width: 769px) {
+	.sticky {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0px;
+	}
+
+	.menu {
+		position: -webkit-sticky;
+		position: sticky;
+		top: -270px;
+	}
+}
+
+.menu-item {
+	border-top: 1px solid 
+	#f0f0f0;
+}
+
+.menu-item a {
+	display: block;
+	padding: 0.75rem 0;
+}
+
+.menu {
+	border-bottom: 1px solid #f0f0f0;
+	margin-bottom: 1.5rem;
 }
