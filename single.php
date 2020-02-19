@@ -11,6 +11,7 @@
 <html <?php language_attributes(); ?>>
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
+	<?php get_template_part( 'navbar' ); ?>
 	<section class="site section">
 		<div id="content" class="site-content container">
 			<!-- Start columns here -->
