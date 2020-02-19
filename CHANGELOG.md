@@ -1,3 +1,11 @@
+# 2020.4.0
+## 2/18/2020
+- New feature #5 - Sidebar now has the primary menu built-in.
+- New feature - Added a mobile-only navbar stickied at the top of the screen for quick menu navigation access.
+- Fixed issue #16 - The title part of the sidebar now properly stickies to the top of the screen, regardless of screen ratio.
+- Fixed issue - Search results does not double-post the header.
+- Fixed issue - If one css styles #primary, the header will remain flushed to the edges of the content while leaving the text all properly padded.  This styling is in-line with the sidebar.
+
 # 2020.3.1
 ## 2/17/2020
 - Fixed issue - Footer displays copyrights and extra info by default, rather than leaving the space empty.
