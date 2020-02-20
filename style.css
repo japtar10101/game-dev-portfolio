@@ -44,6 +44,11 @@ aspect ratio based on the width of the browser.
 	margin-top: 1.25rem;
 }
 
+.content h2, .content h3, .content h4, .content h5, .content h6 {
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+
 /*
 Styling on list of posts
 */
