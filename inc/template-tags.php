@@ -144,6 +144,7 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 			'size'               => 'post-thumbnail',
 			'class_caption'      => 'caption',
 			'class_link'         => 'post-thumbnail image',
+			'enable_tab_select'  => false,
 			'caption_text'       => ''
 		);
 		$args = wp_parse_args( $args, apply_filters( 'game_dev_portfolio_post_thumbnail_defaults', $defaults ) );
@@ -169,7 +170,7 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 
 		<?php else : ?>
 
-			<a class="<?php echo esc_attr( $args['class_link'] ); ?>" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="<?php echo esc_attr( $args['class_link'] ); ?>" href="<?php the_permalink(); ?>" aria-hidden="true" <?php if( ! $args['enable_tab_select'] ) { echo 'tabindex="-1"'; } ?>>
 				<?php
 				// Print the thumbnail
 				the_post_thumbnail( $args['size'], array(

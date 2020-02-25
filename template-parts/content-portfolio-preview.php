@@ -8,8 +8,9 @@
  */
 game_dev_portfolio_post_thumbnail( array (
 	'size' => 'medium',
-	'class_link' => 'post-thumbnail image box',
+	'class_link' => 'post-thumbnail image',
 	'class_caption' => 'caption title',
+	'enable_tab_select' => true,
 	'caption_text' => get_the_title()
 ) );
 ?>
