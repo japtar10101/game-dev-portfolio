@@ -189,6 +189,18 @@ a img.aligncenter {
 	/* Above WP toolbar. */
 }
 
+/* Styling a tile for mosaic composition */
+.mosaic {
+	padding-top: 1.5rem;
+}
+
+.mosaic .image {
+	display: block;
+	width: 33.3333%;
+	margin: 0;
+	padding: 0;
+}
+
 /* Styling captions */
 .mosaic .image .caption {
 	text-align: center;
@@ -206,20 +218,6 @@ a img.aligncenter {
 
 .mosaic .image:hover .caption {
 	color: #363636;
-}
-
-/* Styling a tile for mosaic composition */
-.mosaic {
-	column-count: 1;
-	column-gap: 0;
-	padding-top: 1.5rem;
-}
-
-.mosaic .image {
-	display: block;
-	width: 100%;
-	margin: 0;
-	padding: 0;
 }
 
 .columns-6 {

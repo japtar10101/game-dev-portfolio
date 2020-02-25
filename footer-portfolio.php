@@ -86,3 +86,11 @@
 
 <!-- Wordpress Footer -->
 <?php wp_footer(); ?>
+
+<script type="text/javascript">
+	var msnry = new Masonry( '.mosaic', {
+		columnWidth: '.image',
+		itemSelector: '.image',
+		percentPosition: true
+	});
+</script>
