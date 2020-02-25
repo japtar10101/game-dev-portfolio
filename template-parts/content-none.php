@@ -10,7 +10,11 @@
 ?>
 
 <article class="no-results not-found content">
-	<h1 class="title page-title"><?php esc_html_e( 'Nothing Found', 'game-dev-portfolio' ); ?></h1>
+	<header class="entry-header no-thumbnail">
+		<h1 class="title page-title">
+			<?php esc_html_e( 'Nothing Found', 'game-dev-portfolio' ); ?>
+		</h1>
+	</header>
 
 	<div class="page-content">
 		<?php

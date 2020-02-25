@@ -27,6 +27,10 @@ aspect ratio based on the width of the browser.
 */
 .content header .post-thumbnail {
 	padding-top: 31.75%;
+	margin: 0 -0.75rem auto -0.75rem;
+}
+
+.content:first-child header .post-thumbnail {
 	margin: -0.75rem -0.75rem auto -0.75rem;
 }
 
@@ -40,8 +44,12 @@ aspect ratio based on the width of the browser.
 	top: 0;
 }
 
-.content header h1.title {
+.content header.with-thumbnail h1.title {
 	margin-top: 1.25rem;
+}
+
+.content header.no-thumbnail h2.title {
+	margin-top: 0;
 }
 
 .content h2, .content h3, .content h4, .content h5, .content h6 {

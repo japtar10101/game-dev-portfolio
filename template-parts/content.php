@@ -7,12 +7,18 @@
  * @package Game_Dev_Portfolio
  */
 $article_class = 'content';
-if ( !is_singular() && !has_post_thumbnail() ) :
+if ( !is_singular() ) {
 	$article_class .= ' listed-post';
-endif;
+}
+$header_class = 'entry-header';
+if ( has_post_thumbnail() ) {
+	$header_class .= ' with-thumbnail';
+} else {
+	$header_class .= ' no-thumbnail';
+}
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $article_class ); ?>>
-	<header class="entry-header">
+	<header class="<?php echo esc_attr( $header_class ); ?>">
 		<?php
 		game_dev_portfolio_post_thumbnail();
 		if ( is_singular() ) :

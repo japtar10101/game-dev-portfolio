@@ -10,12 +10,18 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
-	<header class="entry-header">
-		<?php
-		game_dev_portfolio_post_thumbnail();
-		the_title( '<h1 class="title entry-title">', '</h1>' );
-		?>
-	</header><!-- .entry-header -->
+	<?php if ( has_post_thumbnail() ) : ?>
+		<header class="entry-header with-thumbnail">
+			<?php
+			game_dev_portfolio_post_thumbnail();
+			the_title( '<h1 class="title entry-title">', '</h1>' );
+			?>
+		</header><!-- .entry-header -->
+	<?php else : ?>
+		<header class="entry-header no-thumbnail">
+			<?php the_title( '<h1 class="title entry-title">', '</h1>' ); ?>
+		</header><!-- .entry-header -->
+	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php

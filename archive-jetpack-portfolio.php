@@ -24,7 +24,7 @@
 				<div id="primary" class="content-area column is-three-quarters">
 					<main id="main" class="site-main" role="main">
 						<div class="content">
-							<header class="page-header">
+							<header class="page-header no-thumbnail">
 								<h1 class="title page-title">
 									<?php echo __('Portfolio', 'game-dev-portfolio'); ?>
 								</h1>

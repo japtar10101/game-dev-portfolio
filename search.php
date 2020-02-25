@@ -24,13 +24,14 @@
 				<div id="primary" class="content-area column is-three-quarters">
 					<main id="main" class="site-main" role="main">
 						<?php if ( have_posts() ) : ?>
-
-							<h1 class="title page-header page-title">
-								<?php
-								/* translators: %s: search query. */
-								printf( esc_html__( 'Search Results for: %s', 'game-dev-portfolio' ), '<span>' . get_search_query() . '</span>' );
-								?>
-							</h1>
+							<header class="page-header no-thumbnail">
+								<h1 class="title page-header page-title">
+									<?php
+									/* translators: %s: search query. */
+									printf( esc_html__( 'Search Results for: %s', 'game-dev-portfolio' ), '<span>' . get_search_query() . '</span>' );
+									?>
+								</h1>
+							</header>
 
 							<?php
 							/* Start the Loop */
