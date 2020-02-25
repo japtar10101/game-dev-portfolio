@@ -194,11 +194,22 @@ a img.aligncenter {
 	padding-top: 1.5rem;
 }
 
-.mosaic .image {
-	display: block;
-	width: 33.3333%;
-	margin: 0;
+.mosaic .button {
+	width: 32%;
+	height: inherit;
+}
+
+.mosaic .with-thumbnail {
 	padding: 0;
+}
+
+.mosaic .with-thumbnail figure {
+	margin: 0;
+}
+
+.mosaic .with-thumbnail figure img {
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 /* Styling captions */

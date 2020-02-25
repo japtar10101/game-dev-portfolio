@@ -37,7 +37,7 @@
 							</header>
 							<?php if ( have_posts() ) : ?>
 								<!-- <article class="content mosaic columns-3 columns-2-tablet columns-1-mobile"> -->
-								<article class="content mosaic">
+								<article class="content mosaic buttons">
 									<?php 
 									/* Start the Loop */
 									while ( have_posts() ) :

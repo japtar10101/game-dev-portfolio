@@ -6,11 +6,33 @@
  *
  * @package Game_Dev_Portfolio
  */
-game_dev_portfolio_post_thumbnail( array (
-	'size' => 'medium',
-	'class_link' => 'post-thumbnail image',
-	'class_caption' => 'caption title',
-	'enable_tab_select' => true,
-	'caption_text' => get_the_title()
-) );
+
+// game_dev_portfolio_post_thumbnail( array (
+// 	'size' => 'medium',
+// 	'class_link' => 'post-thumbnail image',
+// 	'class_caption' => 'caption title',
+// 	'enable_tab_select' => true,
+// 	'caption_text' => get_the_title()
+// ) );
+if ( has_post_thumbnail() ) :
 ?>
+	<a id="portfolio-<?php the_ID(); ?>" class="portfolio-listing with-thumbnail button" href="<?php the_permalink(); ?>">
+		<figure class="image">
+			<?php
+			// Print the thumbnail
+			the_post_thumbnail( 'medium', array(
+				'alt' => the_title_attribute( array(
+					'echo' => false,
+				) ),
+			) );
+			?>
+			<figcaption>
+				<?php echo esc_attr( get_the_title() ); ?>
+			</figcaption>
+		</figure>
+	</a>
+<?php else : ?>
+	<a id="portfolio-<?php the_ID(); ?>" class="portfolio-listing no-thumbnail button" href="<?php the_permalink(); ?>">
+		<?php echo esc_attr( get_the_title() ); ?>
+	</a>
+<?php endif; ?>
