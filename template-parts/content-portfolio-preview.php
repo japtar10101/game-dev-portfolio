@@ -16,7 +16,7 @@
 // ) );
 if ( has_post_thumbnail() ) :
 ?>
-	<a id="portfolio-<?php the_ID(); ?>" class="portfolio-listing with-thumbnail button" href="<?php the_permalink(); ?>">
+	<a id="portfolio-<?php the_ID(); ?>" class="with-thumbnail button hvr-grow" href="<?php the_permalink(); ?>">
 		<figure class="image">
 			<?php
 			// Print the thumbnail
@@ -32,7 +32,7 @@ if ( has_post_thumbnail() ) :
 		</figure>
 	</a>
 <?php else : ?>
-	<a id="portfolio-<?php the_ID(); ?>" class="portfolio-listing no-thumbnail button" href="<?php the_permalink(); ?>">
+	<a id="portfolio-<?php the_ID(); ?>" class="no-thumbnail button hvr-grow" href="<?php the_permalink(); ?>">
 		<?php echo esc_attr( get_the_title() ); ?>
 	</a>
 <?php endif; ?>

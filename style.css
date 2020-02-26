@@ -226,6 +226,8 @@ a img.aligncenter {
 	margin-bottom: 0.25rem;
 	font-style: normal;
 	color: #3273dc;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
 }
 
 .columns-6 {
