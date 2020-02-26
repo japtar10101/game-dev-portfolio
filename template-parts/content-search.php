@@ -11,22 +11,20 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
 
-	<header class="entry-header">
-		<?php
-		if ( has_post_thumbnail() ) :
-			game_dev_portfolio_post_thumbnail();
-		?>
+	<?php if ( has_post_thumbnail() ) : ?>
+		<header class="entry-header with-thumbnail">
+			<?php game_dev_portfolio_post_thumbnail(); ?>
 			<div class="embed-container">
 				<div class="embed-content">
 					<?php the_title( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', '</a></h2>' ); ?>
 				</div>
 			</div>
-		<?php
-		else :
-			the_title( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', '</a></h2>' );
-		endif;
-		?>
-	</header><!-- .entry-header -->
+		</header><!-- .entry-header -->
+	<?php else : ?>
+		<header class="entry-header no-thumbnail">
+			<?php the_title( '<h2 class="title entry-title"><a href="%s" rel="bookmark">', '</a></h2>' ); ?>
+		</header><!-- .entry-header -->
+	<?php endif; ?>
 
 	<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="subtitle entry-meta">
