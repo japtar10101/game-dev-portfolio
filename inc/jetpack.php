@@ -59,6 +59,18 @@ function game_dev_portfolio_infinite_scroll_render() {
 }
 
 /**
+ * Adjusts the button's class so Bulma styling takes over.
+ *
+ * @param string $class contact form submit button class.
+ * @return string $class Bulma button classes appended.
+ */
+function game_dev_portfolio_contact_form_submit_button_class( string $class  ) {
+	$class  .= ' button is-link is-outlined';
+	return $class;
+}
+add_filter( 'jetpack_contact_form_submit_button_class', 'game_dev_portfolio_contact_form_submit_button_class' );
+
+/**
  * Take over HTML of the Jetpack Contact Form, the Bulma way.
  *
  * @param string $rendered_field Contact Form HTML output.
@@ -66,8 +78,8 @@ function game_dev_portfolio_infinite_scroll_render() {
  * @param int|null $id Post ID.
  * @return string $r Contact Form HTML output.
  */
-function game_dev_portfolio_contact_form( $rendered_field, $field_label, $post_id  ) {
-	$rendered_field  = '<p class="notification">Mua, ha, ha, I took over!</p>' . $rendered_field;
+function game_dev_portfolio_contact_form_field_html( $rendered_field, $field_label, $post_id  ) {
+	// $rendered_field  = '<p class="notification">Mua, ha, ha, I took over!</p>' . $rendered_field;
 	return $rendered_field;
 }
-add_filter( 'grunion_contact_form_field_html', 'game_dev_portfolio_contact_form', 10, 3 );
+add_filter( 'grunion_contact_form_field_html', 'game_dev_portfolio_contact_form_field_html', 10, 3 );
