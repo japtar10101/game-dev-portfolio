@@ -57,3 +57,17 @@ function game_dev_portfolio_infinite_scroll_render() {
 		endif;
 	}
 }
+
+/**
+ * Take over HTML of the Jetpack Contact Form, the Bulma way.
+ *
+ * @param string $rendered_field Contact Form HTML output.
+ * @param string $field_label Field label.
+ * @param int|null $id Post ID.
+ * @return string $r Contact Form HTML output.
+ */
+function game_dev_portfolio_contact_form( $rendered_field, $field_label, $post_id  ) {
+	$rendered_field  = '<p class="notification">Mua, ha, ha, I took over!</p>' . $rendered_field;
+	return $rendered_field;
+}
+add_filter( 'grunion_contact_form_field_html', 'game_dev_portfolio_contact_form', 10, 3 );
