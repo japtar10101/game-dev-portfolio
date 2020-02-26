@@ -70,16 +70,70 @@ function game_dev_portfolio_contact_form_submit_button_class( string $class  ) {
 }
 add_filter( 'jetpack_contact_form_submit_button_class', 'game_dev_portfolio_contact_form_submit_button_class' );
 
+
+/** Helper function to replace all tag's class within a DOM */
+if (!function_exists ('game_dev_portfolio_contact_form_class_updater')) {
+	function game_dev_portfolio_contact_form_class_updater($dom, $tag, $classes_to_append, $classes_to_remove_pattern = '' ) {
+		
+		// First, go through all the nodes with that tag from the DOM
+		$all_nodes = $dom->getElementsByTagName( $tag );
+		foreach( $all_nodes as $node ) {
+
+			// Check if the node has a class attribute
+			if( $node->hasAttributes() ) {
+
+				// If so, just grab the attribute
+				$classes = $node->attributes->getNamedItem( 'class' );
+
+				// Verify the attribute exists
+				if( $classes ) {
+
+					// Remove classes using regex
+					if( $classes_to_remove_pattern ) {
+						$classes->value = preg_replace( $classes_to_remove_pattern, '', $classes->value );
+					}
+
+					// Append classes
+					if( $classes_to_append ) {
+						$classes->value .= ' ' . esc_attr( $classes_to_append );
+					}
+				} else if( $classes_to_append ) {
+
+					// Set classes
+					$node->setAttribute( 'class', $classes_to_append );
+				}
+			} else if( $classes_to_append ) {
+
+				// Append classes
+				$node->setAttribute( 'class', $classes_to_append );
+			}
+		}
+	}
+}
+
 /**
  * Take over HTML of the Jetpack Contact Form, the Bulma way.
  *
  * @param string $rendered_field Contact Form HTML output.
  * @param string $field_label Field label.
  * @param int|null $id Post ID.
- * @return string $r Contact Form HTML output.
+ * @return string Contact Form HTML output.
  */
 function game_dev_portfolio_contact_form_field_html( $rendered_field, $field_label, $post_id  ) {
-	// $rendered_field  = '<p class="notification">Mua, ha, ha, I took over!</p>' . $rendered_field;
-	return $rendered_field;
+	$dom = new DOMDocument();
+	$dom->loadHTML( $rendered_field );
+
+	// Update the classes on the div tags with 'field' appended
+	game_dev_portfolio_contact_form_class_updater( $dom, 'div', 'field' );
+
+	// Update the classes on the label tags with
+	// 'input', 'select', 'button', 'icon', and 'textarea' removed,
+	// and 'label' appended
+	game_dev_portfolio_contact_form_class_updater( $dom, 'label', '', '(input|select|button|icon|textarea)' );
+
+	// Update the classes on the span tags with 'help' appended
+	game_dev_portfolio_contact_form_class_updater( $dom, 'span', 'help' );
+
+	return $dom->saveHTML();
 }
 add_filter( 'grunion_contact_form_field_html', 'game_dev_portfolio_contact_form_field_html', 10, 3 );
