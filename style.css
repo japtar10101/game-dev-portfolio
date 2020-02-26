@@ -195,8 +195,13 @@ a img.aligncenter {
 }
 
 .mosaic .button {
-	width: 32%;
-	height: inherit;
+	width: 32.2%;
+	height: max-content;
+	color: #3273dc;
+}
+
+.mosaic .button:hover, .mosaic .button:hover figure figcaption {
+	color: #363636;
 }
 
 .mosaic .with-thumbnail {
@@ -205,30 +210,22 @@ a img.aligncenter {
 
 .mosaic .with-thumbnail figure {
 	margin: 0;
+	width: 100%;
 }
 
 .mosaic .with-thumbnail figure img {
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
 }
 
-/* Styling captions */
-.mosaic .image .caption {
+.mosaic .with-thumbnail figure figcaption {
 	text-align: center;
 	width: 100%;
-	padding: 0.5rem 0.5rem 0.25rem 0.5rem;
-	color: hsl(0, 0%, 86%);
-	background-color: hsla(0, 0%, 14%, 70%);
-	position: absolute;
-	left: auto;
-	bottom: 0px;
+	margin-bottom: 0.25rem;
+	font-style: normal;
 	color: #3273dc;
-	background-image: linear-gradient(rgba(0,0,0,0), rgba(255, 255, 255, 70%), rgba(255, 255, 255, 80%), rgba(255, 255, 255, 90%), rgba(255, 255, 255, 90%), rgba(255, 255, 255, 90%));
-	background-color: transparent;
-}
-
-.mosaic .image:hover .caption {
-	color: #363636;
 }
 
 .columns-6 {
@@ -274,6 +271,9 @@ a img.aligncenter {
 	.menu {
 		text-align: center;
 	}
+	.mosaic .button {
+		width: 100%;
+	}	
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -295,6 +295,9 @@ a img.aligncenter {
 	.columns-1-tablet {
 		column-count: 1;
 	}
+	.mosaic .button {
+		width: 48.5%;
+	}	
 }
 
 @media (min-width: 1025px) and (max-width: 1216px) {
@@ -391,7 +394,7 @@ nav.navbar .navbar-brand .navbar-item {
 }
 
 #primary {
-	/* background-color: #fff; */
+	background-color: #fff;
 	margin-top: 0.75rem;
 }
 

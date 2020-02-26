@@ -89,8 +89,7 @@
 
 <script type="text/javascript">
 	var msnry = new Masonry( '.mosaic', {
-		columnWidth: '.image',
-		itemSelector: '.image',
+		columnWidth: '.button',
 		percentPosition: true
 	});
 </script>
