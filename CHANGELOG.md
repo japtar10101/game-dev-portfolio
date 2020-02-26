@@ -1,3 +1,10 @@
+# 2020.4.1
+## 2/26/2020
+- New enhancement - Sidebar menu has animations.
+- New enhancement - Links now fade to dark, rather than jump to it, on hover.  In short, hover.css is now partially integrated.
+- New enhancement - Portfolio visuals have changed yet again.  This time, they're based off of the Bulma's button styling, rather than Bulma's box.
+- Fixed issue - Order of portfolio thumbnail is now left-to-right, rather than up-to-down.  This required integrating with Masonry javascript.
+
 # 2020.4.0
 ## 2/18/2020
 - New feature #5 - Sidebar now has the primary menu built-in.
