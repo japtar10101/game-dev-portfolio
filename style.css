@@ -189,54 +189,45 @@ a img.aligncenter {
 	/* Above WP toolbar. */
 }
 
-/* Styling captions */
-.image .caption {
-	text-align: center;
-	width: 100%;
-	padding: 0rem 0.5rem 0.25rem 0.5rem;
-	color: hsl(0, 0%, 86%);
-	background-color: hsla(0, 0%, 14%, 70%);
-	position: absolute;
-	left: auto;
-	bottom: 0px;
-}
-
-.mosaic .image .caption {
-	-moz-border-radius: 0 0 1rem 1rem;
-	border-radius: 0 0 1rem 1rem;
-}
-
-.image:hover .caption {
-	color: hsl(0, 0%, 98%);
-	background-color: hsla(0, 0%, 7%, 90%);
-}
-
-@media (max-width: 1024px) {
-	.image .caption {
-		color: hsl(0, 0%, 98%);
-		background-color: hsla(0, 0%, 7%, 90%);
-	}
-}
-
 /* Styling a tile for mosaic composition */
 .mosaic {
-	column-count: 1;
-	column-gap: 1.5rem;
 	padding-top: 1.5rem;
 }
 
-.mosaic .image {
-	display: inline-block;
-	width: 100%;
-	margin-bottom: 1.25rem;
-	padding: 0px;
-	-moz-border-radius: 1rem;
-	border-radius: 1rem;
+.mosaic .button {
+	width: 32.2%;
+	height: max-content;
+	color: #3273dc;
 }
 
-.mosaic .image img {
-	-moz-border-radius: 1rem;
-	border-radius: 1rem;
+.mosaic .button:hover, .mosaic .button:hover figure figcaption {
+	color: #363636;
+}
+
+.mosaic .with-thumbnail {
+	padding: 0;
+}
+
+.mosaic .with-thumbnail figure {
+	margin: 0;
+	width: 100%;
+}
+
+.mosaic .with-thumbnail figure img {
+	-moz-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.mosaic .with-thumbnail figure figcaption {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 0.25rem;
+	font-style: normal;
+	color: #3273dc;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
 }
 
 .columns-6 {
@@ -282,6 +273,9 @@ a img.aligncenter {
 	.menu {
 		text-align: center;
 	}
+	.mosaic .button {
+		width: 100%;
+	}	
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -303,6 +297,9 @@ a img.aligncenter {
 	.columns-1-tablet {
 		column-count: 1;
 	}
+	.mosaic .button {
+		width: 48.5%;
+	}	
 }
 
 @media (min-width: 1025px) and (max-width: 1216px) {
@@ -399,7 +396,7 @@ nav.navbar .navbar-brand .navbar-item {
 }
 
 #primary {
-	/* background-color: #fff; */
+	background-color: #fff;
 	margin-top: 0.75rem;
 }
 

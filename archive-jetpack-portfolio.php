@@ -36,7 +36,8 @@
 								</div>
 							</header>
 							<?php if ( have_posts() ) : ?>
-								<article class="content mosaic columns-3 columns-2-tablet columns-1-mobile">
+								<!-- <article class="content mosaic columns-3 columns-2-tablet columns-1-mobile"> -->
+								<article class="content mosaic buttons">
 									<?php 
 									/* Start the Loop */
 									while ( have_posts() ) :
@@ -66,6 +67,6 @@
 			</div>
 		</div><!-- #content -->
 	</section>
-	<?php get_footer(); ?>
+	<?php get_footer( 'portfolio' ); ?>
 </body>
 </html>

@@ -86,3 +86,10 @@
 
 <!-- Wordpress Footer -->
 <?php wp_footer(); ?>
+
+<script type="text/javascript">
+	var msnry = new Masonry( '.mosaic', {
+		columnWidth: '.button',
+		percentPosition: true
+	});
+</script>
