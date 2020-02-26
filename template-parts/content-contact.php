@@ -57,161 +57,34 @@ if (post_password_required()) {
 </div>
 
 <hr/>
-<form id="contact" class="contact-area content">
-	<div class="notification is-danger is-light">
-		This is a message.
+<form id="contact" class="contact-area">
+	<div id="contact-name" class="field">
+		<p class="control has-icons-left">
+			<input class="input" type="text" placeholder="<?php esc_attr_e( 'Name (Required)', 'game-dev-portfolio' ); ?>">
+			<span class="icon is-small is-left">
+				<i class="fas fa-user"></i>
+			</span>
+		</p>
 	</div>
-	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'From', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-name" class="field">
-				<p class="control is-expanded has-icons-left">
-					<input class="input is-danger" type="text" placeholder="<?php esc_attr_e( 'Name', 'game-dev-portfolio' ); ?>">
-					<span class="icon is-small is-left">
-						<i class="fas fa-user"></i>
-					</span>
-					<span class="help is-danger">
-						This field is required
-					</span>
-				</p>
-			</div>
-			<div id="contact-email" class="field">
-				<p class="control is-expanded has-icons-left">
-					<input class="input is-danger" type="email" placeholder="<?php esc_attr_e( 'Email', 'game-dev-portfolio' ); ?>">
-					<span class="icon is-small is-left">
-						<i class="fas fa-envelope"></i>
-					</span>
-					<span class="help is-danger">
-						This field is required
-					</span>
-				</p>
-			</div>
+	<div id="contact-email" class="field">
+		<p class="control has-icons-left">
+			<input class="input" type="email" placeholder="<?php esc_attr_e( 'Email', 'game-dev-portfolio' ); ?>">
+			<span class="icon is-small is-left">
+				<i class="fas fa-envelope"></i>
+			</span>
+		</p>
+	</div>
+	<div id="contact-message" class="field">
+		<div class="control">
+			<textarea class="textarea" placeholder="<?php esc_attr_e( 'Message', 'game-dev-portfolio' ); ?>"></textarea>
 		</div>
 	</div>
 
 	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'Subject', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-subject" class="field">
-				<div class="control">
-					<input class="input is-danger" type="text" placeholder="<?php esc_attr_e( 'e.g. Potential games-related job opportunity', 'game-dev-portfolio' ); ?>">
-				</div>
-				<p class="help is-danger">
-					This field is required
-				</p>
-			</div>
+		<div class="control">
+			<button class="button is-link is-outlined">
+				<?php esc_html_e( 'Submit', 'game-dev-portfolio' ); ?>
+			</button>
 		</div>
 	</div>
-
-	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'Message', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-message" class="field">
-				<div class="control">
-					<textarea class="textarea is-danger" placeholder="<?php esc_attr_e( 'e.g. I found your information on your website! Here are some details on the opportunity...', 'game-dev-portfolio' ); ?>"></textarea>
-				</div>
-				<p class="help is-danger">
-					This field is required
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="field is-horizontal">
-		<div class="field-body">
-			<div class="field">
-				<div class="control">
-					<button class="button is-link is-outlined">
-						<?php esc_html_e( 'Submit', 'game-dev-portfolio' ); ?>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div><!-- #contact-form -->
-</form><!-- #contact -->
-
-<hr/>
-<form id="contact" class="contact-area content">
-	<div class="notification is-danger is-light">
-		This is a message.
-	</div>
-	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'From', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-name" class="field">
-				<p class="control is-expanded has-icons-left">
-					<input class="input is-danger" type="text" placeholder="<?php esc_attr_e( 'Name', 'game-dev-portfolio' ); ?>">
-					<span class="icon is-small is-left">
-						<i class="fas fa-user"></i>
-					</span>
-					<span class="help is-danger">
-						This field is required
-					</span>
-				</p>
-			</div>
-			<div id="contact-email" class="field">
-				<p class="control is-expanded has-icons-left has-icons-right">
-					<input class="input is-danger" type="email" placeholder="<?php esc_attr_e( 'Email', 'game-dev-portfolio' ); ?>">
-					<span class="icon is-small is-left">
-						<i class="fas fa-envelope"></i>
-					</span>
-					<span class="help is-danger">
-						This field is required
-					</span>
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'Subject', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-subject" class="field">
-				<div class="control">
-					<input class="input is-danger" type="text" placeholder="<?php esc_attr_e( 'e.g. Potential games-related job opportunity', 'game-dev-portfolio' ); ?>">
-				</div>
-				<p class="help is-danger">
-					This field is required
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="field">
-		<label class="label">
-			<?php esc_html_e( 'Message', 'game-dev-portfolio' ); ?>
-		</label>
-		<div class="field-body">
-			<div id="contact-message" class="field">
-				<div class="control">
-					<textarea class="textarea is-danger" placeholder="<?php esc_attr_e( 'e.g. I found your information on your website! Here are some details on the opportunity...', 'game-dev-portfolio' ); ?>"></textarea>
-				</div>
-				<p class="help is-danger">
-					This field is required
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="field is-horizontal">
-		<div class="field-body">
-			<div class="field">
-				<div class="control">
-					<button class="button is-link is-outlined">
-						<?php esc_html_e( 'Send message', 'game-dev-portfolio' ); ?>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div><!-- #contact-form -->
 </form><!-- #contact -->
