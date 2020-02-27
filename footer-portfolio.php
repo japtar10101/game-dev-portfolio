@@ -88,8 +88,18 @@
 <?php wp_footer(); ?>
 
 <script type="text/javascript">
+	// Load Masonry layout script
 	var msnry = new Masonry( '.mosaic', {
 		columnWidth: '.button',
-		percentPosition: true
+		percentPosition: true,
+		transitionDuration: '0.3s'
+	});
+
+	// Load images loaded script
+	var imgLoad = imagesLoaded( '.mosaic' );
+
+	// Update masonry layout when an image finishes loading.
+	imgLoad.on( 'always', function( instance, image ) {
+		msnry.layout();
 	});
 </script>
