@@ -1,3 +1,7 @@
+# 2020.5.1
+## 2/27/2020
+- Fixed issue - Portfolio thumbnail caption now properly wrap to more than one line if it gets too long.
+
 # 2020.5.0
 ## 2/27/2020
 - New feature #8 - Jetpack contact form is now stylized to fit the Bulma design.  This required changing the HTML generated from each field.
