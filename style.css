@@ -414,3 +414,11 @@ nav.navbar .navbar-brand .navbar-item {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
+span.help {
+	display: inline;
+}
+
+.contact-form .clear-form {
+	margin-bottom: 0px;
+}
