@@ -414,3 +414,16 @@ nav.navbar .navbar-brand .navbar-item {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
+span.help {
+	display: inline;
+}
+
+.contact-form .clear-form {
+	margin-bottom: 0px;
+}
+
+.contact-form .clear-form, .contact-form .control input[type="email"], .contact-form .control input[type="tel"], .contact-form .control input[type="text"], .contact-form .control input[type="url"] {
+	margin-bottom: 0px;
+	width: 100%;
+}
