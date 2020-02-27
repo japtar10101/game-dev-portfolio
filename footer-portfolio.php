@@ -88,17 +88,32 @@
 <?php wp_footer(); ?>
 
 <script type="text/javascript">
-	// Load Masonry layout script
-	var msnry = new Masonry( '.mosaic', {
-		columnWidth: '.button',
-		percentPosition: true
-	});
-
 	// Load images loaded script
 	var imgLoad = imagesLoaded( '.mosaic' );
 
-	// Update masonry layout when an image finishes loading.
-	imgLoad.on( 'always', function( instance, image ) {
-		msnry.layout();
-	});
+	// Create a function that lazy-creates masonry.
+	// Using this method because the constructor causes the layout function to be called.
+	// This tends to create a janky experience.
+	var msnry = null;
+	function updateLayout( instance, image ) {
+
+		// Check if the variable is initialized
+		if( msnry ) {
+
+			// If so, just call the layout function
+			msnry.layout();
+		} else {
+
+			// Construct a new masonry object.
+			// This will automatically call the layout function
+			var msnry = new Masonry( '.mosaic', {
+				columnWidth: '.button',
+				percentPosition: true,
+				transitionDuration: '0.3s'
+			});
+		}
+	}
+
+	// Update masonry layout when an image finishes loading
+	imgLoad.on( 'progress', updateLayout );
 </script>
