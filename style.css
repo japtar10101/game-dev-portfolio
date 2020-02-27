@@ -6,7 +6,7 @@ Author URI: https://taroomiya.com
 GitHub Theme URI:  japtar10101/game-dev-portfolio
 GitHub Theme URI: https://github.com/japtar10101/game-dev-portfolio
 Description: Portfolio for game devs.
-Version: 2020.5.0
+Version: 2020.5.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: game-dev-portfolio
@@ -235,7 +235,8 @@ a img.aligncenter {
 	font-style: normal;
 	color: #3273dc;
   -webkit-transition: color 0.3s;
-  transition: color 0.3s;
+	transition: color 0.3s;
+	white-space: normal;
 }
 
 .columns-6 {
