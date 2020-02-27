@@ -235,7 +235,8 @@ a img.aligncenter {
 	font-style: normal;
 	color: #3273dc;
   -webkit-transition: color 0.3s;
-  transition: color 0.3s;
+	transition: color 0.3s;
+	white-space: normal;
 }
 
 .columns-6 {
