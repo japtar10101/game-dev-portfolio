@@ -1,3 +1,8 @@
+# 2020.5.0
+## 2/27/2020
+- New feature #8 - Jetpack contact form is now stylized to fit the Bulma design.  This required changing the HTML generated from each field.
+- Fixed issue #18 - Integrated the imagesloaded javascript library to check whether the images in the Portfolio page is properly loaded.  Will call the Masonry layout function each time an image is loaded.
+
 # 2020.4.1
 ## 2/26/2020
 - New enhancement - Sidebar menu has animations.
