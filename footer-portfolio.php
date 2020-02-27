@@ -91,8 +91,7 @@
 	// Load Masonry layout script
 	var msnry = new Masonry( '.mosaic', {
 		columnWidth: '.button',
-		percentPosition: true,
-		transitionDuration: '0.3s'
+		percentPosition: true
 	});
 
 	// Load images loaded script
