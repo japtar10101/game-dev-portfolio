@@ -193,6 +193,7 @@ function game_dev_portfolio_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	} else if( is_post_type_archive( 'jetpack-portfolio' ) && ! is_singular() ) {
 		wp_enqueue_script( 'game-dev-portfolio-masonry', get_template_directory_uri() . '/assets/masonry/masonry.pkgd.min.js', array(), '4.2.2', true );
+		wp_enqueue_script( 'game-dev-portfolio-imagesloaded', get_template_directory_uri() . '/assets/imagesloaded/imagesloaded.pkgd.min.js', array(), '4.1.4', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
