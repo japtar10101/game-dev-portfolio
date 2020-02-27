@@ -65,7 +65,7 @@ function game_dev_portfolio_infinite_scroll_render() {
  * @return string $class Bulma button classes appended.
  */
 function game_dev_portfolio_contact_form_submit_button_class( string $class  ) {
-	$class  .= ' button is-link is-outlined';
+	$class  .= ' button';
 	return $class;
 }
 add_filter( 'jetpack_contact_form_submit_button_class', 'game_dev_portfolio_contact_form_submit_button_class' );
