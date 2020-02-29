@@ -51,7 +51,7 @@
 										get_template_part( 'template-parts/content', 'portfolio-preview' );
 
 									endwhile;
-									the_posts_navigation();
+									game_dev_portfolio_pagination();
 									?>
 								</article>
 							<?php 

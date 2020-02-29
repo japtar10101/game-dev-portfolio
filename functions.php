@@ -822,4 +822,12 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+
+if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
+	function game_dev_portfolio_pagination( $args = array() ) {
+		global $wp_query;
+		echo '<p>Using custom pagination</p>';
+		echo get_the_posts_pagination( $args );
+	}
+endif;
 ?>

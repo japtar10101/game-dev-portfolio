@@ -47,7 +47,7 @@
 
 							endwhile;
 
-							the_posts_navigation();
+							game_dev_portfolio_pagination();
 
 						else :
 
