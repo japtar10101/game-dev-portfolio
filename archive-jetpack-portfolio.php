@@ -51,9 +51,9 @@
 										get_template_part( 'template-parts/content', 'portfolio-preview' );
 
 									endwhile;
-									game_dev_portfolio_pagination();
 									?>
 								</article>
+								<?php game_dev_portfolio_pagination(); ?>
 							<?php 
 							else :
 								echo '<hr />';

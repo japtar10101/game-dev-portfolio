@@ -428,3 +428,9 @@ span.help {
 	margin-bottom: 0px;
 	width: 100%;
 }
+
+/* Fix some weird pagination issues */
+nav.pagination ul {
+	list-style: none;
+	margin: 0;
+}
