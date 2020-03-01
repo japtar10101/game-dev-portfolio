@@ -1034,6 +1034,9 @@ if ( ! function_exists( 'game_dev_portfolio_comments_pagination' ) ) :
 			// Setup the args
 			$args = wp_parse_args( $args, $defaults );
 
+			// Force the function to *not* echo
+			$args[ 'echo' ] = false;
+
 			// Determine next and previous page number
 			$prev_page_num = intval( $args[ 'current' ] );
 			$next_page_num = $prev_page_num;

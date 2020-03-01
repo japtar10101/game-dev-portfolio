@@ -95,10 +95,11 @@ Format how the list of comments are portrayed.
 	margin: 0px 20px 20px 0px;
 }
 
-.comment-list .children {
-	margin-top: 0px;
-	margin-left: 84px;
+.pagination ul.pagination-list li {
+	margin: 0px;
 }
+
+.comment-list .pagination-list
 
 /* Dunno what to do with this */
 .gallery-caption {
