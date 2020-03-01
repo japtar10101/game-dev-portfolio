@@ -824,10 +824,83 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 endif;
 
 if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
+	/**
+	 * Displays Bulma-styled pagination
+	 */
 	function game_dev_portfolio_pagination( $args = array() ) {
+		// Import the query
 		global $wp_query;
-		echo '<p>Using custom pagination</p>';
-		echo get_the_posts_pagination( $args );
+
+		// Get max pages of the current query, if available.
+		$total = isset( $wp_query->max_num_pages ) ? $wp_query->max_num_pages : 1;
+
+		// Make sure there are pages to parse
+		if( $total > 1 ) {
+			// Setup defaults
+			$defaults = array(
+				// Get the current page
+				'current'            => ( get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1 ),
+				'class_nav'          => 'pagination is-centered',
+				'prev_next'          => true,
+				'prev_text'          => _x( '&laquo; Previous', 'previous posts', 'game-dev-portfolio' ),
+				'next_text'          => _x( 'Next &raquo;', 'newer posts', 'game-dev-portfolio' ),
+				'screen_reader_text' => __( 'Navigation', 'game-dev-portfolio' ),
+				'aria_label'         => __( 'Posts', 'game-dev-portfolio' ),
+				'role_nav'           => 'navigation',
+			);
+
+			// Setup the args
+			$args = wp_parse_args( $args, $defaults );
+
+			// Set the current page to whatever was set in args
+			$current = $args[ 'current' ];
+			?>
+			<nav class="<?php echo esc_attr( $args['class_nav'] ); ?>" role="<?php echo esc_attr( $args['role_nav'] ); ?>" aria-label="<?php echo esc_attr( $args['aria_label'] ); ?>">
+				<h2 class="screen-reader-text">
+					<?php echo esc_html( $args['screen_reader_text'] ); ?>
+				</h2>
+				<?php
+				// Check if we want to show the next and previous buttons
+				if( $args['prev_next'] ):
+
+					// Setup the attributes for the next and previous post
+					$prev_attr = apply_filters( 'previous_posts_link_attributes', '' );
+					$next_attr = apply_filters( 'next_posts_link_attributes', '' );
+					if( ! $prev_attr ) {
+						// Default previous class
+						$prev_attr = 'class="pagination-previous"';
+					}
+					if( ! $next_attr ) {
+						// Default next class
+						$next_attr = 'class="pagination-next"';
+					}
+					if( $current <= 1 ) {
+						$prev_attr .= ' disabled';
+					}
+					if( $current >= $total ) {
+						$next_attr .= ' disabled';
+					}
+				?>
+					<a href="<?php previous_posts(); ?>" <?php echo $prev_attr; ?>>
+						<?php echo esc_html( $args['prev_text'] ); ?>
+					</a>
+					<a href="<?php next_posts(); ?>" <?php echo $next_attr; ?>>
+						<?php echo esc_html( $args['next_text'] ); ?>
+					</a>
+				<?php endif; ?>
+				<ul class="pagination-list">
+					<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+					<li><span class="pagination-ellipsis">&hellip;</span></li>
+					<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
+					<li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+					<li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
+					<li><span class="pagination-ellipsis">&hellip;</span></li>
+					<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
+				</ul>
+			</nav>
+			<?php
+			echo get_the_posts_pagination( $args );
+		}
 	}
 endif;
 ?>
