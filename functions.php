@@ -314,12 +314,11 @@ if ( ! function_exists( 'game_dev_portfolio_get_cancel_comment_reply_link' ) ) :
 endif;
 add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link' );
 
-/**
- * Function to format the comment form
- * This is largely a copy-pasta from Wordpress itself
- */
 if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
-
+	/**
+	 * Function to format the comment form
+	 * This is largely a copy-pasta from Wordpress itself
+	 */
 	function game_dev_portfolio_comment_form( $args = array(), $post_id = null ) {
 		if ( null === $post_id ) {
 			$post_id = get_the_ID();
@@ -822,6 +821,7 @@ if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_post_thumbnail' );
 
 if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
 	/**
@@ -896,21 +896,75 @@ if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
 				);
 			endif;
 
+			// Start working on setting up full links string
+			$links = '';
+
 			// Grab all the links, with a few parameters deliberately over-written
 			$args[ 'prev_next' ] = false;
-			// FIXME: uncomment, evaluate results
-			//$args[ 'type' ] = 'array';
-			$links = paginate_links( $args );
+			$args[ 'type' ] = 'array';
+			$links_array = paginate_links( $args );
 
-			/* FIXME: set each paged link to the format below
-				<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-				<li><span class="pagination-ellipsis">&hellip;</span></li>
-				<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-				<li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-				<li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-				<li><span class="pagination-ellipsis">&hellip;</span></li>
-				<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-			*/
+			// Go through all links
+			$dom = new DOMDocument();
+			foreach( $links_array as $link ) {
+
+				// Load the link as HTML DOM
+				$dom->loadHTML( $link );
+
+				// Look for links
+				$nodes = $dom->getElementsByTagName( 'a' );
+				if( $nodes->length > 0 ) {
+
+					// Go through each link (there should only be one)
+					foreach( $nodes as $node ) {
+
+						// Set the class for this link
+						$classes = 'pagination-link';
+						if( $node->hasAttribute( 'class' ) ) {
+							$classes .= $node->getAttribute( 'class' ) . ' pagination-link';
+						}
+						$node->setAttribute( 'class', $classes );
+
+						// Set the aria-label as well
+						$node->setAttribute( 'aria-label', sprintf(
+							__( 'Go to page %s', 'game-dev-portfolio' ),
+							$node->value
+						) );
+					}
+				} else {
+
+					// If no links are available, go through each span (there should only be one)
+					$nodes = $dom->getElementsByTagName( 'span' );
+					foreach( $nodes as $node ) {
+
+						// Customize the class for this span
+						$classes = 'pagination-ellipsis';
+
+						// Check if this is the current page
+						if( $node->hasAttribute( 'aria-current' ) ) {
+							// Indicate in the class this is the current page
+							$classes = 'pagination-link is-current';
+
+							// Set the aria-label as well
+							$node->setAttribute( 'aria-label', sprintf(
+								__( 'Page %s', 'game-dev-portfolio' ),
+								$node->value
+							) );
+						}
+
+						// Append the new class attributes
+						if( $node->hasAttribute( 'class' ) ) {
+							$classes = $node->getAttribute( 'class' ) . ' ' . $classes;
+						}
+						$node->setAttribute( 'class', $classes );
+					}
+				}
+
+				// Surround the entire link with list
+				$links .= '<li>' . $dom->saveHTML() . '</li>';
+			}
+
+			// Echo the entire template
 			echo sprintf( $template,
 				esc_attr( $args['class'] ),
 				esc_html( $args['screen_reader_text'] ),
@@ -919,10 +973,8 @@ if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
 				$prev_link,
 				$next_link
 			);
-
-			// FIXME: testing default pagination text, verify links are correct
-			//echo get_the_posts_pagination( $args );
 		}
 	}
 endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_pagination' );
 ?>
