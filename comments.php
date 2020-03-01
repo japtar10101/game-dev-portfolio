@@ -55,6 +55,7 @@ if ( post_password_required() ) {
 				'max_depth'  => 4,
 				'type'       => 'comment',
 				'callback'   => 'format_comment',
+				'per_page'   => 5,
 			) );
 			?>
 		</div><!-- .comment-list -->
