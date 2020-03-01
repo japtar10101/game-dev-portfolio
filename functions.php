@@ -860,7 +860,7 @@ if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
 				<h2 class="screen-reader-text">%2$s</h2>
 				%5$s
 				%6$s
-				<ul class="pagination-list">%3$s</ul>
+				%3$s
 			</nav>';
 			$template  = apply_filters( 'navigation_markup_template', $template, $args['class_nav'] );
 
@@ -896,79 +896,73 @@ if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
 				);
 			endif;
 
-			// Start working on setting up full links string
-			$links = '';
-
 			// Grab all the links, with a few parameters deliberately over-written
-			$args[ 'prev_next' ] = false;
-			$args[ 'type' ] = 'array';
-			$links_array = paginate_links( $args );
-
-			// Go through all links
 			$dom = new DOMDocument();
-			foreach( $links_array as $link ) {
+			$args[ 'prev_next' ] = false;
+			$args[ 'type' ] = 'list';
+			$dom->loadHTML( paginate_links( $args ) );
 
-				// Load the link as HTML DOM
-				$dom->loadHTML( $link );
+			// Go through each ul (there should only be one)
+			$nodes = $dom->getElementsByTagName( 'ul' );
+			foreach( $nodes as $node ) {
 
-				// Look for links
-				$nodes = $dom->getElementsByTagName( 'a' );
-				if( $nodes->length > 0 ) {
+				// Set the class for this tag
+				$classes = 'pagination-list';
+				if( $node->hasAttribute( 'class' ) ) {
+					$classes .= $node->getAttribute( 'class' ) . ' ' . $classes;
+				}
+				$node->setAttribute( 'class', $classes );
+			}
 
-					// Go through each link (there should only be one)
-					foreach( $nodes as $node ) {
+			// Go through each link
+			$nodes = $dom->getElementsByTagName( 'a' );
+			foreach( $nodes as $node ) {
 
-						// Set the class for this link
-						$classes = 'pagination-link';
-						if( $node->hasAttribute( 'class' ) ) {
-							$classes .= $node->getAttribute( 'class' ) . ' pagination-link';
-						}
-						$node->setAttribute( 'class', $classes );
+				// Set the class for this tag
+				$classes = 'pagination-link';
+				if( $node->hasAttribute( 'class' ) ) {
+					$classes .= $node->getAttribute( 'class' ) . ' ' . $classes;
+				}
+				$node->setAttribute( 'class', $classes );
 
-						// Set the aria-label as well
-						$node->setAttribute( 'aria-label', sprintf(
-							__( 'Go to page %s', 'game-dev-portfolio' ),
-							$node->value
-						) );
-					}
-				} else {
+				// Set the aria-label as well
+				$node->setAttribute( 'aria-label', sprintf(
+					__( 'Go to page %s', 'game-dev-portfolio' ),
+					$node->value
+				) );
+			}
 
-					// If no links are available, go through each span (there should only be one)
-					$nodes = $dom->getElementsByTagName( 'span' );
-					foreach( $nodes as $node ) {
+			// Go through each span
+			$nodes = $dom->getElementsByTagName( 'span' );
+			foreach( $nodes as $node ) {
 
-						// Customize the class for this span
-						$classes = 'pagination-ellipsis';
+				// Customize the class for this span
+				$classes = 'pagination-ellipsis';
 
-						// Check if this is the current page
-						if( $node->hasAttribute( 'aria-current' ) ) {
-							// Indicate in the class this is the current page
-							$classes = 'pagination-link is-current';
+				// Check if this is the current page
+				if( $node->hasAttribute( 'aria-current' ) ) {
+					// Indicate in the class this is the current page
+					$classes = 'pagination-link is-current';
 
-							// Set the aria-label as well
-							$node->setAttribute( 'aria-label', sprintf(
-								__( 'Page %s', 'game-dev-portfolio' ),
-								$node->value
-							) );
-						}
-
-						// Append the new class attributes
-						if( $node->hasAttribute( 'class' ) ) {
-							$classes = $node->getAttribute( 'class' ) . ' ' . $classes;
-						}
-						$node->setAttribute( 'class', $classes );
-					}
+					// Set the aria-label as well
+					$node->setAttribute( 'aria-label', sprintf(
+						__( 'Page %s', 'game-dev-portfolio' ),
+						$node->value
+					) );
 				}
 
-				// Surround the entire link with list
-				$links .= '<li>' . $dom->saveHTML() . '</li>';
+				// Append the new class attributes
+				if( $node->hasAttribute( 'class' ) ) {
+					$classes = $node->getAttribute( 'class' ) . ' ' . $classes;
+				}
+				$node->setAttribute( 'class', $classes );
 			}
 
 			// Echo the entire template
 			echo sprintf( $template,
 				esc_attr( $args['class'] ),
 				esc_html( $args['screen_reader_text'] ),
-				$links,
+				$dom->saveHTML(),
 				esc_attr( $args['aria_label'] ),
 				$prev_link,
 				$next_link
