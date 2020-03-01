@@ -86,7 +86,7 @@ Format how the list of comments are portrayed.
 	margin-bottom: .75rem;
 }
 
-.comment-list li#li-comment-1 {
+.comment-list li:first-child {
 	border-top: none;
 	padding-top: 0px;
 }
