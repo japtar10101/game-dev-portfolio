@@ -89,31 +89,51 @@
 
 <script type="text/javascript">
 	( function( $ ) {
-		// Construct a new masonry object.
-		var $mosaic = $( '.mosaic' ).masonry({
-			itemSelector: '.button',
-			columnWidth: '.button',
-			percentPosition: true,
-			transitionDuration: '0.3s',
-		});
+		var $mosaic = null;
+		var updateLayout = function( isNewItemsAppended ) {
+			if( $mosaic == null ) {
+
+				// Construct a new masonry object.
+				$mosaic = $( '.mosaic' ).masonry({
+					// itemSelector: '.button',
+					columnWidth: '.button',
+					percentPosition: true,
+					transitionDuration: '0.3s',
+				});
+			} else if( isNewItemsAppended ) {
+
+				// Re-collect all the buttons, then run the layout
+				$mosaic.masonry( 'reloadItems' ).masonry( 'layout' );
+			} else {
+
+				// Run the layout
+				$mosaic.masonry( 'layout' );
+			}
+		};
 
 		// layout Masonry after lazy image loading
 		$( '.jetpack-lazy-image' ).on( 'load', function() {
 			// Run the layout
-			$mosaic.masonry( 'layout' );
+			updateLayout( false );
 		});
+
+		// layout Masonry after entries are loaded from Jetpack infinite scroll
+		$( document.body ).on( 'post-load', function () {
+			// Re-collect all the buttons, then run the layout
+			updateLayout( true );
+		} );
+
+		// Check if a button to load more posts is created by jetpack
+		// $( document.body ).on('DOMNodeInserted', 'div', function () {
+		// 	// Re-collect all the buttons, then run the layout
+		// 	updateLayout( true );
+		// });
 
 		// This javascript is likely not needed anymore
 		// // layout Masonry after each image loads
 		// $mosaic.imagesLoaded().progress( function() {
 		// 	// Run the layout
-		// 	$mosaic.masonry( 'layout' );
+		// 	updateLayout( false );
 		// });
-
-		// layout Masonry after entries are loaded from Jetpack infinite scroll
-		$( document.body ).on( 'post-load', function () {
-			// Re-collect all the buttons, then run the layout
-			$mosaic.masonry( 'reloadItems' ).masonry( 'layout' );
-		} );
 	} )( jQuery );
 </script>
