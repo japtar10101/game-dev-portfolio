@@ -16,6 +16,7 @@
  */
 function game_dev_portfolio_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
+	// FIXME: Consider disabling support on portfolio.  Use a custom solution instead.
 	add_theme_support( 'infinite-scroll', array(
 		'type'           => 'scroll',
 		'container'      => 'main',
@@ -56,6 +57,7 @@ function game_dev_portfolio_infinite_scroll_render() {
 		if ( is_search() ) {
 			get_template_part( 'template-parts/content', 'search' );
 		} else if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+			// FIXME: Consider using a different template that indicates the number of times infinite scroll was called.
 			get_template_part( 'template-parts/content', 'portfolio-preview' );
 		} else {
 			get_template_part( 'template-parts/content', get_post_type() );
