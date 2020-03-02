@@ -313,7 +313,7 @@ if ( ! function_exists( 'game_dev_portfolio_get_cancel_comment_reply_link' ) ) :
 		return apply_filters( 'cancel_comment_reply_link', $formatted_link, $link, $text );
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link' );
+add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link', 10, 2 );
 
 if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 	/**
@@ -724,9 +724,9 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 		do_action( 'comment_form_after' );
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form' );
+add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form', 10, 2 );
 
-if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
+if ( ! function_exists( 'get_game_dev_portfolio_link' ) ) :
 	/**
 	 * Prints a a-href tag link, translated
 	 */
@@ -753,7 +753,7 @@ if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_link' );
+add_action( 'after_setup_theme', 'get_game_dev_portfolio_link', 10, 3 );
 
 if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
 	/**
