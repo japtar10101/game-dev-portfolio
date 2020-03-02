@@ -28,7 +28,8 @@
 				<div id="primary" class="content-area column is-three-quarters">
 					<main id="main" class="site-main" role="main">
 						<?php
-						if ( have_posts() ) :
+						$showing_posts = have_posts();
+						if ( $showing_posts ) :
 							if ( is_home() && ! is_front_page() ) :
 								?>
 								<header class="page-header no-thumbnail">
@@ -48,13 +49,12 @@
 								*/
 								get_template_part( 'template-parts/content', get_post_type() );
 							endwhile;
-
-							game_dev_portfolio_pagination();
 						else :
 							get_template_part( 'template-parts/content', 'none' );
 						endif;
 						?>
 					</main><!-- #main -->
+				<?php if ( $showing_posts ) { game_dev_portfolio_pagination(); } ?>
 				</div><!-- #primary -->
 			</div>
 		</div><!-- #content -->

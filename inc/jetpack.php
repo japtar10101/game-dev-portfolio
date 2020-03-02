@@ -17,10 +17,12 @@
 function game_dev_portfolio_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'main',
-		'render'    => 'game_dev_portfolio_infinite_scroll_render',
-		'footer'    => 'page',
-	) );
+		'container'      => 'main',
+		'render'         => 'game_dev_portfolio_infinite_scroll_render',
+		'footer'         => false,
+		'footer_widgets' => array( 'footer-top', 'footer-bottom', ),
+		'wrapper'        => false
+		) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
@@ -50,11 +52,13 @@ add_action( 'after_setup_theme', 'game_dev_portfolio_jetpack_setup' );
 function game_dev_portfolio_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
-		if ( is_search() ) :
+		if ( is_search() ) {
 			get_template_part( 'template-parts/content', 'search' );
-		else :
+		} else if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+			get_template_part( 'template-parts/content', 'portfolio-preview' );
+		} else {
 			get_template_part( 'template-parts/content', get_post_type() );
-		endif;
+		}
 	}
 }
 
