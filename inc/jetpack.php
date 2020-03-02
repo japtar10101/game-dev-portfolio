@@ -17,6 +17,7 @@
 function game_dev_portfolio_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
+		'type'           => 'scroll',
 		'container'      => 'main',
 		'render'         => 'game_dev_portfolio_infinite_scroll_render',
 		'footer'         => false,

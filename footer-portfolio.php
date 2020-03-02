@@ -88,32 +88,32 @@
 <?php wp_footer(); ?>
 
 <script type="text/javascript">
-	// Load images loaded script
-	var imgLoad = imagesLoaded( '.mosaic' );
+	( function( $ ) {
+		// Construct a new masonry object.
+		var $mosaic = $( '.mosaic' ).masonry({
+			itemSelector: '.button',
+			columnWidth: '.button',
+			percentPosition: true,
+			transitionDuration: '0.3s',
+		});
 
-	// Create a function that lazy-creates masonry.
-	// Using this method because the constructor causes the layout function to be called.
-	// This tends to create a janky experience.
-	var msnry = null;
-	function updateLayout( instance, image ) {
+		// layout Masonry after lazy image loading
+		$( '.jetpack-lazy-image' ).on( 'load', function() {
+			// Run the layout
+			$mosaic.masonry( 'layout' );
+		});
 
-		// Check if the variable is initialized
-		if( msnry ) {
+		// This javascript is likely not needed anymore
+		// // layout Masonry after each image loads
+		// $mosaic.imagesLoaded().progress( function() {
+		// 	// Run the layout
+		// 	$mosaic.masonry( 'layout' );
+		// });
 
-			// If so, just call the layout function
-			msnry.layout();
-		} else {
-
-			// Construct a new masonry object.
-			// This will automatically call the layout function
-			var msnry = new Masonry( '.mosaic', {
-				columnWidth: '.button',
-				percentPosition: true,
-				transitionDuration: '0.3s'
-			});
-		}
-	}
-
-	// Update masonry layout when an image finishes loading
-	imgLoad.on( 'progress', updateLayout );
+		// layout Masonry after entries are loaded from Jetpack infinite scroll
+		$( document.body ).on( 'post-load', function () {
+			// Re-collect all the buttons, then run the layout
+			$mosaic.masonry( 'reloadItems' ).masonry( 'layout' );
+		} );
+	} )( jQuery );
 </script>

@@ -22,7 +22,7 @@
 
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
-					<main id="main" class="site-main content mosaic buttons" role="main">
+					<main class="site-main content" role="main">
 						<header class="page-header no-thumbnail">
 							<h1 class="title page-title">
 								<?php echo __('Portfolio', 'game-dev-portfolio'); ?>
@@ -34,32 +34,34 @@
 								?>
 							</div>
 						</header>
-						<?php
-						$showing_posts = have_posts();
-						if ( $showing_posts ) :
-						?>
-							<?php 
-							/* Start the Loop */
-							while ( have_posts() ) :
-								the_post();
-
-								/*
-								* Include the Post-Type-specific template for the content.
-								* If you want to override this in a child theme, then include a file
-								* called content-___.php (where ___ is the Post Type name) and that will be used instead.
-								*/
-								get_template_part( 'template-parts/content', 'portfolio-preview' );
-
-							endwhile;
+						<article id="main" class="mosaic buttons">
+							<?php
+							$showing_posts = have_posts();
+							if ( $showing_posts ) :
 							?>
-						<?php 
-						else :
-							echo '<hr />';
-							get_template_part( 'template-parts/content', 'none' );
+								<?php 
+								/* Start the Loop */
+								while ( have_posts() ) :
+									the_post();
 
-						endif;
-						?>
-					</main><!-- #main -->
+									/*
+									* Include the Post-Type-specific template for the content.
+									* If you want to override this in a child theme, then include a file
+									* called content-___.php (where ___ is the Post Type name) and that will be used instead.
+									*/
+									get_template_part( 'template-parts/content', 'portfolio-preview' );
+
+								endwhile;
+								?>
+							<?php 
+							else :
+								echo '<hr />';
+								get_template_part( 'template-parts/content', 'none' );
+
+							endif;
+							?>
+						</article> <!-- #main -->
+					</main>
 				<?php if( $showing_posts ) { game_dev_portfolio_pagination(); } ?>
 				</div><!-- #primary -->
 			</div>
