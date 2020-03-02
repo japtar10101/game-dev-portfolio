@@ -193,8 +193,6 @@ function game_dev_portfolio_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	} else if( is_post_type_archive( 'jetpack-portfolio' ) && ! is_singular() ) {
 		wp_enqueue_script( 'game-dev-portfolio-masonry', get_template_directory_uri() . '/assets/masonry/masonry.pkgd.min.js', array(), '4.2.2', true );
-		// FIXME: to remove if confirmed Portfolio doesn't need imagesLoaded script
-		// wp_enqueue_script( 'game-dev-portfolio-imagesloaded', get_template_directory_uri() . '/assets/imagesloaded/imagesloaded.pkgd.min.js', array(), '4.1.4', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
@@ -321,8 +319,17 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 	 * This is largely a copy-pasta from Wordpress itself
 	 */
 	function game_dev_portfolio_comment_form( $args = array(), $post_id = null ) {
+
+		// Check if the post ID argument has been provided
 		if ( null === $post_id ) {
+
+			// If not, grab the loaded post's ID
 			$post_id = get_the_ID();
+
+			// If the loaded posts still doesn't exist, skip this function entirely
+			if ( ! $post_id ) {
+				return;
+			}
 		}
 	
 		// Exit the function when comments for the post are closed.

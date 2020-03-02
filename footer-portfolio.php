@@ -122,18 +122,5 @@
 			// Re-collect all the buttons, then run the layout
 			updateLayout( true );
 		} );
-
-		// Check if a button to load more posts is created by jetpack
-		// $( document.body ).on('DOMNodeInserted', 'div', function () {
-		// 	// Re-collect all the buttons, then run the layout
-		// 	updateLayout( true );
-		// });
-
-		// This javascript is likely not needed anymore
-		// // layout Masonry after each image loads
-		// $mosaic.imagesLoaded().progress( function() {
-		// 	// Run the layout
-		// 	updateLayout( false );
-		// });
 	} )( jQuery );
 </script>
