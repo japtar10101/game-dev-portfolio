@@ -450,7 +450,7 @@ nav.pagination ul {
 	display: block;
 }
 
-.infinity-end.neverending .mosaic {
+.infinity-end .mosaic, .infinity-end.neverending .mosaic {
 	padding-bottom: 0;
 }
 

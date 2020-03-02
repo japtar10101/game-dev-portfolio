@@ -89,37 +89,61 @@
 
 <script type="text/javascript">
 	( function( $ ) {
-		var $mosaic = null;
-		var updateLayout = function( isNewItemsAppended ) {
-			if( $mosaic == null ) {
+		// 0 = ready to run layout,
+		// 1 = currently laying out,
+		// 2 = currently laying out, have more items on queue
+		var loadState = 1;
 
-				// Construct a new masonry object.
-				$mosaic = $( '.mosaic' ).masonry({
-					itemSelector: '.button',
-					columnWidth: '.button',
-					percentPosition: true,
-					transitionDuration: '0.3s',
-				});
-			} else if( isNewItemsAppended ) {
+		// Construct a new masonry object.
+		var $mosaic = $( '.mosaic' ).masonry({
+			itemSelector: '.button',
+			columnWidth: '.button',
+			percentPosition: true,
+			transitionDuration: '0.3s',
+		}).masonry( 'layout' );
 
-				// Re-collect all the buttons, then run the layout
-				$mosaic.masonry( 'reloadItems' ).masonry( 'layout' );
-			} else {
+		// Create a function to update the layout with new items (or not)
+		var updateLayout = function( $newAppendedItems = false ) {
+
+			// Check whether the argument is empty
+			if ( $newAppendedItems ) {
+
+				// Re-collect all the buttons
+				// FIXME: append all the items when argument is setup properly
+				$mosaic.masonry( 'reloadItems' );
+			}
+
+			// Check the load state
+			if ( loadState < 1 ) {
 
 				// Run the layout
+				loadState = 1;
 				$mosaic.masonry( 'layout' );
+			} else {
+
+				// Change the state to queue the next layout
+				loadState = 2;
 			}
 		};
+
+		// Bind to the mosaic's layout complete event
+		$mosaic.on( 'layoutComplete', function() {
+
+			// console.log( 'On layoutComplete: state ' + loadState); 
+			loadState = 0;
+		} );
 
 		// layout Masonry after lazy image loading
 		$( '.jetpack-lazy-image' ).on( 'load', function() {
 			// Run the layout
-			updateLayout( false );
+			// console.log( 'Called updateLayout from jetpack-lazy-image: state ' + loadState); 
+			updateLayout();
 		});
 
 		// layout Masonry after entries are loaded from Jetpack infinite scroll
 		$( document.body ).on( 'post-load', function () {
 			// Re-collect all the buttons, then run the layout
+			// console.log( 'Called updateLayout from post-load: state ' + loadState); 
 			updateLayout( true );
 		} );
 	} )( jQuery );
