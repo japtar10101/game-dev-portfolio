@@ -95,7 +95,7 @@
 
 				// Construct a new masonry object.
 				$mosaic = $( '.mosaic' ).masonry({
-					// itemSelector: '.button',
+					itemSelector: '.button',
 					columnWidth: '.button',
 					percentPosition: true,
 					transitionDuration: '0.3s',

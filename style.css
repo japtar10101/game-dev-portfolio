@@ -441,12 +441,26 @@ nav.pagination ul {
 	display: none;
 }
 
+.infinite-scroll .mosaic, .infinite-scroll.neverending .mosaic {
+	padding-bottom: 2.5rem;
+}
+
 /* Shows the footer again in case all posts have been loaded */
 .infinity-end.neverending footer#footer {
 	display: block;
 }
 
+.infinity-end.neverending .mosaic {
+	padding-bottom: 0;
+}
+
 /* Make the load older post button similar to bulma buttons. */
+.mosaic #infinite-handle {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+
 #infinite-handle span {
 	padding: 0;
 	background: none;
