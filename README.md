@@ -26,7 +26,9 @@ Installation
 Does this theme support any plugins?
 ---
 
-Not yet, but Game Dev Portfolio is planned to include support for Infinite Scroll in Jetpack.
+Jetpack is supported, with the following features:
+- Infinite Scroll support in blog, archives, search (but not yet with portfolio).
+- Bulma-styled Contact Forms.
 
 Changelog
 ===
