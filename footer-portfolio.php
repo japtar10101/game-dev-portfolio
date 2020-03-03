@@ -88,32 +88,83 @@
 <?php wp_footer(); ?>
 
 <script type="text/javascript">
-	// Load images loaded script
-	var imgLoad = imagesLoaded( '.mosaic' );
+	( function( $ ) {
 
-	// Create a function that lazy-creates masonry.
-	// Using this method because the constructor causes the layout function to be called.
-	// This tends to create a janky experience.
-	var msnry = null;
-	function updateLayout( instance, image ) {
+		// Construct a new masonry object.
+		var $mosaic = $( '.mosaic' ).masonry({
+			itemSelector: '.button',
+			columnWidth: '.button',
+			percentPosition: true,
+			transitionDuration: '0s',
+			// isAnimated: !Modernizr.csstransitions
+		});
 
-		// Check if the variable is initialized
-		if( msnry ) {
+		// 0 = ready to run layout,
+		// 1 = currently laying out,
+		// 2 = currently laying out, have more items on queue
+		// var loadState = 0;
 
-			// If so, just call the layout function
-			msnry.layout();
-		} else {
+		// Create a function to update the layout with new items (or not)
+		var updateLayout = function( $newAppendedItems = false ) {
 
-			// Construct a new masonry object.
-			// This will automatically call the layout function
-			var msnry = new Masonry( '.mosaic', {
-				columnWidth: '.button',
-				percentPosition: true,
-				transitionDuration: '0.3s'
-			});
-		}
-	}
+			// Check whether the argument is empty
+			console.log( 'updateLayout: newAppendedItems ' + $newAppendedItems); 
+			if ( $newAppendedItems ) {
 
-	// Update masonry layout when an image finishes loading
-	imgLoad.on( 'progress', updateLayout );
+				// Collect the new buttons
+				$mosaic.masonry( 'appended', $newAppendedItems );
+			}
+
+			// HACK: forcing loading for now, disregarding what the load state is
+			$mosaic.masonry( 'layout' );
+
+			// Check the load state
+			// if ( loadState < 1 ) {
+
+			// 	// Run the layout
+			// 	loadState = 1;
+			// 	// $mosaic.masonry( 'layout' );
+			// } else {
+
+			// 	// Change the state to queue the next layout
+			// 	loadState = 2;
+			// }
+		};
+
+		// layout Masonry after entries are loaded from Jetpack infinite scroll
+		var currentPageRequest = 1;
+		$( document.body ).on( 'post-load', function () {
+
+			// Update page request number
+			currentPageRequest += 1;
+
+			// Append all the buttons, then run the layout
+			// console.log( 'Called updateLayout from post-load'); 
+			updateLayout( $( '.from-page-' + currentPageRequest ) );
+		} );
+
+		// layout Masonry after lazy image loading
+		$( '.jetpack-lazy-image' ).on( 'load', function() {
+			// Run the layout
+			// console.log( 'Called updateLayout from jetpack-lazy-image' ); 
+			updateLayout();
+		});
+
+		// Bind to the mosaic's layout complete event
+		// $mosaic.on( 'layoutComplete', function() {
+
+		// 	// console.log( 'On layoutComplete: state ' + loadState);
+		// 	if( loadState > 1 ) {
+		// 		// Run the layout again
+		// 		loadState = 1;
+		// 		$mosaic.masonry( 'layout' );
+		// 	} else {
+		// 		// Indicate the layout is complete
+		// 		loadState = 0;
+		// 	}
+		// } );
+
+		// Update the layout
+		updateLayout();
+	} )( jQuery );
 </script>

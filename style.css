@@ -86,7 +86,7 @@ Format how the list of comments are portrayed.
 	margin-bottom: .75rem;
 }
 
-.comment-list li#li-comment-1 {
+.comment-list li:first-child {
 	border-top: none;
 	padding-top: 0px;
 }
@@ -95,10 +95,11 @@ Format how the list of comments are portrayed.
 	margin: 0px 20px 20px 0px;
 }
 
-.comment-list .children {
-	margin-top: 0px;
-	margin-left: 84px;
+.pagination ul.pagination-list li {
+	margin: 0px;
 }
+
+.comment-list .pagination-list
 
 /* Dunno what to do with this */
 .gallery-caption {
@@ -427,4 +428,80 @@ span.help {
 .contact-form .clear-form, .contact-form .control input[type="email"], .contact-form .control input[type="tel"], .contact-form .control input[type="text"], .contact-form .control input[type="url"] {
 	margin-bottom: 0px;
 	width: 100%;
+}
+
+/* Fix some weird pagination issues */
+nav.pagination ul {
+	list-style: none;
+	margin: 0;
+}
+
+/* Remove pagination if infinite scroll is enabled */
+.infinite-scroll nav.pagination, .infinite-scroll.neverending footer#footer {
+	display: none;
+}
+
+.infinite-scroll .mosaic, .infinite-scroll.neverending .mosaic {
+	padding-bottom: 2.5rem;
+}
+
+/* Shows the footer again in case all posts have been loaded */
+.infinity-end.neverending footer#footer {
+	display: block;
+}
+
+.infinity-end .mosaic, .infinity-end.neverending .mosaic {
+	padding-bottom: 0;
+}
+
+/* Make the load older post button similar to bulma buttons. */
+.mosaic #infinite-handle {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+
+#infinite-handle span {
+	padding: 0;
+	background: none;
+	font-size: 1em;
+	color: #4a4a4a;
+}
+
+button, #infinite-handle span button, button:hover, #infinite-handle span button:hover, button:focus, #infinite-handle span button:focus {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid #dbdbdb;
+	border-radius: 4px;
+	box-shadow: none;
+	color: #363636;
+	cursor: pointer;
+	justify-content: center;
+	padding-bottom: calc(.5em - 1px);
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: calc(.5em - 1px);
+	text-align: center;
+	white-space: nowrap;
+	user-select: none;
+	vertical-align: top;
+	line-height: 1.5;
+	height: 2.5em;
+	font-weight: 400;
+	font-size: 1em;
+}
+
+button:hover, #infinite-handle span button:hover {
+ border-color:#b5b5b5;
+ color:#363636
+}
+
+button:focus, #infinite-handle span button:focus {
+ border-color:#3273dc;
+ color:#363636
 }

@@ -193,7 +193,6 @@ function game_dev_portfolio_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	} else if( is_post_type_archive( 'jetpack-portfolio' ) && ! is_singular() ) {
 		wp_enqueue_script( 'game-dev-portfolio-masonry', get_template_directory_uri() . '/assets/masonry/masonry.pkgd.min.js', array(), '4.2.2', true );
-		wp_enqueue_script( 'game-dev-portfolio-imagesloaded', get_template_directory_uri() . '/assets/imagesloaded/imagesloaded.pkgd.min.js', array(), '4.1.4', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
@@ -312,17 +311,25 @@ if ( ! function_exists( 'game_dev_portfolio_get_cancel_comment_reply_link' ) ) :
 		return apply_filters( 'cancel_comment_reply_link', $formatted_link, $link, $text );
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link' );
+add_action( 'after_setup_theme', 'game_dev_portfolio_get_cancel_comment_reply_link', 10, 2 );
 
-/**
- * Function to format the comment form
- * This is largely a copy-pasta from Wordpress itself
- */
 if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
-
+	/**
+	 * Function to format the comment form
+	 * This is largely a copy-pasta from Wordpress itself
+	 */
 	function game_dev_portfolio_comment_form( $args = array(), $post_id = null ) {
+
+		// Check if the post ID argument has been provided
 		if ( null === $post_id ) {
+
+			// If not, grab the loaded post's ID
 			$post_id = get_the_ID();
+
+			// If the loaded posts still doesn't exist, skip this function entirely
+			if ( ! $post_id ) {
+				return;
+			}
 		}
 	
 		// Exit the function when comments for the post are closed.
@@ -724,9 +731,9 @@ if ( ! function_exists( 'game_dev_portfolio_comment_form' ) ) :
 		do_action( 'comment_form_after' );
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form' );
+add_action( 'after_setup_theme', 'game_dev_portfolio_comment_form', 10, 2 );
 
-if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
+if ( ! function_exists( 'get_game_dev_portfolio_link' ) ) :
 	/**
 	 * Prints a a-href tag link, translated
 	 */
@@ -753,5 +760,312 @@ if ( ! function_exists( 'game_dev_portfolio_link' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'game_dev_portfolio_link' );
+add_action( 'after_setup_theme', 'get_game_dev_portfolio_link', 10, 3 );
+
+if ( ! function_exists( 'game_dev_portfolio_post_thumbnail' ) ) :
+	/**
+	 * Displays an optional post thumbnail.
+	 *
+	 * Wraps the post thumbnail in an anchor element on index views, or a div
+	 * element when on single views.
+	 */
+	function game_dev_portfolio_post_thumbnail( $args = array() ) {
+		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+			return;
+		}
+
+		$args = wp_parse_args( $args );
+	
+		// Filters the comment form default arguments.
+		$defaults = array(
+			'size'               => 'post-thumbnail',
+			'class_caption'      => 'caption',
+			'class_link'         => 'post-thumbnail image',
+			'enable_tab_select'  => false,
+			'caption_text'       => ''
+		);
+		$args = wp_parse_args( $args, apply_filters( 'game_dev_portfolio_post_thumbnail_defaults', $defaults ) );
+	
+		// Ensure that the filtered args contain all required default values.
+		$args = array_merge( $defaults, $args );
+
+		if ( is_singular() ) :
+			?>
+
+			<div class="<?php echo esc_attr( $args['class_link'] ); ?>">
+				<?php
+				the_post_thumbnail( $args['size'] );
+
+				// Check if there's any caption
+				if ( $args['caption_text'] ) :
+				?>
+					<div class="<?php echo esc_attr( $args['class_caption'] ); ?>">
+						<?php echo esc_attr( $args['caption_text'] ) ?>
+					</div>
+				<?php endif; ?>
+			</div>
+
+		<?php else : ?>
+
+			<a class="<?php echo esc_attr( $args['class_link'] ); ?>" href="<?php the_permalink(); ?>" aria-hidden="true" <?php if( ! $args['enable_tab_select'] ) { echo 'tabindex="-1"'; } ?>>
+				<?php
+				// Print the thumbnail
+				the_post_thumbnail( $args['size'], array(
+					'alt' => the_title_attribute( array(
+						'echo' => false,
+					) ),
+				) );
+
+				// Check if there's any caption
+				if ( $args['caption_text'] ) :
+				?>
+					<div class="<?php echo esc_attr( $args['class_caption'] ); ?>">
+						<?php echo esc_attr( $args['caption_text'] ) ?>
+					</div>
+				<?php endif; ?>
+			</a>
+
+		<?php
+		endif; // End is_singular().
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_post_thumbnail' );
+
+if ( ! function_exists( 'game_dev_portfolio_paginate_links' ) ) :
+	/**
+	 * Displays Bulma-styled pagination
+	 */
+	function game_dev_portfolio_paginate_links( $args, $prev_url, $prev_filter, $next_url, $next_filter, $paginate_function ) {
+		// HACK: not a huge fan of using filters and functions as arguments
+		// Set the current page to whatever was set in args
+		$current = $args[ 'current' ];
+		$total = $args[ 'total' ];
+
+		// Setup the template
+		$template = '
+		<nav class="navigation %1$s" role="navigation" aria-label="%4$s">
+			<h2 class="screen-reader-text">%2$s</h2>
+			%5$s
+			%6$s
+			%3$s
+		</nav>';
+		$template  = apply_filters( 'navigation_markup_template', $template, $args['class_nav'] );
+
+		// Check if we want to show the next and previous buttons
+		$prev_link = '';
+		$next_link = '';
+		if( $args['prev_next'] ) {
+
+			// Setup the default attributes for the next and previous post
+			$prev_link = 'class="pagination-previous"';
+			$next_link = 'class="pagination-next"';
+			if( $current <= 1 ) {
+				$prev_link .= ' disabled';
+			}
+			if( $current >= $total ) {
+				$next_link .= ' disabled';
+			}
+
+			// Apply filters
+			$prev_link = apply_filters( $prev_filter, $prev_link );
+			$next_link = apply_filters( $next_filter, $next_link );
+
+			// Convert the attributes to proper links
+			$prev_link = sprintf( '<a href="%1$s" %2$s>%3$s</a>',
+				esc_url( $prev_url ),
+				$prev_link,
+				esc_html( $args['prev_text'] )
+			);
+			$next_link = sprintf( '<a href="%1$s" %2$s>%3$s</a>',
+				esc_url( $next_url ),
+				$next_link,
+				esc_html( $args['next_text'] )
+			);
+		}
+
+		// Grab all the links, with a few parameters deliberately over-written
+		$dom = new DOMDocument();
+		$args[ 'prev_next' ] = false;
+		$args[ 'type' ] = 'list';
+		$dom->loadHTML( $paginate_function( $args ) );
+
+		// Go through each ul (there should only be one)
+		$nodes = $dom->getElementsByTagName( 'ul' );
+		foreach( $nodes as $node ) {
+
+			// Set the class for this tag
+			$classes = 'pagination-list';
+			if( $node->hasAttribute( 'class' ) ) {
+				$classes .= $node->getAttribute( 'class' ) . ' ' . $classes;
+			}
+			$node->setAttribute( 'class', $classes );
+		}
+
+		// Go through each link
+		$nodes = $dom->getElementsByTagName( 'a' );
+		foreach( $nodes as $node ) {
+
+			// Set the class for this tag
+			$classes = 'pagination-link';
+			if( $node->hasAttribute( 'class' ) ) {
+				$classes .= $node->getAttribute( 'class' ) . ' ' . $classes;
+			}
+			$node->setAttribute( 'class', $classes );
+
+			// Set the aria-label as well
+			$node->setAttribute( 'aria-label', sprintf(
+				__( 'Go to page %s', 'game-dev-portfolio' ),
+				$node->value
+			) );
+		}
+
+		// Go through each span
+		$nodes = $dom->getElementsByTagName( 'span' );
+		foreach( $nodes as $node ) {
+
+			// Customize the class for this span
+			$classes = 'pagination-ellipsis';
+
+			// Check if this is the current page
+			if( $node->hasAttribute( 'aria-current' ) ) {
+				// Indicate in the class this is the current page
+				$classes = 'pagination-link is-current';
+
+				// Set the aria-label as well
+				$node->setAttribute( 'aria-label', sprintf(
+					__( 'Page %s', 'game-dev-portfolio' ),
+					$node->value
+				) );
+			}
+
+			// Append the new class attributes
+			if( $node->hasAttribute( 'class' ) ) {
+				$classes = $node->getAttribute( 'class' ) . ' ' . $classes;
+			}
+			$node->setAttribute( 'class', $classes );
+		}
+
+		// Echo the entire template
+		echo sprintf( $template,
+			esc_attr( $args['class'] ),
+			esc_html( $args['screen_reader_text'] ),
+			$dom->saveHTML(),
+			esc_attr( $args['aria_label'] ),
+			$prev_link,
+			$next_link
+		);
+	}
+endif;
+
+if ( ! function_exists( 'game_dev_portfolio_pagination' ) ) :
+	/**
+	 * Displays Bulma-styled pagination
+	 */
+	function game_dev_portfolio_pagination( $args = array() ) {
+		// Import the query
+		global $wp_query;
+
+		// Get max pages of the current query, if available.
+		$total = isset( $wp_query->max_num_pages ) ? $wp_query->max_num_pages : 1;
+
+		// Make sure there are pages to parse
+		if( $total > 1 ) {
+			// Setup defaults
+			$defaults = array(
+				// Get the current page
+				'current'            => ( get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1 ),
+				'total'              => $total,
+				'class'              => 'pagination is-centered',
+				'prev_next'          => true,
+				'prev_text'          => _x( '&laquo; Previous', 'previous posts', 'game-dev-portfolio' ),
+				'next_text'          => _x( 'Next &raquo;', 'next posts', 'game-dev-portfolio' ),
+				'screen_reader_text' => __( 'Navigation', 'game-dev-portfolio' ),
+				'aria_label'         => __( 'Posts', 'game-dev-portfolio' )
+			);
+
+			// Setup the args
+			$args = wp_parse_args( $args, $defaults );
+
+			// Run everything through a helper function
+			game_dev_portfolio_paginate_links(
+				$args,
+				previous_posts( false ),
+				'previous_posts_link_attributes',
+				next_posts( 0, false ),
+				'next_posts_link_attributes',
+				'paginate_links'
+			);
+		}
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_pagination' );
+
+if ( ! function_exists( 'game_dev_portfolio_comments_pagination' ) ) :
+	/**
+	 * Displays Bulma-styled pagination for comments.  This function will always echo.
+	 */
+	function game_dev_portfolio_comments_pagination( $args = array() ) {
+
+		// This part is largely copied from Wordpress
+		global $wp_rewrite;
+
+		// Skip if this comment is singular
+		if ( ! is_singular() ) {
+			return;
+		}
+
+		// Get the total number of comments
+		$total = get_comment_pages_count();
+
+		// Make sure there are pages to parse
+		if( $total > 1 ) {
+
+			// Get the current page
+			$current = get_query_var( 'cpage' );
+			if ( ! $current ) {
+				$current = 1;
+			}
+
+			// Setup defaults
+			$defaults = array(
+				// Get the current page
+				'current'            => $current,
+				'total'              => $total,
+				'class'              => 'pagination is-centered',
+				'prev_next'          => true,
+				'prev_text'          => _x( '&laquo; Older', 'older comments', 'game-dev-portfolio' ),
+				'next_text'          => _x( 'Newer &raquo;', 'newer comments', 'game-dev-portfolio' ),
+				'screen_reader_text' => __( 'Navigation', 'game-dev-portfolio' ),
+				'aria_label'         => __( 'Comments', 'game-dev-portfolio' )
+			);
+
+			// Setup the args
+			$args = wp_parse_args( $args, $defaults );
+
+			// Force the function to *not* echo
+			$args[ 'echo' ] = false;
+
+			// Determine next and previous page number
+			$prev_page_num = intval( $args[ 'current' ] );
+			$next_page_num = $prev_page_num;
+			if( $prev_page_num > 1 ) {
+				$prev_page_num -= 1;
+			}
+			if( $next_page_num < $total ) {
+				$next_page_num += 1;
+			}
+
+			// Run everything through a helper function
+			game_dev_portfolio_paginate_links(
+				$args,
+				get_comments_pagenum_link( $prev_page_num ),
+				'previous_comments_link_attributes',
+				get_comments_pagenum_link( $next_page_num ),
+				'next_comments_link_attributes',
+				'paginate_comments_links'
+			);
+		}
+	}
+endif;
+add_action( 'after_setup_theme', 'game_dev_portfolio_pagination' );
 ?>

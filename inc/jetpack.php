@@ -16,11 +16,15 @@
  */
 function game_dev_portfolio_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
+	// FIXME: Consider disabling support on portfolio.  Use a custom solution instead.
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'main',
-		'render'    => 'game_dev_portfolio_infinite_scroll_render',
-		'footer'    => 'page',
-	) );
+		'type'           => 'scroll',
+		'container'      => 'main',
+		'render'         => 'game_dev_portfolio_infinite_scroll_render',
+		'footer'         => false,
+		'footer_widgets' => array( 'footer-top', 'footer-bottom', ),
+		'wrapper'        => false
+		) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
@@ -50,11 +54,13 @@ add_action( 'after_setup_theme', 'game_dev_portfolio_jetpack_setup' );
 function game_dev_portfolio_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
-		if ( is_search() ) :
+		if ( is_search() ) {
 			get_template_part( 'template-parts/content', 'search' );
-		else :
+		} else if ( is_post_type_archive( 'jetpack-portfolio' ) ) {
+			get_template_part( 'template-parts/content', 'portfolio-preview' );
+		} else {
 			get_template_part( 'template-parts/content', get_post_type() );
-		endif;
+		}
 	}
 }
 
@@ -268,7 +274,7 @@ if (!function_exists ('game_dev_portfolio_contact_form_textarea_updater')) {
 	}
 }
 
-if (!function_exists ('game_dev_portfolio_contact_form_select_updater')) {
+if ( !function_exists ('game_dev_portfolio_contact_form_select_updater') ) {
 	/**
 	 * Helper function to replace all select within a DOM
 	 * 
@@ -301,37 +307,52 @@ if (!function_exists ('game_dev_portfolio_contact_form_select_updater')) {
 	}
 }
 
-/**
- * Take over HTML of the Jetpack Contact Form, the Bulma way.
- *
- * @param string $rendered_field Contact Form HTML output.
- * @param string $field_label Field label.
- * @param int|null $id Post ID.
- * @return string Contact Form HTML output.
- */
-function game_dev_portfolio_contact_form_field_html( $rendered_field, $field_label, $post_id  ) {
-	$dom = new DOMDocument();
-	$dom->loadHTML( $rendered_field );
+if ( !function_exists ('game_dev_portfolio_contact_form_field_html') ) {
+	/**
+	 * Take over HTML of the Jetpack Contact Form, the Bulma way.
+	 *
+	 * @param string $rendered_field Contact Form HTML output.
+	 * @param string $field_label Field label.
+	 * @param int|null $id Post ID.
+	 * @return string Contact Form HTML output.
+	 */
+	function game_dev_portfolio_contact_form_field_html( $rendered_field, $field_label, $post_id  ) {
+		$dom = new DOMDocument();
+		$dom->loadHTML( $rendered_field );
 
-	// Update the classes on the div tags with 'field' appended
-	game_dev_portfolio_contact_form_class_updater( $dom, 'div', 'field' );
+		// Update the classes on the div tags with 'field' appended
+		game_dev_portfolio_contact_form_class_updater( $dom, 'div', 'field' );
 
-	// Update the classes on the label tags with
-	// 'input', 'select', 'button', 'icon', and 'textarea' removed,
-	// and 'label' appended
-	game_dev_portfolio_contact_form_class_updater( $dom, 'label', '', '(input|select|button|icon|textarea)' );
+		// Update the classes on the label tags with
+		// 'input', 'select', 'button', 'icon', and 'textarea' removed,
+		// and 'label' appended
+		game_dev_portfolio_contact_form_class_updater( $dom, 'label', '', '(input|select|button|icon|textarea)' );
 
-	// Update the classes on the span tags with 'help' appended
-	game_dev_portfolio_contact_form_class_updater( $dom, 'span', 'help' );
+		// Update the classes on the span tags with 'help' appended
+		game_dev_portfolio_contact_form_class_updater( $dom, 'span', 'help' );
 
-	// Update all the inputs
-	game_dev_portfolio_contact_form_input_updater( $dom );
+		// Update all the inputs
+		game_dev_portfolio_contact_form_input_updater( $dom );
 
-	// Update all the textareas
-	game_dev_portfolio_contact_form_textarea_updater( $dom, 5 );
+		// Update all the textareas
+		game_dev_portfolio_contact_form_textarea_updater( $dom, 5 );
 
-	// Update all selects
-	game_dev_portfolio_contact_form_select_updater( $dom );
-	return $dom->saveHTML();
+		// Update all selects
+		game_dev_portfolio_contact_form_select_updater( $dom );
+		return $dom->saveHTML();
+	}
 }
 add_filter( 'grunion_contact_form_field_html', 'game_dev_portfolio_contact_form_field_html', 10, 3 );
+
+if ( !function_exists ('game_dev_portfolio_infinite_scroll_archive_supported') ) {
+	/**
+	 * Force portfolio page to not support infinite scroll. It messes the masonry stuff.
+	 */
+	function game_dev_portfolio_infinite_scroll_archive_supported( $supported, $settings  ) {
+		if( is_post_type_archive( 'jetpack-portfolio' ) ) {
+			$supported = false;
+		}
+		return $supported;
+	}
+}
+add_filter( 'infinite_scroll_archive_supported', 'game_dev_portfolio_infinite_scroll_archive_supported', 10, 2 );
