@@ -2,7 +2,7 @@ Game Dev Portfolio
 ===
 
 - Contributors: Taro Omiya
-- Stable tag: 2020.5.1
+- Stable tag: 2020.6.0
 - Tested up to: 5.3.2
 - Requires at least: 5.0.0
 - Tags:
@@ -49,4 +49,6 @@ Credits
 
 * Based on Underscores https://underscores.me/, © 2012-2017 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * Styled by Bulma https://bulma.io/, © Jeremy Thomas. [MIT](https://opensource.org/licenses/mit-license.php)
+* Portfolio layout by Masonry https://masonry.desandro.com/, © 2020 David DeSandro. [MIT](https://opensource.org/licenses/mit-license.php)
+* Animations by Hover http://ianlunn.github.io/Hover/, © 2017 Ian Lunn Design Limited. [MIT](https://opensource.org/licenses/mit-license.php)
 * Icons from FontAwesome https://fontawesome.com/, © Fonticons, Inc., [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
