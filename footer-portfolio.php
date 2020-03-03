@@ -89,62 +89,82 @@
 
 <script type="text/javascript">
 	( function( $ ) {
-		// 0 = ready to run layout,
-		// 1 = currently laying out,
-		// 2 = currently laying out, have more items on queue
-		var loadState = 1;
 
 		// Construct a new masonry object.
 		var $mosaic = $( '.mosaic' ).masonry({
 			itemSelector: '.button',
 			columnWidth: '.button',
 			percentPosition: true,
-			transitionDuration: '0.3s',
-		}).masonry( 'layout' );
+			transitionDuration: '0s',
+			// isAnimated: !Modernizr.csstransitions
+		});
+
+		// 0 = ready to run layout,
+		// 1 = currently laying out,
+		// 2 = currently laying out, have more items on queue
+		// var loadState = 0;
 
 		// Create a function to update the layout with new items (or not)
 		var updateLayout = function( $newAppendedItems = false ) {
 
 			// Check whether the argument is empty
+			console.log( 'updateLayout: newAppendedItems ' + $newAppendedItems); 
 			if ( $newAppendedItems ) {
 
-				// Re-collect all the buttons
-				// FIXME: append all the items when argument is setup properly
-				$mosaic.masonry( 'reloadItems' );
+				// Collect the new buttons
+				$mosaic.masonry( 'appended', $newAppendedItems );
 			}
+
+			// HACK: forcing loading for now, disregarding what the load state is
+			$mosaic.masonry( 'layout' );
 
 			// Check the load state
-			if ( loadState < 1 ) {
+			// if ( loadState < 1 ) {
 
-				// Run the layout
-				loadState = 1;
-				$mosaic.masonry( 'layout' );
-			} else {
+			// 	// Run the layout
+			// 	loadState = 1;
+			// 	// $mosaic.masonry( 'layout' );
+			// } else {
 
-				// Change the state to queue the next layout
-				loadState = 2;
-			}
+			// 	// Change the state to queue the next layout
+			// 	loadState = 2;
+			// }
 		};
 
-		// Bind to the mosaic's layout complete event
-		$mosaic.on( 'layoutComplete', function() {
+		// layout Masonry after entries are loaded from Jetpack infinite scroll
+		var currentPageRequest = 1;
+		$( document.body ).on( 'post-load', function () {
 
-			// console.log( 'On layoutComplete: state ' + loadState); 
-			loadState = 0;
+			// Update page request number
+			currentPageRequest += 1;
+
+			// Append all the buttons, then run the layout
+			// console.log( 'Called updateLayout from post-load'); 
+			updateLayout( $( '.from-page-' + currentPageRequest ) );
 		} );
 
 		// layout Masonry after lazy image loading
 		$( '.jetpack-lazy-image' ).on( 'load', function() {
 			// Run the layout
-			// console.log( 'Called updateLayout from jetpack-lazy-image: state ' + loadState); 
+			// console.log( 'Called updateLayout from jetpack-lazy-image' ); 
 			updateLayout();
 		});
 
-		// layout Masonry after entries are loaded from Jetpack infinite scroll
-		$( document.body ).on( 'post-load', function () {
-			// Re-collect all the buttons, then run the layout
-			// console.log( 'Called updateLayout from post-load: state ' + loadState); 
-			updateLayout( true );
-		} );
+		// Bind to the mosaic's layout complete event
+		// $mosaic.on( 'layoutComplete', function() {
+
+		// 	// console.log( 'On layoutComplete: state ' + loadState);
+		// 	if( loadState > 1 ) {
+		// 		// Run the layout again
+		// 		loadState = 1;
+		// 		$mosaic.masonry( 'layout' );
+		// 	} else {
+		// 		// Indicate the layout is complete
+		// 		loadState = 0;
+		// 	}
+		// } );
+
+		// Update the layout
+		updateLayout();
 	} )( jQuery );
 </script>

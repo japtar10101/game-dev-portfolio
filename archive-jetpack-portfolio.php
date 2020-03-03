@@ -30,7 +30,6 @@
 							<div class="subtitle archive-description">
 								<?php
 								echo esc_html__('Click on an image to see more details.', 'game-dev-portfolio');
-								//echo get_the_post_type_description( 'description' );
 								?>
 							</div>
 						</header>
@@ -44,11 +43,6 @@
 								while ( have_posts() ) :
 									the_post();
 
-									/*
-									* Include the Post-Type-specific template for the content.
-									* If you want to override this in a child theme, then include a file
-									* called content-___.php (where ___ is the Post Type name) and that will be used instead.
-									*/
 									get_template_part( 'template-parts/content', 'portfolio-preview' );
 
 								endwhile;
