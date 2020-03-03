@@ -108,7 +108,7 @@
 		var updateLayout = function( $newAppendedItems = false ) {
 
 			// Check whether the argument is empty
-			console.log( 'updateLayout: newAppendedItems ' + $newAppendedItems); 
+			// console.log( 'updateLayout: newAppendedItems ' + $newAppendedItems); 
 			if ( $newAppendedItems ) {
 
 				// Collect the new buttons
