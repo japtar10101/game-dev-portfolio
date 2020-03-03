@@ -22,38 +22,31 @@
 
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
-					<main id="main" class="site-main" role="main">
-						<div class="content">
-							<header class="page-header no-thumbnail">
-								<h1 class="title page-title">
-									<?php echo __('Portfolio', 'game-dev-portfolio'); ?>
-								</h1>
-								<div class="subtitle archive-description">
-									<?php
-									echo esc_html__('Click on an image to see more details.', 'game-dev-portfolio');
-									//echo get_the_post_type_description( 'description' );
-									?>
-								</div>
-							</header>
-							<?php if ( have_posts() ) : ?>
-								<!-- <article class="content mosaic columns-3 columns-2-tablet columns-1-mobile"> -->
-								<article class="content mosaic buttons">
-									<?php 
-									/* Start the Loop */
-									while ( have_posts() ) :
-										the_post();
+					<main class="site-main content" role="main">
+						<header class="page-header no-thumbnail">
+							<h1 class="title page-title">
+								<?php echo __('Portfolio', 'game-dev-portfolio'); ?>
+							</h1>
+							<div class="subtitle archive-description">
+								<?php
+								echo esc_html__('Click on an image to see more details.', 'game-dev-portfolio');
+								?>
+							</div>
+						</header>
+						<article id="main" class="mosaic buttons">
+							<?php
+							$showing_posts = have_posts();
+							if ( $showing_posts ) :
+							?>
+								<?php 
+								/* Start the Loop */
+								while ( have_posts() ) :
+									the_post();
 
-										/*
-										* Include the Post-Type-specific template for the content.
-										* If you want to override this in a child theme, then include a file
-										* called content-___.php (where ___ is the Post Type name) and that will be used instead.
-										*/
-										get_template_part( 'template-parts/content', 'portfolio-preview' );
+									get_template_part( 'template-parts/content', 'portfolio-preview' );
 
-									endwhile;
-									the_posts_navigation();
-									?>
-								</article>
+								endwhile;
+								?>
 							<?php 
 							else :
 								echo '<hr />';
@@ -61,8 +54,9 @@
 
 							endif;
 							?>
-						</div>
-					</main><!-- #main -->
+						</article> <!-- #main -->
+					</main>
+				<?php if( $showing_posts ) { game_dev_portfolio_pagination(); } ?>
 				</div><!-- #primary -->
 			</div>
 		</div><!-- #content -->

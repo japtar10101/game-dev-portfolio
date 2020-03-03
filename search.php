@@ -23,7 +23,10 @@
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
 					<main id="main" class="site-main" role="main">
-						<?php if ( have_posts() ) : ?>
+						<?php
+						$showing_posts = have_posts();
+						if ( $showing_posts ) :
+						?>
 							<header class="page-header no-thumbnail">
 								<h1 class="title page-header page-title">
 									<?php
@@ -46,16 +49,13 @@
 								get_template_part( 'template-parts/content', 'search' );
 
 							endwhile;
-
-							the_posts_navigation();
-
 						else :
 
 							get_template_part( 'template-parts/content', 'none' );
-
 						endif;
 						?>
 					</main><!-- #main -->
+					<?php if ( $showing_posts ) { game_dev_portfolio_pagination(); } ?>
 				</div><!-- #primary -->
 			</div>
 		</div><!-- #content -->
