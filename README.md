@@ -26,9 +26,10 @@ Installation
 Does this theme support any plugins?
 ---
 
-Jetpack is supported, with the following features:
-- Infinite Scroll support in blog, archives, search (but not yet with portfolio).
-- Bulma-styled Contact Forms.
+[Jetpack](https://jetpack.com/) is supported, with the following features:
+- A specialized, image-based [Portfolio page](https://jetpack.com/support/custom-content-types/) with featured image support.  Just create a page named, `Portfolio`.
+- Stylized [Contact Forms](https://jetpack.com/support/jetpack-blocks/form-block/), to fit with the rest of the theme.
+- [Infinite Scroll](https://jetpack.com/features/design/infinite-scroll/) support in blog, archives, and search results.  Portfolio support is in the works.
 
 Changelog
 ===
