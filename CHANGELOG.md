@@ -1,3 +1,8 @@
+# 2020.6.0
+## 3/2/2020
+- New feature #6 - Pagination is now styled with Bulma, compete with page numbers.  Works on blog, archive, search, and comments.
+- New feature #6 - Added partial support with Jetpack Infinite Scroll.  Currently, the portfolio does not support Infinite Scroll yet, due to how strangely Masonry works.  Comments are not supported, either.
+
 # 2020.5.1
 ## 2/27/2020
 - Fixed issue - Portfolio thumbnail caption now properly wrap to more than one line if it gets too long.
