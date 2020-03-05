@@ -2,7 +2,7 @@ Game Dev Portfolio
 ===
 
 - Contributors: Taro Omiya
-- Stable tag: 2020.6.0
+- Stable tag: 2020.6.1
 - Tested up to: 5.3.2
 - Requires at least: 5.0.0
 - Tags:
@@ -26,16 +26,17 @@ Installation
 Does this theme support any plugins?
 ---
 
-[Jetpack](https://jetpack.com/) is supported, with the following features:
-
-- A specialized, image-based [Portfolio page](https://jetpack.com/support/custom-content-types/) with featured image support.  Just create a page named, `Portfolio`.
-- Stylized [Contact Forms](https://jetpack.com/support/jetpack-blocks/form-block/), to fit with the rest of the theme.
-- [Infinite Scroll](https://jetpack.com/features/design/infinite-scroll/) support in blog, archives, and search results.  Portfolio support is in the works.
+- [Jetpack](https://jetpack.com/):
+    - A specialized, image-based [Portfolio page](https://jetpack.com/support/custom-content-types/) with featured image support.  Just create a page named, `Portfolio`.
+    - Stylized [Contact Forms](https://jetpack.com/support/jetpack-blocks/form-block/), to fit with the rest of the theme.
+    - [Infinite Scroll](https://jetpack.com/features/design/infinite-scroll/) support in blog, archives, and search results.  Portfolio support is in the works.
+- [Resume Block](https://github.com/japtar10101/resume-block):
+    - Full support. In fact, the plugin was designed with this theme in mind.
 
 Changelog
 ===
 
-See `CHANGELOG.md`
+See [CHANGELOG.md](/CHANGELOG.md)
 
 Versioning
 ---
