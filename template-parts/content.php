@@ -21,11 +21,13 @@ if ( has_post_thumbnail() ) {
 	<header class="<?php echo esc_attr( $header_class ); ?>">
 		<?php
 		game_dev_portfolio_post_thumbnail();
-		if ( is_singular() ) :
+		if ( is_singular() ) {
 			the_title( '<h1 class="title entry-title">', '</h1>' );
-		else :
+		} else if ( is_home() ) {
+			the_title( '<h1 class="title entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
+		} else {
 			the_title( '<h2 class="title entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		}
 
 		if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta subtitle">

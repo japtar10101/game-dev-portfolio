@@ -1,3 +1,9 @@
+# 2020.6.1
+## 3/5/2020
+- New enhancement #15 - Added reference to the [Resume Block plugin](https://github.com/japtar10101/resume-block), which is now released.
+- Fixed issue - Reverted a change where the header, "Blog" would appear at the top of a blog.  Removed for keeping the styling consistent with the rest of the theme.
+- Fixed issue - Updated documentation.
+
 # 2020.6.0
 ## 3/2/2020
 - New feature #6 - Pagination is now styled with Bulma, compete with page numbers.  Works on blog, archive, search, and comments.
