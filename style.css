@@ -29,6 +29,15 @@ a {
 	transition-property: color;
 }
 
+/* Always remove the margin in the ul for block-gallery */
+figure.wp-block-gallery ul.blocks-gallery-grid {
+	margin: 0;
+}
+
+figure.tiled-gallery__item {
+	margin: 0;
+}
+
 /* Create a class to flush a column to take up the entire width, no gaps in between */
 .wp-block-columns.flush {
 	margin: 0;
@@ -44,6 +53,14 @@ a {
 }
 
 .content figure.wp-block-embed.flush .jetpack-video-wrapper, .content .wp-block-columns.flush .wp-block-column figure.wp-block-embed .jetpack-video-wrapper {
+	margin: 0;
+}
+
+figure.wp-block-gallery.flush {
+	margin: 0;
+}
+
+figure.wp-block-gallery.flush ul.blocks-gallery-grid li.blocks-gallery-item {
 	margin: 0;
 }
 
