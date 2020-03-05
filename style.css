@@ -29,6 +29,24 @@ a {
 	transition-property: color;
 }
 
+/* Create a class to flush a column to take up the entire width, no gaps in between */
+.wp-block-columns.flush {
+	margin: 0;
+}
+
+.wp-block-columns.flush .wp-block-column {
+	margin: 0;
+	flex-basis: 50%;
+}
+
+.content figure.wp-block-embed.flush, .content .wp-block-columns.flush .wp-block-column figure.wp-block-embed {
+	margin: 0;
+}
+
+.content figure.wp-block-embed.flush .jetpack-video-wrapper, .content .wp-block-columns.flush .wp-block-column figure.wp-block-embed .jetpack-video-wrapper {
+	margin: 0;
+}
+
 /*
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
