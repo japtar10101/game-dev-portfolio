@@ -1,3 +1,9 @@
+# 2020.6.2
+## 3/5/2020
+- New feature - Adding the class, `flush`, which can be used in columns, embeds, and galleries.  In short, it removes the gaps between elements, making the edges of these parts "flush" next to each other and fill out the entire content portion of the page.
+- Fixed issue #24 - Created a temporary resolution to Youtube videos not taking up the entire width of the content page by assigning it a maximum width of 1024px.  Alas, the setting is assigned on PHP's end, so a more dynamic solution would require more inspection (using javascript and PHP acting together somehow).
+- Fixed issue #7 - Removing some unnecessary margins in Jetpack tiled gallery.
+
 # 2020.6.1
 ## 3/5/2020
 - New enhancement #15 - Added reference to the [Resume Block plugin](https://github.com/japtar10101/resume-block), which is now released.
