@@ -72,6 +72,10 @@ article.listed-post {
 	padding-top: 1.5rem;
 }
 
+article.listed-post:first-child {
+	padding-top: 0;
+}
+
 /*
 Format how the list of comments are portrayed.
 */

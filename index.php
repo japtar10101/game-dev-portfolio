@@ -30,13 +30,6 @@
 						<?php
 						$showing_posts = have_posts();
 						if ( $showing_posts ) :
-							if ( is_home() && ! is_front_page() ) :
-								?>
-								<header class="page-header no-thumbnail">
-									<h1 class="title page-title"><?php single_post_title(); ?></h1>
-								</header>
-								<?php
-							endif;
 
 							/* Start the Loop */
 							while ( have_posts() ) :
@@ -50,6 +43,7 @@
 								get_template_part( 'template-parts/content', get_post_type() );
 							endwhile;
 						else :
+
 							get_template_part( 'template-parts/content', 'none' );
 						endif;
 						?>
