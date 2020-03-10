@@ -20,10 +20,11 @@ function game_dev_portfolio_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'game_dev_portfolio_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 1024,
+		'height'                 => 325,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'game_dev_portfolio_header_style',
+		'video'                  => true,
 	) ) );
 }
 add_action( 'after_setup_theme', 'game_dev_portfolio_custom_header_setup' );

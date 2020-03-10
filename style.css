@@ -68,6 +68,21 @@ figure.wp-block-gallery.flush ul.blocks-gallery-grid li.blocks-gallery-item {
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
 */
+#wp-custom-header {
+	padding-top: 31.75%;
+	margin: -0.75rem -0.75rem auto -0.75rem;
+}
+
+/* #wp-custom-header iframe, */#wp-custom-header img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
 .content header .post-thumbnail {
 	padding-top: 31.75%;
 	margin: 0 -0.75rem auto -0.75rem;
