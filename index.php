@@ -26,8 +26,14 @@
 
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
-					<main id="main" class="site-main" role="main">
+					<main id="main" class="site-main content" role="main">
+						<?php if ( is_home() && ! is_front_page() ) : ?>
+							<header class="page-header with-thumbnail">
+								<?php the_custom_header_markup(); ?>
+								<h1 class="title page-title"><?php single_post_title(); ?></h1>
+							</header>
 						<?php
+						endif;
 						$showing_posts = have_posts();
 						if ( $showing_posts ) :
 

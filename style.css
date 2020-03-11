@@ -78,12 +78,12 @@ aspect ratio based on the width of the browser.
 	margin: -0.75rem -0.75rem auto -0.75rem;
 }
 
-.content header div.wp-custom-header {
+.content header div.wp-custom-header, header.page-header div.wp-custom-header {
 	display: block;
 	position: relative;
 }
 
-.content header .post-thumbnail img, .content header .wp-custom-header img, .content header .wp-custom-header iframe {
+.content header .post-thumbnail img, .content header div.wp-custom-header img, .content header div.wp-custom-header iframe {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -117,8 +117,12 @@ article.listed-post {
 	padding-top: 1.5rem;
 }
 
-article.listed-post:first-child {
+article.listed-post:first-child/* , article.listed-post:nth-child(2) */ { 
 	padding-top: 0;
+}
+
+div.archive-description {
+	margin-bottom: 1.5rem;
 }
 
 /*
