@@ -1,3 +1,7 @@
+# 2020.7.1
+## 3/12/2020
+- New enhancement - Changing the font to use Lato as title font, and Raleway as body.
+
 # 2020.7.0
 ## 3/11/2020
 - New feature #17 - Header on the static front page and blog page can now be customized to include a video media, or even a Youtube video.  Simply use the Customize option under the admin bar or theme menu, and assign a video.
