@@ -366,14 +366,13 @@ if ( !function_exists ('game_dev_portfolio_custom_image') ) {
 		} elseif( has_custom_logo() ) {
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-			$permalink = get_permalink( $post_id );
 			$url = apply_filters( 'jetpack_photon_url', esc_url( $logo ) );
 	 
 			return array( array(
 					'type'  => 'image',
 					'from'  => 'custom_fallback',
 					'src'   => esc_url( $url ),
-					'href'  => $permalink,
+					'href'  => get_permalink( $post_id ),
 			) );
 		} else {
 			return $media;
