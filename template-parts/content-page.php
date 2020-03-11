@@ -10,9 +10,18 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'content' ); ?>>
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( is_front_page() ) : ?>
 		<header class="entry-header with-thumbnail">
 			<?php
+			// Print the custom header
+			the_custom_header_markup();
+			the_title( '<h1 class="title entry-title">', '</h1>' );
+			?>
+		</header><!-- .entry-header -->
+	<?php elseif ( has_post_thumbnail() ) : ?>
+		<header class="entry-header with-thumbnail">
+			<?php
+			// Print the page's header
 			game_dev_portfolio_post_thumbnail();
 			the_title( '<h1 class="title entry-title">', '</h1>' );
 			?>

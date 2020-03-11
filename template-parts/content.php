@@ -23,8 +23,6 @@ if ( has_post_thumbnail() ) {
 		game_dev_portfolio_post_thumbnail();
 		if ( is_singular() ) {
 			the_title( '<h1 class="title entry-title">', '</h1>' );
-		} else if ( is_home() ) {
-			the_title( '<h1 class="title entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 		} else {
 			the_title( '<h2 class="title entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		}
@@ -63,7 +61,7 @@ if ( has_post_thumbnail() ) {
 		endif;
 		?>
 		<small>
-			<?php game_dev_portfolio_entry_footer(); ?>
+			<?php game_dev_portfolio_entry_footer( is_singular() ); ?>
 		</small>
 	</div><!-- .entry-content -->
 

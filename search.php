@@ -22,7 +22,7 @@
 
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
-					<main id="main" class="site-main" role="main">
+					<main id="main" class="site-main content" role="main">
 						<?php
 						$showing_posts = have_posts();
 						if ( $showing_posts ) :
