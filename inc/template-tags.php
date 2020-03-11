@@ -56,7 +56,7 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function game_dev_portfolio_entry_footer() {
+	function game_dev_portfolio_entry_footer( $include_tags = true ) {
 		$add_separator = false;
 		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 			echo '<span class="comments-link">';
@@ -91,15 +91,17 @@ if ( ! function_exists( 'game_dev_portfolio_entry_footer' ) ) :
 				$add_separator = true;
 			}
 
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
-			if ( $tags_list ) {
-				if ( $add_separator ) {
-					echo ' | ';
+			if ( $include_tags ) {
+				/* translators: used between list items, there is a space after the comma */
+				$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'game-dev-portfolio' ) );
+				if ( $tags_list ) {
+					if ( $add_separator ) {
+						echo ' | ';
+					}
+					/* translators: 1: list of tags. */
+					printf( '<span class="tags-links">' . esc_html__( 'Tagged: %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+					$add_separator = true;
 				}
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged: %1$s', 'game-dev-portfolio' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-				$add_separator = true;
 			}
 		}
 

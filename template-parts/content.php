@@ -61,7 +61,7 @@ if ( has_post_thumbnail() ) {
 		endif;
 		?>
 		<small>
-			<?php game_dev_portfolio_entry_footer(); ?>
+			<?php game_dev_portfolio_entry_footer( is_singular() ); ?>
 		</small>
 	</div><!-- .entry-content -->
 
