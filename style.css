@@ -68,16 +68,22 @@ figure.wp-block-gallery.flush ul.blocks-gallery-grid li.blocks-gallery-item {
 Setup post thumbnail to resize and retain the same
 aspect ratio based on the width of the browser.
 */
-.content header .post-thumbnail {
+.content header .post-thumbnail, .content header div.wp-custom-header {
 	padding-top: 31.75%;
 	margin: 0 -0.75rem auto -0.75rem;
+	height: 0;
 }
 
-.content:first-child header .post-thumbnail {
+.content:first-child header .post-thumbnail, .content header div.wp-custom-header {
 	margin: -0.75rem -0.75rem auto -0.75rem;
 }
 
-.content header .post-thumbnail img {
+.content header div.wp-custom-header {
+	display: block;
+	position: relative;
+}
+
+.content header .post-thumbnail img, .content header .wp-custom-header img, .content header .wp-custom-header iframe {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -98,6 +104,10 @@ aspect ratio based on the width of the browser.
 .content h2, .content h3, .content h4, .content h5, .content h6 {
 	margin-top: 0.75rem;
 	margin-bottom: 0.75rem;
+}
+
+#wp-custom-header button {
+	display: none;
 }
 
 /*
