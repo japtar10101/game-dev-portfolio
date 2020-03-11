@@ -16,6 +16,10 @@ Game Dev Portfolio
 
 A minimalist wordpress theme aimed at creating a visually-pleasing portfolio for Game Devs like me.
 
+Screenshot
+---
+![Screenshot of taroomiya.com](/screenshot.png)
+
 Installation
 ---
 
