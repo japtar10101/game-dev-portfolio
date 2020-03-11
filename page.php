@@ -27,7 +27,6 @@
 
 				<!-- Right column (content) here -->
 				<div id="primary" class="content-area column is-three-quarters">
-				<?php the_custom_header_markup(); echo '<p>hello!</p>'; ?>
 					<main id="main" class="site-main" role="main">
 						<?php
 						while ( have_posts() ) :
