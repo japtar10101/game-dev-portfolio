@@ -1,3 +1,7 @@
+# 2020.7.0
+## 3/11/2020
+- New feature #17 - Header on the static front page and blog page can now be customized to include a video media, or even a Youtube video.  Simply use the Customize option under the admin bar or theme menu, and assign a video.
+
 # 2020.6.2
 ## 3/5/2020
 - New feature - Adding the class, `flush`, which can be used in columns, embeds, and galleries.  In short, it removes the gaps between elements, making the edges of these parts "flush" next to each other and fill out the entire content portion of the page.
