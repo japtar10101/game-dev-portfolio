@@ -182,6 +182,7 @@ add_action( 'widgets_init', 'game_dev_portfolio_widgets_init' );
 function game_dev_portfolio_scripts() {
 	// Stylesheets go here.
 	wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.12.1/css/all.css', false, '5.12.1', 'all');
+	wp_enqueue_style( 'game-dev-portfolio-google-fonts', '//fonts.googleapis.com/css2?family=Raleway&family=Lato:wght@700&display=swap', false);
 	wp_enqueue_style( 'bulma', get_template_directory_uri() . '/assets/bulma/bulma.min.css', false, '0.8.0', 'all');
 	wp_enqueue_style( 'hover', get_template_directory_uri() . '/assets/hover/hover.css', false, '2.3.2', 'all');
 	wp_enqueue_style( 'game-dev-portfolio-style', get_stylesheet_uri() );
