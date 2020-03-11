@@ -16,7 +16,6 @@
  */
 function game_dev_portfolio_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
-	// FIXME: Consider disabling support on portfolio.  Use a custom solution instead.
 	add_theme_support( 'infinite-scroll', array(
 		'type'           => 'scroll',
 		'container'      => 'main',
@@ -356,3 +355,27 @@ if ( !function_exists ('game_dev_portfolio_infinite_scroll_archive_supported') )
 	}
 }
 add_filter( 'infinite_scroll_archive_supported', 'game_dev_portfolio_infinite_scroll_archive_supported', 10, 2 );
+
+if ( !function_exists ('game_dev_portfolio_custom_image') ) {
+	/**
+	 * Force portfolio page to not support infinite scroll. It messes the masonry stuff.
+	 */
+	function game_dev_portfolio_custom_image( $media, $post_id, $args ) {
+		if ( $media ) {
+			return $media;
+		} else {
+			$custom_logo_id = get_theme_mod( 'custom_logo' );
+			$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+			$permalink = get_permalink( $post_id );
+			$url = apply_filters( 'jetpack_photon_url', esc_url( $logo ) );
+	 
+			return array( array(
+					'type'  => 'image',
+					'from'  => 'custom_fallback',
+					'src'   => esc_url( $url ),
+					'href'  => $permalink,
+			) );
+		}
+	}
+}
+add_filter( 'jetpack_images_get_images', 'game_dev_portfolio_infinite_scroll_archive_supported', 10, 3 );
