@@ -363,7 +363,7 @@ if ( !function_exists ('game_dev_portfolio_custom_image') ) {
 	function game_dev_portfolio_custom_image( $media, $post_id, $args ) {
 		if ( $media ) {
 			return $media;
-		} else {
+		} elseif( has_custom_logo() ) {
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 			$permalink = get_permalink( $post_id );
@@ -375,6 +375,8 @@ if ( !function_exists ('game_dev_portfolio_custom_image') ) {
 					'src'   => esc_url( $url ),
 					'href'  => $permalink,
 			) );
+		} else {
+			return $media;
 		}
 	}
 }
