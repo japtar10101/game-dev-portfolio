@@ -1,3 +1,7 @@
+# 2020.7.2
+## 5/13/2020
+- New enhancement - Adding Github Actions for mirroring to Bitbucket automatically.
+
 # 2020.7.1
 ## 3/12/2020
 - New enhancement - Changing the font to use Lato as title font, and Raleway as body.
