@@ -1,5 +1,6 @@
 Game Dev Portfolio
 ===
+[![Mirroring](https://github.com/japtar10101/game-dev-portfolio/workflows/Mirroring/badge.svg)](https://bitbucket.org/OmiyaGames/game-dev-portfolio) [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I51KS8F)
 
 - Contributors: Taro Omiya
 - Stable tag: 2020.7.2
