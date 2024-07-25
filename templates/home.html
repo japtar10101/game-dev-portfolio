@@ -1,6 +1,29 @@
-<!-- wp:group {"tagName":"main","style":{"spacing":{"blockGap":"0","margin":{"top":"0"}}},"layout":{"type":"default"}} -->
-<main class="wp-block-group" style="margin-top:0">
-	<!-- wp:pattern {"slug":"game-dev-portfolio/page-home-portfolio"} /-->
+<!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"blockGap":"0","margin":{"top":"10vh"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group alignfull" style="margin-top:10vh">
+	<!-- wp:group {"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group">
+		<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"1rem","left":"1rem"}}}} -->
+		<div class="wp-block-columns alignwide">
+			<!-- wp:column {"width":"25%"} -->
+			<div class="wp-block-column" style="flex-basis:25%">
+				<!-- wp:template-part {"slug":"sidebar","tagName":"aside"} /-->
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"width":"2rem"} -->
+			<div class="wp-block-column" style="flex-basis:2rem">
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"width":"75%"} -->
+			<div class="wp-block-column" style="flex-basis:75%">
+				<!-- wp:pattern {"slug":"game-dev-portfolio/page-home-blogging"} /-->
+			</div>
+			<!-- /wp:column -->
+		</div>
+		<!-- /wp:columns -->
+	</div>
+	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 
