@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Portfolio project overview
- * Slug: twentytwentyfour/page-portfolio-overview
- * Categories: twentytwentyfour_page, featured
+ * Slug: game-dev-portfolio/page-portfolio-overview
+ * Categories: game-dev-portfolio_page, featured
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,8 +11,8 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfour/banner-project-description"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfour/text-project-details"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfour/gallery-full-screen-image"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfour/text-centered-statement"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfour/gallery-project-layout"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/banner-project-description"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/text-project-details"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/gallery-full-screen-image"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/text-centered-statement"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/gallery-project-layout"} /-->

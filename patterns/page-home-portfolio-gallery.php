@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Portfolio home image gallery
- * Slug: twentytwentyfour/page-home-gallery
- * Categories: twentytwentyfour_page
+ * Slug: game-dev-portfolio/page-home-gallery
+ * Categories: game-dev-portfolio_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,5 +11,5 @@
  */
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfour/hidden-portfolio-hero"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfour/gallery-offset-images-grid-4-col"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/hidden-portfolio-hero"} /-->
+<!-- wp:pattern {"slug":"game-dev-portfolio/gallery-offset-images-grid-4-col"} /-->

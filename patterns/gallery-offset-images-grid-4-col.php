@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Offset gallery, 4 columns
- * Slug: twentytwentyfour/gallery-offset-images-grid-4-col
+ * Slug: game-dev-portfolio/gallery-offset-images-grid-4-col
  * Categories: gallery, featured, portfolio
  * Keywords: project, images, media, masonry, columns
  * Viewport width: 1400
