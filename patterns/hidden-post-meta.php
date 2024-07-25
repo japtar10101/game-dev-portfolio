@@ -6,7 +6,7 @@
  */
 ?>
 
-<!-- wp:group {"layout":{"type":"constrained"}} -->
+<!-- wp:group {"layout":{"type":"default"}} -->
 <div class="wp-block-group">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"0.3em"}},"layout":{"type":"flex","justifyContent":"left"}} -->
 	<div class="wp-block-group">
