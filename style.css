@@ -16,6 +16,8 @@ Text Domain: game-dev-portfolio
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio
 */
 
+@import url("https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css");
+
 body {
 	font-family: 'Raleway', BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Cantarell, "Fira Sans", "Droid Sans", sans-serif;
 }
