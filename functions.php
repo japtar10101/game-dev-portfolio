@@ -153,6 +153,9 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-full-width img {
 					width: 100% !important;
 					height: auto;
+					z-index: 1;
+					border-radius: 0.5rem;
+					box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
 				}',
 			)
 		);
@@ -168,7 +171,65 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-full-width-rounded img {
 					width: 100% !important;
 					height: auto;
+					z-index: 1;
 					border-radius: 50%;
+					box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+				}',
+			)
+		);
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'group-shadow',
+				'label'        => __( 'Group Shadow', 'game_dev_portfolio' ),
+				/*
+				 * Styles for full width, rounded
+				 */
+				'inline_style' => '
+				.is-style-group-shadow {
+					border-radius: 0.5rem;
+					box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
+				}',
+			)
+		);
+		register_block_style(
+			'core/navigation',
+			array(
+				'name'         => 'slide',
+				'label'        => __( 'Slide on hover', 'game_dev_portfolio' ),
+				/*
+				 * Styles for full width, rounded
+				 */
+				'inline_style' => '
+				.is-style-slide.is-vertical ul {
+					border-bottom: 1px solid var(--wp--preset--color--contrast-3);
+					gap: 0;
+				}
+				.is-style-slide.is-vertical ul li {
+					border-top: 1px solid var(--wp--preset--color--contrast-3);
+					width: 100%;
+				}
+				.is-style-slide ul li a {
+					transition-duration: 0.3s;
+					-webkit-transition-duration: 0.3s;
+					transition-property: transform, color;
+					-webkit-transition-property: transform, color;
+				}
+				.is-style-slide.is-vertical ul li a {
+					padding: 0.75rem 0;
+					width: 100%;
+				}
+				.is-style-slide.is-vertical ul li a:hover,
+				.is-style-slide.is-vertical ul li a:focus,
+				.is-style-slide.is-vertical ul li a:active {
+					transform: translateX(8px);
+					-webkit-transform: translateX(8px);
+				}
+				.is-style-slide:not(.is-vertical) ul li a:hover,
+				.is-style-slide:not(.is-vertical) ul li a:focus,
+				.is-style-slide:not(.is-vertical) ul li a:active {
+					transform: translateY(-8px);
+					-webkit-transform: translateY(-8px);
 				}',
 			)
 		);
