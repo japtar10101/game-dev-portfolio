@@ -1,12 +1,20 @@
-<!-- wp:group {"tagName":"main"} -->
-<main class="wp-block-group">
+<!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"blockGap":"0","margin":{"top":"10vh"}}},"layout":{"type":"default"}} -->
+<main class="wp-block-group alignfull" style="margin-top:10vh">
 	<!-- wp:group {"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group">
-		<!-- wp:post-featured-image {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->
+		<!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+		<div class="wp-block-group alignwide">
+			<!-- wp:group {"align":"full","layout":{"type":"default"}} -->
+			<div class="wp-block-group alignfull">
+				<!-- wp:post-featured-image {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:post-content {"lock":{"move":false,"remove":true},"layout":{"type":"default"}} /-->
+		</div>
+		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
-
-	<!-- wp:post-content {"lock":{"move":false,"remove":true},"layout":{"type":"default"}} /-->
 </main>
 <!-- /wp:group -->
 

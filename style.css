@@ -19,9 +19,7 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-.circle-image {
-	border-radius: 10%;
-	-moz-border-radius: 10%;
-	-webkit-border-radius: 10%;
-	-o-border-radius: 10%;
+.wp-block-site-logo.is-default-size img {
+  width: 100% !important;
+  height: auto;
 }

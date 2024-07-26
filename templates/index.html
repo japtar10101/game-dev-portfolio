@@ -2,27 +2,28 @@
 <main class="wp-block-group alignfull" style="margin-top:10vh">
 	<!-- wp:group {"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group">
-		<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"1rem","left":"1rem"}}}} -->
+		<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"2rem","left":"2rem"}}}} -->
 		<div class="wp-block-columns alignwide">
+
 			<!-- wp:column {"width":"25%"} -->
 			<div class="wp-block-column" style="flex-basis:25%">
-				<!-- wp:template-part {"slug":"sidebar","tagName":"aside"} /-->
-			</div>
-			<!-- /wp:column -->
-
-			<!-- wp:column {"width":"2rem"} -->
-			<div class="wp-block-column" style="flex-basis:2rem">
+				<!-- wp:group {"style":{"position":{"type":"sticky","top":"0px"},"shadow":"var:preset|shadow|natural","spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}},"border":{"radius":"0.5rem"}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group" style="border-radius:0.5rem;padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10);box-shadow:var(--wp--preset--shadow--natural)">
+					<!-- wp:template-part {"slug":"sidebar","tagName":"aside"} /-->
+				</div>
+				<!-- /wp:group -->
 			</div>
 			<!-- /wp:column -->
 
 			<!-- wp:column {"width":"75%"} -->
 			<div class="wp-block-column" style="flex-basis:75%">
-				<!-- wp:heading {"level":1,"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|50"}}}} -->
-				<h1 class="wp-block-heading alignwide" style="padding-top:var(--wp--preset--spacing--50)">Posts</h1>
+				<!-- wp:heading {"level":1,"align":"wide","style":{"spacing":{"padding":{"top":"0"}}}} -->
+				<h1 class="wp-block-heading alignwide" style="padding-top:0">Posts</h1>
 				<!-- /wp:heading -->
 				<!-- wp:pattern {"slug":"game-dev-portfolio/posts-3-col"} /-->
 			</div>
 			<!-- /wp:column -->
+
 		</div>
 		<!-- /wp:columns -->
 	</div>

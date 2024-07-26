@@ -141,6 +141,37 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				}",
 			)
 		);
+		register_block_style(
+			'core/site-logo',
+			array(
+				'name'         => 'full-width',
+				'label'        => __( 'Full width', 'game_dev_portfolio' ),
+				/*
+				 * Styles for full width
+				 */
+				'inline_style' => '
+				.is-style-full-width img {
+					width: 100% !important;
+					height: auto;
+				}',
+			)
+		);
+		register_block_style(
+			'core/site-logo',
+			array(
+				'name'         => 'full-width-rounded',
+				'label'        => __( 'Full width, rounded', 'game_dev_portfolio' ),
+				/*
+				 * Styles for full width, rounded
+				 */
+				'inline_style' => '
+				.is-style-full-width-rounded img {
+					width: 100% !important;
+					height: auto;
+					border-radius: 50%;
+				}',
+			)
+		);
 	}
 endif;
 

@@ -904,9 +904,9 @@
 			"title": "Page No Title"
 		},
 		{
-			"name": "page-with-sidebar",
+			"name": "page-no-sidebar",
 			"postTypes": ["page"],
-			"title": "Page with Sidebar"
+			"title": "Page No Sidebar"
 		},
 		{
 			"name": "page-wide",
