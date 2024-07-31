@@ -54,4 +54,95 @@ function game_dev_portfolio_scripts() {
 	wp_enqueue_script( 'game-dev-portfolio-masonry', '//unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', false, '4.2.2' );
 }
 add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
+
+/**
+ * Register block styles.
+ */
+
+ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
+	/**
+	 * Register custom block styles
+	 *
+	 * @since Game Dev Portfolio 2024.8
+	 * @return void
+	 */
+	function game_dev_portfolio_block_styles() {
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'grid-sidebar',
+				'label'        => __( 'Grid With Sidebar', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the custom Grid block
+				 * FIXME: make normal flex stack for mobile
+				 */
+				'inline_style' => '
+				.is-style-grid-sidebar {
+					display: grid;
+					grid-template:
+						"logo content" 20vw
+						"sidebar content" auto
+						/ 20vw 1fr;
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'logo',
+				'label'        => __( 'Logo', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Logo cell in Grid block
+				 * FIXME: hide for mobile
+				 */
+				'inline_style' => '
+				.is-style-logo {
+					grid-area: logo;
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'sidebar',
+				'label'        => __( 'Sidebar', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Sidebar cell in Grid block
+				 * FIXME: hide for mobile
+				 */
+				'inline_style' => '
+				.is-style-sidebar {
+					grid-area: sidebar;
+					height: fit-content;
+					position: -webkit-sticky !important;
+					position: sticky !important;
+					top: var(--wp--style--block-gap);
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'content',
+				'label'        => __( 'Content', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Full-Height Content cell in Grid block
+				 * FIXME: remove references to grid for mobile
+				 */
+				'inline_style' => '
+				.is-style-content {
+					grid-area: content;
+					max-width: 100% !important;
+				}',
+			)
+		);
+
+	}
+endif;
+
+add_action( 'init', 'game_dev_portfolio_block_styles' );
 ?>
