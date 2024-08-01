@@ -4,11 +4,35 @@
 	"patterns": [
 	],
 	"settings": {
+		"shadow": {
+			"presets": [
+				{
+					"name": "Glow",
+					"slug": "glow",
+					"shadow": "0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02)"
+				}
+			]
+		}
 	},
 	"styles": {
-		"css": ""
+		"css": "hr.is-style-wide {width: 100%;}"
 	},
 	"templateParts": [
+		{
+			"name": "header",
+			"title": "Mobile-only Header",
+			"area": "header"
+		},
+		{
+			"name": "sidebar",
+			"title": "Sidebar for Portfolio",
+			"area": "uncategorized"
+		},
+		{
+			"name": "footer",
+			"title": "Footer for Portfolio",
+			"area": "footer"
+		}
 	],
 	"customTemplates": [
 	]
