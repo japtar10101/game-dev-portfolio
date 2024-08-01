@@ -1,7 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
-	"version": 3,
+	"version": 2,
 	"patterns": [
+		"header-mobile-only",
+		"sidebar-portfolio",
+		"footer-portfolio"
 	],
 	"settings": {
 		"shadow": {
@@ -20,17 +23,17 @@
 	"templateParts": [
 		{
 			"name": "header",
-			"title": "Mobile-only Header",
+			"title": "Header",
 			"area": "header"
 		},
 		{
 			"name": "sidebar",
-			"title": "Sidebar for Portfolio",
+			"title": "Sidebar",
 			"area": "uncategorized"
 		},
 		{
 			"name": "footer",
-			"title": "Footer for Portfolio",
+			"title": "Footer",
 			"area": "footer"
 		}
 	],

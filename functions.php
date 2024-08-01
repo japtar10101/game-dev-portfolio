@@ -77,6 +77,7 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				'inline_style' => '
 				.is-style-header {
 					padding: 0 var(--wp--style--root--padding-right) 0 var(--wp--style--root--padding-left);
+					box-shadow: var(--wp--preset--shadow--glow);
 				}
 				@media (min-width: 782px) {
 					.is-style-header {
@@ -180,6 +181,23 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				.is-style-content {
 					grid-area: content;
 					max-width: 100% !important;
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'footer',
+				'label'        => __( 'Footer', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the footer
+				 */
+				'inline_style' => '
+				.is-style-footer {
+					padding-right: var(--wp--style--root--padding-right);
+					padding-left: var(--wp--style--root--padding-left);
+					box-shadow: var(--wp--preset--shadow--glow);
 				}',
 			)
 		);
