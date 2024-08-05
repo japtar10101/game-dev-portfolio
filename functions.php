@@ -208,6 +208,22 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 		register_block_style(
 			'core/group',
 			array(
+				'name'         => 'highlights',
+				'label'        => __( 'Highlights', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the highlights
+				 */
+				'inline_style' => '
+				.is-style-highlights {
+					width: 100% !important;
+					border-radius: calc(var(--wp--style--block-gap) / 2);
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
 				'name'         => 'footer',
 				'label'        => __( 'Footer', 'game_dev_portfolio' ),
 				/*

@@ -21,7 +21,7 @@
 		}
 	},
 	"styles": {
-		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote) {border-radius: calc(var(--wp--style--block-gap) / 2);}"
+		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote)\n{border-radius: calc(var(--wp--style--block-gap) / 2);\npadding-top: var(--wp--preset--spacing--20);\npadding-right: var(--wp--preset--spacing--20);\npadding-bottom: var(--wp--preset--spacing--20);\npadding-left: var(--wp--preset--spacing--20);}"
 	},
 	"templateParts": [
 		{
