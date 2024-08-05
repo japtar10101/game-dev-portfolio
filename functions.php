@@ -99,15 +99,19 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				.is-style-grid-sidebar {
 					display: grid;
 					grid-template:
-						"logo content" 20vw
+						"logo feature" 20vw
 						"sidebar content" auto
 						/ 20vw 1fr;
-					gap: 2rem;
+					gap: var(--wp--style--block-gap);
+				}
+				.is-style-grid-sidebar > div {
+					margin: 0 !important;
 				}
 				@media (max-width: 781px) {
 					.is-style-grid-sidebar {
 						display: flex !important;
 						flex-direction: column;
+					gap: var(--wp--style--block-gap);
 					}
 				}',
 			)
@@ -170,6 +174,34 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 		);
 
 		register_block_style(
+			'core/post-featured-image',
+			array(
+				'name'         => 'feature',
+				'label'        => __( 'Feature Image', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Full-Height Content cell in Grid block
+				 */
+				'inline_style' => '
+				.is-style-feature {
+					grid-area: feature;
+					width: 100% !important;
+					max-width: 100% !important;
+					height: 100% !important;
+					max-height: 100% !important;
+					object-fit: cover;
+				}
+				.is-style-feature > div,
+				.is-style-feature > img {
+					width: 100% !important;
+					max-width: 100% !important;
+					height: 100% !important;
+					max-height: 100% !important;
+					object-fit: cover;
+				}',
+			)
+		);
+
+		register_block_style(
 			'core/group',
 			array(
 				'name'         => 'content',
@@ -180,6 +212,22 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				'inline_style' => '
 				.is-style-content {
 					grid-area: content;
+					max-width: 100% !important;
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'content-tall',
+				'label'        => __( 'Content, Tall', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Full-Height Content cell in Grid block
+				 */
+				'inline_style' => '
+				.is-style-content-tall {
+					grid-area: feature / feature / content / content;
 					max-width: 100% !important;
 				}',
 			)
@@ -226,7 +274,7 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				}
 				.is-style-sidebar a {
 					width: 100%;
-					padding: 1rem 0;
+					padding: var(--wp--style--block-gap) 0;
 					-webkit-transition-duration: 0.3s !important;
 					transition-duration: 0.3s !important;
 					-webkit-transition-property: transform;
