@@ -174,32 +174,6 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 		);
 
 		register_block_style(
-			'core/post-featured-image',
-			array(
-				'name'         => 'feature',
-				'label'        => __( 'Feature Image', 'game_dev_portfolio' ),
-				/*
-				 * Styles for the Full-Height Content cell in Grid block
-				 */
-				'inline_style' => '
-				.is-style-feature {
-					grid-area: feature;
-					width: 100% !important;
-					max-width: 100% !important;
-					height: 100% !important;
-					max-height: 100% !important;
-					margin: 0 !important;
-				}
-				.is-style-feature > div,
-				.is-style-feature > img {
-					max-height: 100% !important;
-					object-fit: cover;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
-				}',
-			)
-		);
-
-		register_block_style(
 			'core/group',
 			array(
 				'name'         => 'content',
@@ -281,6 +255,58 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-segmented a:hover, .is-style-segmented a:focus, .is-style-segmented a:active {
   				-webkit-transform: translateX(0.6rem);
   				transform: translateX(0.6rem);
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/post-featured-image',
+			array(
+				'name'         => 'feature',
+				'label'        => __( 'Feature Image', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Full-Height Content cell in Grid block
+				 */
+				'inline_style' => '
+				.is-style-feature {
+					grid-area: feature;
+					width: 100% !important;
+					max-width: 100% !important;
+					height: 100% !important;
+					max-height: 100% !important;
+					margin: 0 !important;
+				}
+				.is-style-feature > div,
+				.is-style-feature > img {
+					max-height: 100% !important;
+					object-fit: cover;
+					border-radius: calc(var(--wp--style--block-gap) / 2);
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/post-featured-image',
+			array(
+				'name'         => 'feature-wide',
+				'label'        => __( 'Featured Wide Image', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Full-Height Content cell in Grid block
+				 */
+				'inline_style' => '
+				.is-style-feature-wide {
+					grid-area: logo / logo / feature / feature;
+					width: 100% !important;
+					max-width: 100% !important;
+					height: 100% !important;
+					max-height: 100% !important;
+					margin: 0 !important;
+				}
+				.is-style-feature-wide > div,
+				.is-style-feature-wide > img {
+					max-height: 100% !important;
+					object-fit: cover;
+					border-radius: calc(var(--wp--style--block-gap) / 2);
 				}',
 			)
 		);
