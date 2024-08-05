@@ -58,7 +58,7 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
  * Register block styles.
  */
 
- if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
+if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 	/**
 	 * Register custom block styles
 	 *
@@ -262,25 +262,25 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 				.is-style-segmented {
 					width: 100% !important;
 				}
-				.is-style-sidebar ul {
+				.is-style-segmented ul {
 					gap: 0;
 				}
-				.is-style-sidebar ul li {
+				.is-style-segmented ul li {
 					width: 100%;
 					border-top: 1px solid var(--wp--preset--color--contrast-3);
 				}
-				.is-style-sidebar ul li:last-child {
+				.is-style-segmented ul li:last-child {
 					border-bottom: 1px solid var(--wp--preset--color--contrast-3);
 				}
-				.is-style-sidebar a {
+				.is-style-segmented a {
 					width: 100%;
-					padding: var(--wp--style--block-gap) 0;
+					padding: calc(var(--wp--style--block-gap) / 2) 0;
 					-webkit-transition-duration: 0.3s !important;
 					transition-duration: 0.3s !important;
 					-webkit-transition-property: transform;
 					transition: transform;
 				}
-				.is-style-sidebar a:hover, .is-style-sidebar a:focus, .is-style-sidebar a:active {
+				.is-style-segmented a:hover, .is-style-segmented a:focus, .is-style-segmented a:active {
   				-webkit-transform: translateX(0.5rem);
   				transform: translateX(0.5rem);
 				}',
@@ -291,4 +291,5 @@ add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 endif;
 
 add_action( 'init', 'game_dev_portfolio_block_styles' );
+
 ?>
