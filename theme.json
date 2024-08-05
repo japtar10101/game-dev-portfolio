@@ -4,7 +4,9 @@
 	"patterns": [
 		"header-mobile-only",
 		"sidebar-portfolio",
-		"footer-portfolio"
+		"footer-simple",
+		"footer-socials",
+		"text-copyrights"
 	],
 	"settings": {
 		"shadow": {

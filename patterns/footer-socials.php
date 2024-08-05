@@ -1,10 +1,10 @@
 <?php
 /**
- * Title: Footer for portfolio
- * Slug: game-dev-portfolio/footer-portfolio
+ * Title: Footer with Links to Social Media
+ * Slug: game-dev-portfolio/footer-socials
  * Categories: footer
  * Block Types: core/template-part/footer
- * Description: A footer section for portfolio.
+ * Description: A footer section with social media icons.
  */
 ?>
 
@@ -16,7 +16,7 @@
 		<div class="wp-block-group">
 			<!-- wp:paragraph {"fontSize":"small"} -->
 			<p class="has-small-font-size">
-				© 2008 - 2024 Taro Omiya
+				<!-- wp:pattern {"slug":"game-dev-portfolio/text-copyrights"} /-->
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -36,7 +36,7 @@
 
 		<!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"right"}} -->
 		<div class="wp-block-group">
-			<!-- wp:social-links {"iconColor":"contrast","iconColorValue":"#111111","iconBackgroundColor":"base","iconBackgroundColorValue":"#f9f9f9","openInNewTab":true,"size":"has-large-icon-size","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"0","left":"0.5rem"}},"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} -->
+			<!-- wp:social-links {"iconColor":"contrast","iconColorValue":"#111111","iconBackgroundColor":"base","iconBackgroundColorValue":"#f9f9f9","openInNewTab":true,"size":"has-large-icon-size","className":"is-style-default","style":{"spacing":{"blockGap":{"top":"0","left":"0.6rem"}},"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} -->
 			<ul class="wp-block-social-links has-large-icon-size has-icon-color has-icon-background-color is-style-default">
 				<!-- wp:social-link {"url":"https://www.taroomiya.com/contact","service":"mail"} /-->
 				<!-- wp:social-link {"url":"https://www.linkedin.com/in/taroomiya/","service":"linkedin","label":""} /-->
