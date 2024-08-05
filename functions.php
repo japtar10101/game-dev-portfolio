@@ -314,4 +314,38 @@ if ( ! function_exists( 'game_dev_portfolio_shortcodes' ) ) :
 endif;
 
 add_action( 'init', 'game_dev_portfolio_shortcodes' );
+
+
+/**
+ * Remove templates.
+ */
+
+if ( ! function_exists( 'game_dev_portfolio_remove_templates' ) ) :
+	/**
+	 * Filter the theme page templates.
+	 *
+	 * @param array    $page_templates Page templates.
+	 * @param WP_Theme $this           WP_Theme instance.
+	 * @param WP_Post  $post           The post being edited, provided for context, or null.
+	 * @return array (Maybe) modified page templates array.
+	 */
+	function game_dev_portfolio_remove_templates( $page_templates ) {
+		// Add any templates to remove in this array
+		$templates_to_remove = [
+			'page-with-sidebar.php',
+			'single-with-sidebar.php'
+		];
+
+		// Go remove them from the page templates array
+		foreach ($templates_to_remove as $template) {
+			if ( isset( $page_templates[$template] ) ) {
+				unset( $page_templates[$template] );
+			}
+		}
+		return $page_templates;
+	}
+endif;
+
+add_filter( 'theme_page_templates', 'game_dev_portfolio_remove_templates' );
+add_filter( 'theme_post_templates', 'game_dev_portfolio_remove_templates' );
 ?>
