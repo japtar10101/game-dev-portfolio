@@ -188,15 +188,13 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					max-width: 100% !important;
 					height: 100% !important;
 					max-height: 100% !important;
-					object-fit: cover;
+					margin: 0 !important;
 				}
 				.is-style-feature > div,
 				.is-style-feature > img {
-					width: 100% !important;
-					max-width: 100% !important;
-					height: 100% !important;
 					max-height: 100% !important;
 					object-fit: cover;
+					border-radius: calc(var(--wp--style--block-gap) / 2);
 				}',
 			)
 		);
@@ -281,8 +279,8 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					transition: transform;
 				}
 				.is-style-segmented a:hover, .is-style-segmented a:focus, .is-style-segmented a:active {
-  				-webkit-transform: translateX(0.5rem);
-  				transform: translateX(0.5rem);
+  				-webkit-transform: translateX(0.6rem);
+  				transform: translateX(0.6rem);
 				}',
 			)
 		);
@@ -292,4 +290,28 @@ endif;
 
 add_action( 'init', 'game_dev_portfolio_block_styles' );
 
+/**
+ * Register shortcodes.
+ */
+
+if ( ! function_exists( 'game_dev_portfolio_shortcodes' ) ) :
+	/**
+	 * Register custom shortcodes
+	 *
+	 * @since Game Dev Portfolio 2024.8
+	 * @return void
+	 */
+	function game_dev_portfolio_shortcodes() {
+		/**
+		 * [year] returns the current year as a 4-digit string.
+		 * @return string current year
+		*/
+		function current_year() {
+			return date('Y');
+		}
+		add_shortcode( 'year', 'current_year' );
+	}
+endif;
+
+add_action( 'init', 'game_dev_portfolio_shortcodes' );
 ?>
