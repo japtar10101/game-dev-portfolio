@@ -21,7 +21,7 @@
 		}
 	},
 	"styles": {
-		"css": "hr.is-style-wide {width: 100%;}"
+		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote) {border-radius: calc(var(--wp--style--block-gap) / 2);}"
 	},
 	"templateParts": [
 		{
