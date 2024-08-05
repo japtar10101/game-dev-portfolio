@@ -14,23 +14,7 @@
 	<div class="wp-block-group alignwide">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 		<div class="wp-block-group">
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">
-				<!-- wp:pattern {"slug":"game-dev-portfolio/text-copyrights"} /-->
-			</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">
-				Powered by <a class="" href="https://wordpress.org/" target="_blank" rel="noreferrer noopener">Wordpress</a>
-			</p>
-			<!-- /wp:paragraph -->
-
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">
-				Theme: <a class="" href="https://github.com/japtar10101/game-dev-portfolio" target="_blank" rel="noreferrer noopener">Game Dev Portfolio</a>
-			</p>
-			<!-- /wp:paragraph -->
+			<!-- wp:pattern {"slug":"game-dev-portfolio/text-copyrights"} /-->
 		</div>
 		<!-- /wp:group -->
 
