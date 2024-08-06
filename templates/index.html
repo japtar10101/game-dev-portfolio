@@ -1,0 +1,35 @@
+<!-- wp:template-part {"slug":"header","theme":"game-dev-portfolio","tagName":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"wide","className":"is-style-grid-sidebar","backgroundColor":"base","layout":{"type":"constrained"}} -->
+<main class="wp-block-group alignwide is-style-grid-sidebar has-base-background-color has-background">
+
+	<!-- wp:group {"className":"is-style-logo","layout":{"type":"constrained","contentSize":"100%"}} -->
+	<div class="wp-block-group is-style-logo">
+		<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-rounded","style":{"border":{"radius":"50%"},"shadow":"var:preset|shadow|glow"}} -->
+		<figure class="wp-block-image size-full has-custom-border is-style-rounded">
+			<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="" style="border-radius:50%;box-shadow:var(--wp--preset--shadow--glow);aspect-ratio:1;object-fit:cover"/>
+		</figure>
+		<!-- /wp:image -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"is-style-sidebar","style":{"border":{"radius":"0.6rem"}},"backgroundColor":"base-2","layout":{"type":"constrained","wideSize":"100%"}} -->
+	<div class="wp-block-group is-style-sidebar has-base-2-background-color has-background" style="border-radius:0.6rem">
+		<!-- wp:template-part {"slug":"sidebar","theme":"game-dev-portfolio","tagName":"aside"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"className":"is-style-content-tall","layout":{"type":"flex","orientation":"vertical"}} -->
+	<div class="wp-block-group is-style-content-tall">
+		<!-- wp:heading {"level":1,"align":"wide","style":{"spacing":{"padding":{"top":"0"}}}} -->
+		<h1 class="wp-block-heading alignwide" style="padding-top:0">
+			Posts
+		</h1>
+		<!-- /wp:heading -->
+		<!-- wp:pattern {"slug":"twentytwentyfour/posts-3-col"} /-->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"game-dev-portfolio","tagName":"footer","area":"footer"} /-->

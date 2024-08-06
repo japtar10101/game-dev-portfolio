@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"version": 2,
+	"patterns": [
+		"header-mobile-only",
+		"sidebar-portfolio",
+		"footer-simple",
+		"footer-socials",
+		"text-copyrights",
+		"text-skills"
+	],
+	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "Raleway, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif",
+					"name": "portfolio Sans-serif",
+					"slug": "portfolio-sans-serif"
+				}
+			]
+		},
+		"shadow": {
+			"presets": [
+				{
+					"name": "Glow",
+					"slug": "glow",
+					"shadow": "0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02)"
+				}
+			]
+		}
+	},
+	"styles": {
+		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote)\n{border-radius: calc(var(--wp--style--block-gap) / 2);\npadding-top: var(--wp--preset--spacing--20);\npadding-right: var(--wp--preset--spacing--20);\npadding-bottom: var(--wp--preset--spacing--20);\npadding-left: var(--wp--preset--spacing--20);}",
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--portfolio-sans-serif)"
+		}
+	},
+	"templateParts": [
+		{
+			"name": "header",
+			"title": "Header",
+			"area": "header"
+		},
+		{
+			"name": "sidebar",
+			"title": "Sidebar",
+			"area": "uncategorized"
+		},
+		{
+			"name": "footer",
+			"title": "Footer",
+			"area": "footer"
+		}
+	],
+	"customTemplates": [
+	]
+}
