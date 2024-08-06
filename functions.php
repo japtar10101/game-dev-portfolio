@@ -104,7 +104,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					grid-auto-rows: max-content;
 					gap: var(--wp--style--block-gap);
 					justify-content: center;
-					max-width: 1344px;
+					max-width: var(--wp--custom--max-width);
 					margin-left: auto;
 					margin-right: auto;
 				}
