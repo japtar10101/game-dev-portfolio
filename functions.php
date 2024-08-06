@@ -103,6 +103,9 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 						"sidebar content" auto
 						/ 20vw 1fr;
 					gap: var(--wp--style--block-gap);
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 1344px;
 				}
 				.is-style-grid-sidebar > div {
 					margin: 0 !important;
