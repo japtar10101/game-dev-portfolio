@@ -110,8 +110,32 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					.is-style-grid-sidebar {
 						display: flex !important;
 						flex-direction: column;
-					gap: var(--wp--style--block-gap);
+						gap: var(--wp--style--block-gap);
 					}
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'flex-vertical',
+				'label'        => __( 'Flex, Vertical', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the custom flex block
+				 */
+				'inline_style' => '
+				.is-style-flex-vertical {
+					display: flex;
+					flex-direction: column;
+					gap: var(--wp--style--block-gap);
+					max-width: var(--wp--custom--max-width);
+					justify-content: center;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.is-style-grid-sidebar > div {
+					margin: 0 !important;
 				}',
 			)
 		);

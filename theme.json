@@ -1,6 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
 	"version": 2,
+	"title": "Game Dev Portfolio",
 	"patterns": [
 		"header-mobile-only",
 		"sidebar-portfolio",
@@ -27,6 +28,9 @@
 					"shadow": "0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02)"
 				}
 			]
+		},
+		"custom": {
+			"max-width": "1344px"
 		}
 	},
 	"styles": {
@@ -53,5 +57,10 @@
 		}
 	],
 	"customTemplates": [
+		{
+			"name": "page-no-sidebar",
+			"postTypes": ["page"],
+			"title": "Page No Sidebar"
+		}
 	]
 }
