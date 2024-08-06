@@ -50,7 +50,6 @@ function game_dev_portfolio_scripts() {
 	// Stylesheets go here.
 	wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v6.6.0/css/all.css', false, '6.6.0');
 	wp_enqueue_style( 'game-dev-portfolio-google-fonts', '//fonts.googleapis.com/css2?family=Raleway&family=Lato:wght@700&display=swap', false);
-	wp_enqueue_script( 'game-dev-portfolio-masonry', '//unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', false, '4.2.2' );
 }
 add_action( 'wp_enqueue_scripts', 'game_dev_portfolio_scripts' );
 
@@ -116,8 +115,32 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					.is-style-grid-sidebar {
 						display: flex !important;
 						flex-direction: column;
-					gap: var(--wp--style--block-gap);
+						gap: var(--wp--style--block-gap);
 					}
+				}',
+			)
+		);
+
+		register_block_style(
+			'core/group',
+			array(
+				'name'         => 'flex-vertical',
+				'label'        => __( 'Flex, Vertical', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the custom flex block
+				 */
+				'inline_style' => '
+				.is-style-flex-vertical {
+					display: flex;
+					flex-direction: column;
+					gap: var(--wp--style--block-gap);
+					max-width: var(--wp--custom--max-width);
+					justify-content: center;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.is-style-grid-sidebar > div {
+					margin: 0 !important;
 				}',
 			)
 		);

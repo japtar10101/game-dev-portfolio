@@ -1,6 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
 	"version": 2,
+	"title": "Game Dev Portfolio",
 	"patterns": [
 		"header-mobile-only",
 		"sidebar-portfolio",
@@ -10,6 +11,15 @@
 		"text-skills"
 	],
 	"settings": {
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "Raleway, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif",
+					"name": "portfolio Sans-serif",
+					"slug": "portfolio-sans-serif"
+				}
+			]
+		},
 		"shadow": {
 			"presets": [
 				{
@@ -18,10 +28,16 @@
 					"shadow": "0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02)"
 				}
 			]
+		},
+		"custom": {
+			"max-width": "1344px"
 		}
 	},
 	"styles": {
-		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote)\n{border-radius: calc(var(--wp--style--block-gap) / 2);\npadding-top: var(--wp--preset--spacing--20);\npadding-right: var(--wp--preset--spacing--20);\npadding-bottom: var(--wp--preset--spacing--20);\npadding-left: var(--wp--preset--spacing--20);}"
+		"css": "hr.is-style-wide {width: 100%;} :root :where(.wp-block-quote)\n{border-radius: calc(var(--wp--style--block-gap) / 2);\npadding-top: var(--wp--preset--spacing--20);\npadding-right: var(--wp--preset--spacing--20);\npadding-bottom: var(--wp--preset--spacing--20);\npadding-left: var(--wp--preset--spacing--20);}",
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--portfolio-sans-serif)"
+		}
 	},
 	"templateParts": [
 		{
@@ -41,5 +57,10 @@
 		}
 	],
 	"customTemplates": [
+		{
+			"name": "page-no-sidebar",
+			"postTypes": ["page"],
+			"title": "Page No Sidebar"
+		}
 	]
 }
