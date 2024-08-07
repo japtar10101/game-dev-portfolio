@@ -134,6 +134,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					display: flex;
 					flex-direction: column;
 					gap: var(--wp--style--block-gap);
+					width: var(--wp--custom--max-width);
 					max-width: var(--wp--custom--max-width);
 					justify-content: center;
 					margin-left: auto;
