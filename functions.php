@@ -97,11 +97,10 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				'inline_style' => '
 				.is-style-grid-sidebar {
 					display: grid;
-					grid-template-areas:
-						"logo feature"
-						"sidebar content";
-					grid-template-columns: max(25%, 14rem) auto;
-					grid-auto-rows: max-content;
+					grid:
+						"logo feature" var(--wp--custom--grid-logo-size)
+						"sidebar content" auto
+						/ var(--wp--custom--grid-logo-size) auto;
 					gap: var(--wp--style--block-gap);
 					justify-content: center;
 					max-width: var(--wp--custom--max-width);
@@ -156,8 +155,8 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				'inline_style' => '
 				.is-style-logo {
 					grid-area: logo;
-					aspect-ratio: 1/1;
 					width: 100%;
+					height: 100%;
 				}
 				.is-style-logo img {
 					width: 100% !important;
@@ -244,7 +243,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				'inline_style' => '
 				.is-style-highlights {
 					width: 100% !important;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}',
 			)
 		);
@@ -316,15 +315,15 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					grid-area: feature;
 					width: 100% !important;
 					max-width: 100% !important;
+					height: 100% !important;
+					max-height: 100% !important;
 					margin: 0 !important;
-					display: inline-block;
-					overflow: visible;
 				}
 				.is-style-feature > div,
 				.is-style-feature > img {
-					max-width: 100% !important;
+					max-height: 100% !important;
 					object-fit: cover;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}
 				@media (max-width: 781px) {
 					.is-style-feature {
@@ -360,7 +359,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-feature-wide > img {
 					max-height: 100% !important;
 					object-fit: cover;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}
 				@media (max-width: 781px) {
 					.is-style-feature-wide {
