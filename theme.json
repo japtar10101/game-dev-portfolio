@@ -99,6 +99,11 @@
 			"name": "page-no-sidebar",
 			"postTypes": ["page"],
 			"title": "Page No Sidebar"
+		},
+		{
+			"name": "page-no-title",
+			"postTypes": ["page"],
+			"title": "Page No Title"
 		}
 	]
 }
