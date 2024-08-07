@@ -97,11 +97,16 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				'inline_style' => '
 				.is-style-grid-sidebar {
 					display: grid;
-					grid-template:
-						"logo feature" 20vw
-						"sidebar content" auto
-						/ 20vw 1fr;
+					grid:
+						"logo feature" var(--wp--custom--grid-logo-size)
+						"sidebar content" 1fr
+						/ var(--wp--custom--grid-logo-size) 1fr;
 					gap: var(--wp--style--block-gap);
+					justify-content: center;
+					width: var(--wp--custom--max-width);
+					max-width: var(--wp--custom--max-width);
+					margin-left: auto;
+					margin-right: auto;
 				}
 				.is-style-grid-sidebar > div {
 					margin: 0 !important;
@@ -239,7 +244,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				'inline_style' => '
 				.is-style-highlights {
 					width: 100% !important;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}',
 			)
 		);
@@ -302,9 +307,9 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 			'core/post-featured-image',
 			array(
 				'name'         => 'feature',
-				'label'        => __( 'Feature Image', 'game_dev_portfolio' ),
+				'label'        => __( 'Page Feature', 'game_dev_portfolio' ),
 				/*
-				 * Styles for the Full-Height Content cell in Grid block
+				 * Styles for the Featured image in feature cell in Grid block
 				 */
 				'inline_style' => '
 				.is-style-feature {
@@ -319,10 +324,11 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-feature > img {
 					max-height: 100% !important;
 					object-fit: cover;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}
 				@media (max-width: 781px) {
 					.is-style-feature {
+						min-height: inherit;
 						max-height: 20vw !important;
 					}
 					.is-style-feature > div,
@@ -337,9 +343,9 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 			'core/post-featured-image',
 			array(
 				'name'         => 'feature-wide',
-				'label'        => __( 'Featured Wide Image', 'game_dev_portfolio' ),
+				'label'        => __( 'Page Feature, Wide', 'game_dev_portfolio' ),
 				/*
-				 * Styles for the Full-Height Content cell in Grid block
+				 * Styles for the FEatured image spanning from logo to feature cells in Grid block
 				 */
 				'inline_style' => '
 				.is-style-feature-wide {
@@ -354,7 +360,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-feature-wide > img {
 					max-height: 100% !important;
 					object-fit: cover;
-					border-radius: calc(var(--wp--style--block-gap) / 2);
+					border-radius: var(--wp--custom--border-radius);
 				}
 				@media (max-width: 781px) {
 					.is-style-feature-wide {
@@ -368,6 +374,41 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 			)
 		);
 
+		register_block_style(
+			'core/post-featured-image',
+			array(
+				'name'         => 'feature-blog',
+				'label'        => __( 'Post Feature', 'game_dev_portfolio' ),
+				/*
+				 * Styles for the Featured image in feature cell in Grid block
+				 */
+				'inline_style' => '
+				.is-style-feature-blog {
+					grid-area: feature;
+					width: 100% !important;
+					max-width: 100% !important;
+					height: var(--wp--custom--grid-logo-size) !important;
+					max-height: var(--wp--custom--grid-logo-size) !important;
+					margin: 0 !important;
+				}
+				.is-style-feature > div,
+				.is-style-feature > img {
+					max-height: 100% !important;
+					object-fit: cover;
+					border-radius: var(--wp--custom--border-radius);
+				}
+				@media (max-width: 781px) {
+					.is-style-feature {
+						min-height: inherit;
+						max-height: 20vw !important;
+					}
+					.is-style-feature > div,
+					.is-style-feature > img {
+						max-height: 20vw !important;
+					}
+				}',
+			)
+		);
 	}
 endif;
 
