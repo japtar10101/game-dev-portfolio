@@ -4,7 +4,7 @@ Game Dev Portfolio
 - Contributors: Taro Omiya
 - Stable tag: 2024.8.0
 - Tested up to: 6.6.0
-- Requires at least: 6.0.0
+- Requires at least: 6.4.0
 - Child Theme: Twenty Twenty-Four
 - License: GNU General Public License v2 or later
 
