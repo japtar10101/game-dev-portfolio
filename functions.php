@@ -103,7 +103,7 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 						/ var(--wp--custom--grid-logo-size) 1fr;
 					gap: var(--wp--style--block-gap);
 					justify-content: center;
-					width: var(--wp--custom--max-width);
+					width: 100%;
 					max-width: var(--wp--custom--max-width);
 					margin-left: auto;
 					margin-right: auto;
