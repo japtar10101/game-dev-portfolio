@@ -134,8 +134,10 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					display: flex;
 					flex-direction: column;
 					gap: var(--wp--style--block-gap);
-					width: var(--wp--custom--max-width);
+					width: 100%;
 					max-width: var(--wp--custom--max-width);
+					padding-right: var(--wp--style--root--padding-right);
+  				padding-left: var(--wp--style--root--padding-left);
 					justify-content: center;
 					margin-left: auto;
 					margin-right: auto;
@@ -279,17 +281,17 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 				.is-style-segmented {
 					width: 100% !important;
 				}
-				.is-style-segmented ul {
+				.is-style-segmented > ul {
 					gap: 0;
 				}
-				.is-style-segmented ul li {
+				.is-style-segmented > ul > li {
 					width: 100%;
 					border-top: 1px solid var(--wp--preset--color--contrast-3);
 				}
-				.is-style-segmented ul li:last-child {
+				.is-style-segmented > ul > li:last-child {
 					border-bottom: 1px solid var(--wp--preset--color--contrast-3);
 				}
-				.is-style-segmented a {
+				.is-style-segmented > ul > li > a {
 					width: 100%;
 					padding: calc(var(--wp--style--block-gap) / 2) 0;
 					-webkit-transition-duration: 0.3s !important;
@@ -297,9 +299,24 @@ if ( ! function_exists( 'game_dev_portfolio_block_styles' ) ) :
 					-webkit-transition-property: transform;
 					transition: transform;
 				}
-				.is-style-segmented a:hover, .is-style-segmented a:focus, .is-style-segmented a:active {
+				.is-style-segmented > ul > li > a:hover,
+				.is-style-segmented > ul > li > a:focus,
+				.is-style-segmented > ul > li > a:active {
   				-webkit-transform: translateX(0.6rem);
   				transform: translateX(0.6rem);
+				}
+				.is-style-segmented > ul > li > :not(a) {
+					padding: calc(var(--wp--style--block-gap) / 2) 0;
+				}
+				.is-style-segmented > ul > li ul.wp-block-social-links {
+					display: flex;
+					gap: 0.6rem 0.6rem;
+					justify-content: flex-start;
+				}
+				.is-style-segmented > ul > li ul.wp-block-social-links > li {
+					padding: .25em;
+					align-items: center;
+					display: flex;
 				}',
 			)
 		);
